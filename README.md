@@ -125,7 +125,7 @@ composer require --dev orm-fixtures
 ```
 - compléter le fichier srv/DataFixtures/AppFixtures.php
 - persist()
-- flush()
+- flush() 
 - envoyer en base de données (en écrasant) :
 ```
 php bin/console doctrine:fixtures:load
