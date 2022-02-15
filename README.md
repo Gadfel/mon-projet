@@ -72,7 +72,7 @@ php bin/console doctrine:migrations:migrate
 ```
 symfony server:start (Ctrl + C pour quitter)
 ```
-- démarrer le serveur en arrière-plan
+-https://github.com/Gadfel/mon-projet.git
 ```
 symfony server:start -d
 ```
