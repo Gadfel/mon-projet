@@ -1,0 +1,36 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}machine{% endblock %}
+
+{% block body %}
+
+    {#{{ form(machineForm) }}#}
+
+    {{ form_start(machineForm) }}
+        <div class="row">
+            <div class="col-6">
+                {{ form_row(machineForm.name,{'label': 'Nom'})}}
+            </div>
+            <div class="col-6">
+                {{form_row(machineForm.model, {'label': 'model'})}}
+            </div>
+            <div class="col-12"> 
+                {{ form_row(machineForm.description , {'label':'Description'}) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12"> 
+                {{ form_row(machineForm.img, {'label':'photo'}) }}
+            </div>
+        
+        </div>  
+
+        <div class="col-12 d-flex justify-content-end">
+            <a href="{{path('admin_machine_index')}}" class="btn btn-danger m-3">Annuler</a>
+            <button class="btn btn-success ">Créer</button>
+        </div>
+
+
+    {{ form_end(machineForm) }}
+
+{% endblock %}

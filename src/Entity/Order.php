@@ -20,11 +20,11 @@ class Order
     #[ORM\Column(type: 'integer')]
     private $total_amount;
 
-    #[ORM\ManyToOne(targetEntity: user::class, inversedBy: 'orders')]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
     private $user;
 
-    #[ORM\ManyToOne(targetEntity: address::class, inversedBy: 'orders')]
+    #[ORM\ManyToOne(targetEntity: Address::class, inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
     private $address;
 
@@ -61,24 +61,24 @@ class Order
         return $this;
     }
 
-    public function getUser(): ?user
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(?user $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 
         return $this;
     }
 
-    public function getAddress(): ?address
+    public function getAddress(): ?Address
     {
         return $this->address;
     }
 
-    public function setAddress(?address $address): self
+    public function setAddress(?Address $address): self
     {
         $this->address = $address;
 

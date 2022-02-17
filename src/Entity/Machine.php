@@ -25,7 +25,7 @@ class Machine
     #[ORM\Column(type: 'string', length: 255)]
     private $description;
 
-    #[ORM\ManyToOne(targetEntity: product::class, inversedBy: 'machines')]
+    #[ORM\ManyToOne(targetEntity: Product::class, inversedBy: 'machines')]
     #[ORM\JoinColumn(nullable: false)]
     private $product;
 
@@ -85,12 +85,12 @@ class Machine
         return $this;
     }
 
-    public function getProduct(): ?product
+    public function getProduct(): ?Product
     {
         return $this->product;
     }
 
-    public function setProduct(?product $product): self
+    public function setProduct(?Product $product): self
     {
         $this->product = $product;
 
@@ -108,4 +108,7 @@ class Machine
 
         return $this;
     }
+    
+    
+
 }

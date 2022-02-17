@@ -41,7 +41,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'User', targetEntity: Machine::class)]
     private $machines;
 
-    #[ORM\ManyToOne(targetEntity: address::class, inversedBy: 'users')]
+    #[ORM\ManyToOne(targetEntity: Address::class, inversedBy: 'users')]
     #[ORM\JoinColumn(nullable: false)]
     private $address;
 
@@ -202,12 +202,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getAddress(): ?address
+    public function getAddress(): ?Address
     {
         return $this->address;
     }
 
-    public function setAddress(?address $address): self
+    public function setAddress(?Address $address): self
     {
         $this->address = $address;
 

@@ -72,7 +72,7 @@ php bin/console doctrine:migrations:migrate
 ```
 symfony server:start (Ctrl + C pour quitter)
 ```
--https://github.com/Gadfel/mon-projet.git
+- démarrer le serveur en arrière-plan
 ```
 symfony server:start -d
 ```
@@ -149,4 +149,12 @@ php bin/console make:form nom_du_formulaire
 ```
 twig:
     form_themes: ['bootstrap_5_layout.html.twig']
+```
+## pour voir la liste des routes
+```
+ php bin/console debug:router
+```
+ ## pour voir si y'a quelque chose dans l'url 
+```
+php bin/console router:match /"nom de l'URL"
 ```

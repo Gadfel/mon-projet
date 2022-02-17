@@ -1,0 +1,41 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Machines{% endblock %}
+
+{% block body %}
+
+<h1> liste des machines</h1>
+<table class="table text-center table-hover table-sm">
+    <thead>
+        <tr>
+            <th>N°</th>
+            <th>Nom</th>
+            <th>Model</th>
+            <th>Image </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        
+        {% for machine in  machines %}
+            <tr>
+                {#<td class="align-middle">{{ loop.revindex }}</td>#}
+                <td class="align-middle">{{ machine.name }}</td>
+                <td class="align-middle">{{ machine.model }}</td>
+                <td class="align-middle"><img src="{{ asset('images/machine/'~ machine.img)}}"alt="photo principale{{ machine.name}}"></td>
+              
+                <td class="align-middle">
+                    <a href="{{ path('machine_update',{'id':machine.id})}}" class="text-primary"><i class="fas fa-pen-square"></i></a>
+                    <a href="{{ path('machine_delete', {'id': machine.id})}}" class="text-danger"><i class="fas fa-trash-alt"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        
+    </tbody>
+</table>
+<div class="d-flex justify-content-end my-5">
+    <a href="{{ path('machine_create') }}" class="btn btn-success">Ajouter une machine</a>
+</div>
+{% endblock %}
+

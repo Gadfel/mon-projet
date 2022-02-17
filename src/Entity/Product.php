@@ -37,6 +37,10 @@ class Product
     #[ORM\JoinColumn(nullable: false)]
     private $Order_ligne;
 
+    #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'products')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $category;
+
     public function __construct()
     {
         $this->machines = new ArrayCollection();
@@ -148,4 +152,18 @@ class Product
 
         return $this;
     }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+   
+
 }

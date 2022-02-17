@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} accueil{% endblock %}
+
+{% block body %}
+
+
+    <section class="section">
+        <div class="div">
+            <video class="video" autoplay muted loop>
+            <source src="{{ asset('images/video.mp4')}}" type="video/mp4" />
+            </video>
+            <div class="texte">
+                <h1 class="title">MISE A DISPOSITIONS DES MACHINES A CAFFE</h1>
+                <blockquote class="citation"> “Un café sensationnel à chaque tasse"</blockquote>
+            </div>
+        </div>
+    </section>
+
+  
+        <article class="article">
+            <h2 class= "titre-right">Créer une convivialité au sein de vôtre entreprise </h2>
+            <p class="introduction">Installer des machines à café est une excellente manière
+                    pour satisfaire ses collaborateurs et
+                    ses clients en ayant des boissons à proximité,
+                    tout en étant rentable pour vous !</p>
+            <img class="img-left" src="{{ asset('images/group.jpg')}}" alt="image"  />
+
+        </article>
+        
+        <div class="row">
+            {% for machine in machines %}
+            <div class="col-6 p-3">
+                <div class="card">
+                    <img src="{{ asset('images/machine/'~ machine.img)}}" class="card-img-top" alt="machine a café LAVAZZA">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{machine.name}}  {{ machine.model}} </h5>
+                            <p class="card-text">{{ machine.description}}</p>
+                            <a href="{{ path('machine_index')}}" class="btn btn-primary">voir plus</a>
+                        </div>
+                </div>
+            
+            </div>
+            {% endfor %}
+        </div>
+{% endblock %}

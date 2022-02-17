@@ -47,4 +47,16 @@ class ProductRepository extends ServiceEntityRepository
         ;
     }
     */
+    /**
+     * @return Product[]
+     */
+    public function findAll()
+    {
+        return $this->createQueryBuilder('fls')
+        ->orderBy('fls.id')
+       /* ->setMaxResults()*/
+        ->getQuery()
+        ->getResult()
+        ;
+    }
 }
