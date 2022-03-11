@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Utilusateurs {% endblock %}
+
+{% block body %}   
+
+
+    {{ form_start(userForm) }}
+        <div class="row">
+            <div class="col-4">
+                {{form_row(userForm.firstName, {'label': 'Nom'}) }}    
+            </div> 
+            <div class="col-4">
+                {{form_row(userForm.lastName, {'label': 'Prenom'}) }}    
+            </div> 
+        
+            <div class="col-4">
+                {{ form_row(userForm.email,{'label': 'Email'}) }}
+            </div>
+           
+
+            <div class="col-4"> 
+                {{ form_row(userForm.phone , {'label':'Telephonne'}) }}
+            </div>
+
+            <div class="col-4">
+                {{form_row(userForm.roles, {'label': 'Role'}) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12"> 
+                {{ form_row(userForm.company_name, {'label':'Nom de l\'entreprise'}) }}
+            </div>
+        </div>
+
+        <div class="col-12 d-flex justify-content-end">
+            <a href="{{path('admin_user_index')}}" class="btn btn-danger m-3">Annuler</a>
+            <button class="btn btn-success ">Créer</button>
+        </div>
+
+    {{ form_end(userForm) }}
+
+{% endblock %}

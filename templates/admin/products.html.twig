@@ -1,0 +1,45 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Produits{% endblock %}
+
+{% block body %}
+
+<h1> liste des produits</h1>
+<table class="table text-center table-hover table-sm">
+    <thead>
+        <tr>
+            <th>N°</th>
+            <th>Nom</th>
+            <th>Quantité</th>       
+            <th>Prix</th>
+            <th>Description</th>
+            <th>Image </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        
+        {% for product in  products %}
+            <tr>
+                <td class="align-middle">{{ loop.index }}</td>
+                <td class="align-middle">{{ product.name }}</td>
+                <td class="align-middle">{{ product.quantity }}</td>
+                <td class="align-middle">{{ product.price |number_format(0, ',', ' ') }} €</td>
+                <td class="align-middle">{{ product.description }}</td>
+                <td class="align-middle"><img src="{{ asset('images/produits/'~ product.img)}}"alt="photo principale{{ product.name}}"></td>
+              
+                <td class="align-middle">
+                    <a href="{{ path('product_update',{'id':product.id}) }}" class="text-primary"><i class="fas fa-pen-square"></i></a>
+                    <a href="{{ path('product_delete', {'id': product.id}) }}" class="text-danger"><i class="fas fa-trash-alt"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        
+    </tbody>
+</table>
+<div class="d-flex justify-content-end my-5">
+    <a href="{{ path('product_create') }}" class="btn btn-success">Ajouter un produit </a>
+</div>
+{% endblock %}
+

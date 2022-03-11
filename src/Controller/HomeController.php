@@ -12,14 +12,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(MachineRepository $machineRepository, ProductRepository $productRepository,CategoryRepository $categoryRepository ): Response
+    public function index(MachineRepository $machineRepository, ProductRepository $productRepository, CategoryRepository $categoryRepository): Response
     {
-        $machines = $machineRepository->findAll();
+        $machines = $machineRepository->findBy([], ['id' => 'DESC'], 2);
 
         $products = $productRepository->findAll();
-        
+
         $categories = $categoryRepository->findAll();
-        
+
         return $this->render('home/index.html.twig', [
             'machines' => $machines,
             'product' => $products,

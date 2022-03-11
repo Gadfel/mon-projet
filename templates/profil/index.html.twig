@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}profil{% endblock %}
+
+
+{% block body %}
+
+    <h1 class="text-center"> Profil</h1>
+
+   {{ form_start(profilForm) }}
+
+        <div class="row my-5">
+
+            <div class="col-4 offset-3 mb-3">
+                {{ form_row(profilForm.firstName) }}
+                
+            </div>
+            
+            <div class="col-4 mb-3">
+                {{ form_row(profilForm.lastName) }}
+            </div>
+
+            <div class="col-4 offset-3 mb-3">
+                {{ form_row(profilForm.email) }}    
+            </div>
+
+            <div class="col-4 offset-3 mb-3">
+                {{ form_row(profilForm.phone) }}
+                
+            </div>
+            <div class="col-4 offset-3 mb-3">
+                {{ form_row(profilForm.companyName) }}         
+            </div>
+            <div class="row py-5">
+
+                <div class="col-6 offset-3 mb-3">
+                    {{ form_row(profilForm.address1) }}
+                </div>
+    
+                <div class="col-6 offset-3 mb-3">
+                    {{ form_row(profilForm.address2) }}
+                </div>
+    
+                <div class="col-6 offset-3 mb-3">
+                    {{ form_row(profilForm.postalCode) }}
+                </div>
+    
+                <div class="col-6 offset-3 mb-3">
+                    {{ form_row(profilForm.city) }}
+                </div>
+    
+                <div class="col-6 offset-3 mb-3">
+                    {{ form_row(profilForm.country) }}
+                </div>
+            </div>
+
+        
+
+            <div class="col-6 offset-3 text-end">
+                <input type="submit" class="btn btn-success" value="Envoyer">
+            </div>
+        </div>
+   
+
+    {{ form_end(profilForm) }}
+
+
+{% endblock %}

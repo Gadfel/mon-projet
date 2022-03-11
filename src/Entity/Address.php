@@ -33,11 +33,12 @@ class Address
     #[ORM\Column(type: 'string', length: 50)]
     private $country;
 
-    #[ORM\OneToMany(mappedBy: 'address', targetEntity: User::class)]
-    private $users;
-
     #[ORM\OneToMany(mappedBy: 'address', targetEntity: Order::class)]
     private $orders;
+
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'addresses')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $user;
 
     public function __construct()
     {
@@ -123,36 +124,6 @@ class Address
     }
 
     /**
-     * @return Collection|User[]
-     */
-    public function getUsers(): Collection
-    {
-        return $this->users;
-    }
-
-    public function addUser(User $user): self
-    {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->setAddress($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        if ($this->users->removeElement($user)) {
-            // set the owning side to null (unless already changed)
-            if ($user->getAddress() === $this) {
-                $user->setAddress(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection|Order[]
      */
     public function getOrders(): Collection
@@ -178,6 +149,18 @@ class Address
                 $order->setAddress(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

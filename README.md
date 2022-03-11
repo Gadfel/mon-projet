@@ -65,6 +65,10 @@ php bin/console doctrine:database:create
 ```
 php bin/console doctrine:migrations:migrate
 ```
+- importer les "fausses" données (s'il y en a) :
+```
+php bin/console doctrine:fixtures:load
+```
 
 ## SYMFONY SERVER
 
@@ -91,8 +95,13 @@ composer require symfony/apache-pack
 
 ## CONTROLLER
 
+- créer un controller (et le template asscoié) :
 ```
 php bin/console make:controller nom_du_controller
+```
+- générer un crud :
+```
+php bin/console make:crud nom_de_l_entite
 ```
 
 ## BASE DE DONNÉES
@@ -125,7 +134,7 @@ composer require --dev orm-fixtures
 ```
 - compléter le fichier srv/DataFixtures/AppFixtures.php
 - persist()
-- flush() 
+- flush()
 - envoyer en base de données (en écrasant) :
 ```
 php bin/console doctrine:fixtures:load
@@ -139,6 +148,17 @@ php bin/console doctrine:fixtures:load --append
 composer require fakerphp/faker
 ```
 
+## ROUTER
+
+- voir toutes les routes :
+```
+php bin/console debug:router
+```
+- vérifier si une route existe (et obtenir ses informations) :
+```
+php bin/console router:match /url_de_la_route
+```
+
 ## FORMULAIRE
 
 - créer le formulaire :
@@ -150,11 +170,262 @@ php bin/console make:form nom_du_formulaire
 twig:
     form_themes: ['bootstrap_5_layout.html.twig']
 ```
-## pour voir la liste des routes
+
+## MESSAGES FLASH
+
+- dans un controller :
+```PHP
+$this->addFlash('success', 'La maison a bien été ajoutée');
 ```
- php bin/console debug:router
+- à l'endroit où l'on veut afficher les messages (template) :
+```PHP
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="flash-{{ label }} bg-{{ label }} text-light p-3 mb-5 rounded">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
 ```
- ## pour voir si y'a quelque chose dans l'url 
+
+## REGISTER
+
+- créer l'entité User :
 ```
-php bin/console router:match /"nom de l'URL"
+php bin/console make:user
 ```
+- ajouter des champs à l'entité User :
+```
+php bin/console make:entity user
+```
+- migration
+- créer le formulaire d'inscription :
+```
+php bin/console make:registration-form
+```
+- installer le bundle de vérification d'email :
+```
+composer require symfonycasts/verify-email-bundle
+```
+- modifier la dernière redirection après la vérification de l'adresse mail (RegistrationController::verifyUserEmail())
+- gérer l'affichage des messages flash (register.html.twig, ...)
+- personnaliser le formulaire, le controller et les templates
+- migration pour générer la propriété User::isVerified
+- installer Rollerworks :
+```
+composer require rollerworks/password-strength-bundle
+```
+- dans le formulaire :
+```
+use Rollerworks\...\PasswordStrength
+```
+```
+new PasswordStrength
+```
+- y ajouter les contraintes souhaitées
+
+## LOGIN
+
+- créer "l'authentification" :
+```
+php bin/console make:auth
+```
+- 1
+- LoginFormAuthenticator
+- SecurityController
+- yes
+- pour se déconnecter :
+```
+<a href="{{ path('app_logout') }}"></a>
+```
+
+## SÉCURITÉ - DROITS - ACCES - HIÉRARCHIE
+
+- dans config/packages/security.yaml, décommenter :
+```
+access_control:
+    - { path: ^/admin, roles: ROLE_ADMIN }
+    ...
+role_hierarchy:
+    ROLE_ADMIN: ROLE_USER
+    ROLE_SUPER_ADMIN: ROLE_ADMIN
+```
+- afficher du code selon un rôle :
+```
+{% if is_granted('LE_ROLE') %}
+    le_code_ici
+{% endif %}
+```
+
+## EMAIL
+
+- installer le mailer :
+```
+composer require symfony/mailer
+```
+- installer le package tiers :
+```
+composer require symfony/google-mailer
+```
+- dans les paramètres du compte Google => Sécurité => Connexion à Google : activer la Validation en deux étapes pour pouvoir accéder aux Mots de passe des applications
+- créer un nouveau mot de passe d'application
+- .env :
+```
+MAILER_DSN=gmail://USERNAME:PASSWORD@default
+```
+- voir les mails dans la toolbar (config/packages/dev/web_profiler.yaml) :
+```YAML
+web_profiler:
+    ...
+    intercept_redirects: true # intercepte les redirections
+```
+(un message apparaît ensuite dans la toolbar)
+- config/packages/mailer.yaml :
+```YAML
+framework:
+    mailer:
+        dsn: 'null://null' # désactive l'envoi de mail
+        envelope:
+            recipients: ['david.hurtrel@gmail.com'] # envoie tous les mails à cette adresse
+```
+
+## FORMULAIRE DE CONTACT
+
+- créer le formulaire de contact
+  php bin/console make:form
+- créer le controller associé
+    php bin/console make:controller contact
+- afficher le formulaire dans une vue (template)
+- créer le template de mail (contact/contact_email.html.twig)
+
+## PAIEMENT STRIPE
+
+- créer un controller (et la vue associée)
+- ajouter le script à la page de paiement (front) :
+```HTML
+<script src="https://js.stripe.com/v3/"></script>
+```
+- installer le bundle (back) :
+```
+composer require stripe/stripe-php
+```
+- ajouter le lien sur la page panier
+
+## AUTOWIRING
+
+- voir tous les services :
+```
+php bin/console debug:autowiring
+```
+- en voir plus (en ahut de liste : nos controllers, fixtures, forms, repositories en font partie) :
+```
+php bin/console debug:autowiring --all
+```
+- exemple :
+```
+composer require cebe/markdown
+```
+- la classe se trouve dans vendor
+- services.yaml :
+```
+services:
+    cebe\markdown\GithubMarkdown: ~
+```
+- rechercher un service particulier disponible avec l'autowiring :
+```
+php bin/console debug:autowiring --all markdown
+```
+
+## SERVICES
+
+- services = objets qui font une tâche, des outils (réutilisables)
+- créer le dossier Service (si pas déjà existant)
+- y créer le fichier CartService.php
+
+## API - OPEN WEATHER MAP
+
+- créer un compte sur le site https://openweathermap.org/
+- créer une clé API (préciser un nom)
+- endpoint = URL, emplacement à partir duquel les applications peuvent accéder aux ressources dont elles ont besoin
+- tester un appel dnas la barre d'url
+- créer le service WeatherService
+
+## PAGES D'ERREUR
+
+- si nécessaire :
+```
+composer require symfony/twig-pack
+```
+- créer l'arborescence templates/bundles/TwigBundle/Exception/
+- y créer les fichiers avec l'écriture errorXXX.html.twig (où XXX est le numéro d'erreur)
+- error.html.twig pour toutes les autres
+
+- 1xx : information
+- 2xx : succès
+- 3xx : redirection
+- 4xx : client web
+    - 401 : accès refusé
+    - 403 : accès interdit
+    - 404 : non trouvé
+- 5xx : serveur
+    - 500 : erreur interne
+    - 503 : service indisponible
+
+## PASSER DE SYMFONY 6.0 À SYMFONY 5.4
+
+- composer.json :
+    - remplacer 6.0 par 5.4
+    - supprimer symfony/doctrine-messenger
+    - supprimer symfony/messenger
+- supprimer les dossiers var et vendor
+- supprimer config/packages/messenger.yaml
+- .env :
+    - supprimer symfony/webapp-meta
+    - supprimer symfony/messenger
+- ajouter les méthodes suivantes dans src/Entity/User.php :
+```PHP
+/**
+ * A visual identifier that represents this user.
+ *
+ * @see UserInterface
+ */
+public function getUsername(): string
+{
+    return (string) $this->email;
+}
+```
+```PHP
+/**
+* Returning a salt is only needed, if you are not using a modern
+* hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
+*
+* @see UserInterface
+*/
+public function getSalt(): ?string
+{
+    return null;
+}
+```
+- composer update
+
+## COMMANDES IMPORTANTES
+
+- vider le cache :
+```
+php bin/console cache:clear
+```
+- envoyer les messages (mails, ...) :
+```
+php bin/console messenger:consume async
+```
+
+## RESTE À FAIRE
+
+- pages d'erreur
+- embedding services
+- pagination
+- utiliser CartService partout dans PaymentController
+
+## PISTES
+
+- installer verify-email-bundle avant registration-form

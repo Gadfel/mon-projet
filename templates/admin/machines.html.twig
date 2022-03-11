@@ -20,7 +20,7 @@
         
         {% for machine in  machines %}
             <tr>
-                {#<td class="align-middle">{{ loop.revindex }}</td>#}
+                <td class="align-middle">{{ loop.index }}</td>
                 <td class="align-middle">{{ machine.name }}</td>
                 <td class="align-middle">{{ machine.model }}</td>
                 <td class="align-middle"><img src="{{ asset('images/machine/'~ machine.img)}}"alt="photo principale{{ machine.name}}"></td>

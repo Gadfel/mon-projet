@@ -18,11 +18,12 @@ class OrderLigne
     #[ORM\Column(type: 'integer')]
     private $quantity;
 
-    #[ORM\OneToMany(mappedBy: 'Order_ligne', targetEntity: Product::class)]
-    private $products;
-
     #[ORM\OneToMany(mappedBy: 'OrderLigne', targetEntity: Order::class)]
     private $orders;
+
+    #[ORM\ManyToOne(targetEntity: Product::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private $product;
 
     public function __construct()
     {
@@ -43,36 +44,6 @@ class OrderLigne
     public function setQuantity(int $quantity): self
     {
         $this->quantity = $quantity;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Product[]
-     */
-    public function getProducts(): Collection
-    {
-        return $this->products;
-    }
-
-    public function addProduct(Product $product): self
-    {
-        if (!$this->products->contains($product)) {
-            $this->products[] = $product;
-            $product->setOrderLigne($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProduct(Product $product): self
-    {
-        if ($this->products->removeElement($product)) {
-            // set the owning side to null (unless already changed)
-            if ($product->getOrderLigne() === $this) {
-                $product->setOrderLigne(null);
-            }
-        }
 
         return $this;
     }
@@ -103,6 +74,18 @@ class OrderLigne
                 $order->setOrderLigne(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getProduct(): ?Product
+    {
+        return $this->product;
+    }
+
+    public function setProduct(?Product $product): self
+    {
+        $this->product = $product;
 
         return $this;
     }

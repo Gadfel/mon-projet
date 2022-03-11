@@ -3,28 +3,34 @@
 namespace App\Form;
 
 use App\Entity\Machine;
+use App\Entity\Product;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\Image;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+
+
 
 class MachineType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name',IntegerType::class,[
-              'require'=> true,
+            ->add('name',TextType::class,[
+              'required'=> true,
               'label'=>'nom',
               'attr' =>[
-                'maxlength'=> 10,
+                'maxlength'=> 25,
                 'placeholder'=> 'votre Nom' 
                 
                 ]
             ])
-            ->add('model',IntegerType::class,[
-                'require' =>true,
+            ->add('model',TextType::class,[
+                'required' =>true,
                 'label' =>'model',
                 'attr' => [
                     'maxlength'=> 45,
@@ -32,7 +38,7 @@ class MachineType extends AbstractType
                 ]
             ])
             ->add('img',FileType::class,[
-                'require'=> true,
+                'required'=> true,
                 'label'=> 'photo',
                 'mapped'=>false,
                 'help'=> 'png , jpg, jpeg, jp2 ou webpb - 1Mo maximum',
@@ -40,14 +46,15 @@ class MachineType extends AbstractType
                     new Image([
                         'maxSize'=> '1M',
                         'maxSizeMessage' =>'la photo est trop volumineuse ({{ size }} Mo).Maximum autorisé :{{ limit }} Mo.',
-                       /* 'mimeType' => [
+                        'mimeTypes' => [
                             'image/png',
                             'image/jpg',
                             'image/jpeg',
                             'image/jp2',
                             'image/wepb'
-                        ],*/
-                        'mimeTypesMessage' => 'Merci de sélectionner une photo pnp,jpg,jpeg,jp2,webp', 
+                        ],
+                        'mimeTypesMessage' => 'Merci de sélectionner une photo pnp,jpg,jpeg,jp2,webp',
+                        
                         
                         
                     ])
@@ -58,12 +65,16 @@ class MachineType extends AbstractType
                 'label' => 'Description',
                 'attr' => [
                     'maxlength' => 65535,
-                    'placeholder' => 'Ex. maison de Compagne '
+                    'placeholder' => 'tres pratique'
                 ]
 
             ])
-           /* ->add         
-              ->add*/
+        //     ->add('product',EntityType::class,[
+        //        'required' => true,
+        //         'class' => Product::class,
+        //         'choice_label' =>'name'
+        //    ])        
+             /*->add(user)*/
         ;
     }
 

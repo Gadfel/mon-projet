@@ -7,6 +7,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Image;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class CategoryType extends AbstractType
 {
@@ -17,7 +20,7 @@ class CategoryType extends AbstractType
                 'required' => true,
                 'label' => 'titre',
                 'attr' => [
-                    'maxlength' => 100,
+                    'maxlength' => 25,
                     'placeholder' => 'choisissez votre boisson'
                 ]
             ])
@@ -32,20 +35,20 @@ class CategoryType extends AbstractType
             ])
             ->add('img', FileType::class, [
                 'required' => true,
-                'label' => 'photo ',
+                'label' => 'photo',
                 'mapped' => false,
                 'help' => 'png , jpg , jpeg , jp2 ou webpb - 1 Mo maximum',
                 'constraints' => [
                     new Image([
                         'maxSize' => '1M',
                         'maxSizeMessage' => '',
-                        /*'mimeTypes' => [
+                        'mimeTypes' => [
                             'image/png',
                             'image/jpg',
                             'image/jpeg',
                             'image/jp2',
                             'image/wepb'
-                        ],*/
+                        ],
                         'mimeTypesMessage' => 'Merci de sélectionner une img pnp,jpg,jpeg,jp2,webp',
                     ])
                 ]

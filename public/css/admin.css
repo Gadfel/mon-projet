@@ -1,31 +1,35 @@
-/* **************************************** GLOBAL **************************************** */
-
-:root {
-    --color-white: #FFFFFF;
-    --color-light-grey: #BBBBBB;
-}
+/* **************************************** GLOBAL **************************************** */  
 
 * {
     font-size: lighter;
+    list-style-type: none;
 }
 
 /* **************************************** NAV **************************************** */
 
-nav {
+ nav { 
     min-height: calc(100vh - 78.4px - 50px);
+   
 }
 
-    nav a {
+    nav a { 
         color: var(--color-white);
     }
 
         nav a:hover {
             color: var(--color-light-grey);
+           
         }
+ .header-bg { 
+    background-color:rgb(53, 35, 6);
+}
+.navbar {
+    background:rgb(80, 51, 4);
+}
 
 /* **************************************** TABLE **************************************** */
 
-table img {
+ table img { 
     width: 100px;
 }
 
@@ -33,4 +37,8 @@ table img {
 
 footer p {
     font-size: 0.75em;
+    
+}
+.footer-bg {
+    background-color:rgb(53, 35, 6);
 }

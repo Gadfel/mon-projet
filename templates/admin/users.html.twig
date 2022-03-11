@@ -1,0 +1,44 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %} Users{% endblock %}
+
+{% block body %}
+
+<h1> inscription des Utilusateurs</h1>
+<table class="table text-center table-hover table-sm">
+    <thead>
+        <tr>
+            <th>N°</th>
+            <th>prenom</th>
+            <th>Nom</th>
+            <th>email</th>
+            <th>Roles</th>
+            <th>Nom de l'entreprise</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        
+        {% for user in  users %}
+            <tr>
+                <td class="align-middle">{{ loop.index }}</td>
+                <td class="align-middle">{{ user.lastName }}</td>
+                <td class="align-middle">{{ user.firstName }}</td>
+                <td class="align-middle">{{ user.email }}</td>
+                <td class="align-middle">{{ user.roles|json_encode }}</td>
+                <td class="align-middle">{{ user.companyName }}</td>
+                 <td class="align-middle">
+                   <a href="{{ path('user_update',{'id':user.id}) }}" class="text-primary"><i class="fas fa-pen-square"></i></a>
+                    <a href="{{ path('user_delete', {'id': user.id}) }}" class="text-danger"><i class="fas fa-trash-alt"></i></a> 
+                </td>
+            </tr>
+        {% endfor %}
+        
+    </tbody>
+</table>
+<div class="d-flex justify-content-end my-5">
+    <a href="{{ path('user_create') }}" class="btn btn-success">Ajouter un utilisateur</a>
+</div>
+{% endblock %}
+

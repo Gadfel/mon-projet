@@ -30,16 +30,13 @@ class Product
     #[ORM\Column(type: 'string', length: 50)]
     private $img;
 
-    #[ORM\OneToMany(mappedBy: 'product', targetEntity: Machine::class)]
-    private $machines;
-
-    #[ORM\ManyToOne(targetEntity: OrderLigne::class, inversedBy: 'products')]
-    #[ORM\JoinColumn(nullable: false)]
-    private $Order_ligne;
-
     #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'products')]
     #[ORM\JoinColumn(nullable: false)]
     private $category;
+
+    #[ORM\ManyToOne(targetEntity: Machine::class, inversedBy: 'products')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $machine;
 
     public function __construct()
     {
@@ -111,48 +108,6 @@ class Product
         return $this;
     }
 
-    /**
-     * @return Collection|Machine[]
-     */
-    public function getMachines(): Collection
-    {
-        return $this->machines;
-    }
-
-    public function addMachine(Machine $machine): self
-    {
-        if (!$this->machines->contains($machine)) {
-            $this->machines[] = $machine;
-            $machine->setProduct($this);
-        }
-
-        return $this;
-    }
-
-    public function removeMachine(Machine $machine): self
-    {
-        if ($this->machines->removeElement($machine)) {
-            // set the owning side to null (unless already changed)
-            if ($machine->getProduct() === $this) {
-                $machine->setProduct(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getOrderLigne(): ?OrderLigne
-    {
-        return $this->Order_ligne;
-    }
-
-    public function setOrderLigne(?OrderLigne $Order_ligne): self
-    {
-        $this->Order_ligne = $Order_ligne;
-
-        return $this;
-    }
-
     public function getCategory(): ?Category
     {
         return $this->category;
@@ -164,6 +119,16 @@ class Product
 
         return $this;
     }
-   
 
+    public function getMachine(): ?Machine
+    {
+        return $this->machine;
+    }
+
+    public function setMachine(?Machine $machine): self
+    {
+        $this->machine = $machine;
+
+        return $this;
+    }
 }

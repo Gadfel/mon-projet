@@ -1,0 +1,49 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %} Produits {% endblock %}
+
+{% block body %}
+
+    {{ form_start(productForm) }}
+        <div class="row">
+            <div class="col-4">
+                {{ form_row(productForm.name,{'label': 'Nom'}) }}
+            </div>
+
+            <div class="col-4">
+                {{form_row(productForm.quantity, {'label': 'quantité'}) }}
+            </div>
+
+            <div class="col-4">
+                {{form_row(productForm.price, {'label': 'Prix (€)'}) }}    
+            </div>
+
+            {# <div class="col-4">
+                {{form_row(productForm.price1, {'label': 'Prix_TTC (€)'}) }}    
+            </div> #}
+
+            <div class="col-12"> 
+                {{ form_row(productForm.description , {'label':'Description'}) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12"> 
+                {{ form_row(productForm.img, {'label':'photo'}) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12"> 
+                {{ form_row(productForm.category, {'label':'catégorie'}) }}
+            </div>
+        </div>
+
+        <div class="col-12 d-flex justify-content-end">
+            <a href="{{path('admin_product_index')}}" class="btn btn-danger m-3">Annuler</a>
+            <button class="btn btn-success ">Créer</button>
+        </div>
+
+    {{ form_end(productForm) }}
+
+{% endblock %}

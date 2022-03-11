@@ -1,4 +1,4 @@
-% extends 'baseAdmin.html.twig' %}
+{% extends 'baseAdmin.html.twig' %}
 
 {% block title %}categories{% endblock %}
 
@@ -20,11 +20,10 @@
         
         {% for category in  categories %}
             <tr>
-                {#<td class="align-middle">{{ loop.revindex }}</td>#}
+                <td class="align-middle">{{ loop.index}}</td>
                 <td class="align-middle">{{ category.title }}</td>
-                <td class="align-middle">{{ category.descprition }}</td>
-                <td class="align-middle"><img src="{{ asset('images/machine/'~ machine.img)}}"alt="photo principale{{ machine.name}}"></td>
-              
+                <td class="align-middle">{{ category.description }}</td>
+                <td class="align-middle"><img src="{{ asset('images/produits/'~ category.img) }}"alt="photo principale{{ category.title }}"></td>   
                 <td class="align-middle">
                     <a href="{{ path('category_update',{'id':category.id})}}" class="text-primary"><i class="fas fa-pen-square"></i></a>
                     <a href="{{ path('category_delete', {'id': category.id})}}" class="text-danger"><i class="fas fa-trash-alt"></i></a>

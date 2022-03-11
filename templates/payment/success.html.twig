@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}paiement accepté{% endblock %}
+
+{% block body %} 
+
+    <h1 class="text-center"> A.G -Distribution - paiement accepté</h1>
+
+
+        <div class="row">
+            <div class="col-6 offset-3">
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="flash-{{ label }} bg-{{ label }} text-light p-3 mb-5 rounded">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6 offset-3">
+                <h2 class="mb-5">Paiement accepté</h2>
+                <p>Le paiement a été accepté et nous vous en remercions.</p>
+                <p>Une facture vous sera envoyée à l'adresse email communiquée lors de votre achat. Ce processus peut prendre quelques minutes. Si toutefois vous ne recevez votre facture, vous pouvez contacter un administrateur du site via le <a href="{{ path('contact_index') }}" class="text-primary">formulaire de contact</a>.</p>
+            </div>
+        </div>
+
+{% endblock %}

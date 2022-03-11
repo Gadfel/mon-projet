@@ -1,0 +1,41 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}address {% endblock %}
+
+{% block body %}
+
+{{ form_start(addressForm) }}
+        <div class="row">
+            <div class="col-12">
+                {{ form_row(addressForm.name,{'label': 'Nom'})}}
+            </div>
+
+            <div class="col-6"> 
+                {{ form_row(addressForm.address1 , {'label':'addresse1'}) }}
+            </div>
+            
+            <div class="col-6"> 
+                {{ form_row(addressForm.address2, {'label':'addresse2'}) }}
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-4"> 
+                {{ form_row(addressForm.postalCode, {'label':'code postal'}) }}
+            </div>
+            <div class="col-6"> 
+                {{ form_row(addressForm.city, {'label':'ville'}) }}
+            </div>
+            <div class="col-6"> 
+                {{ form_row(addressForm.country, {'label':'pays'}) }}
+            </div>
+
+         </div>
+        
+
+        <div class="col-12 d-flex justify-content-end">
+            <a href="{{path('admin_address_index')}}" class="btn btn-danger m-3">Annuler</a>
+            <button class="btn btn-success ">Créer</button>
+        </div>
+
+
+    {{ form_end(addressForm) }}

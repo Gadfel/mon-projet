@@ -47,17 +47,4 @@ class MachineRepository extends ServiceEntityRepository
         ;
     }
     */
-    /**
-     * @return Machine[]
-     */
-    public function findAll()
-    {
-        return $this->createQueryBuilder('fls')
-        ->orderBy('fls.id')
-        ->getQuery()
-        ->getResult()
-        ;
-    }
-    
-    
 }

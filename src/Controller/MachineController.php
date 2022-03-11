@@ -17,10 +17,29 @@ class MachineController extends AbstractController
     public function index(MachineRepository $machineRepository): Response
     {
         $machines = $machineRepository->findAll();
-        return $this->render('admin/machine_index.html.twig', [
+        return $this->render('machine/index.html.twig', [
             'machines' => $machines,
         ]);
     }
+
+    #[Route('/machines/marque/{marque}', name: 'machine_index_marque')]
+    public function indexMarque(MachineRepository $machineRepository, string $marque): Response
+    {
+        $machines = $machineRepository->findBy(['name' => $marque]);
+        return $this->render('machine/marque.html.twig', [
+            'machine' => $machines
+        ]);
+    }
+
+    #[Route('/machine/{id}', name: 'machine_show')]
+    public function show(MachineRepository $machineRepository, int $id): Response
+    {
+        $machines = $machineRepository->findBy(['id' => $id]);
+        return $this->render('machine/show.html.twig', [
+            'machine' => $machines
+        ]);
+    }
+
     #[Route('/admin/machine', name: 'admin_machine_index')]
     public function adminIndex(MachineRepository $machineRepository): Response
     {
@@ -33,7 +52,7 @@ class MachineController extends AbstractController
     #[Route('/admin/machines/create', name: 'machine_create')]
     public function create(Request $request, ManagerRegistry $managerRegistry)
     {
-        $machine = new Machine(); 
+        $machine = new Machine();
         $form = $this->createForm(MachineType::class, $machine); // creation d'un formulaire avec en parametre la nouvelle  maison 
         $form->handleRequest($request); // gestionnaire de requetes HTTP
 
@@ -62,8 +81,8 @@ class MachineController extends AbstractController
         );
     }
 
-     #[Route('/admin/machine/update/{id}', name: 'machine_update')]
-    public function update(MachineRepository $machineRepository, int $id, Request $request)
+    #[Route('/admin/machine/update/{id}', name: 'machine_update')]
+    public function update(MachineRepository $machineRepository, int $id, Request $request, ManagerRegistry $managerRegistry)
     {
         $machine = $machineRepository->find($id); //récuperer l'id et du coup la machine 
         $form = $this->createForm(MachineType::class, $machine);
@@ -80,15 +99,20 @@ class MachineController extends AbstractController
                 $extentionImg = $infoImg->guessExtension();
                 $nomImg = time() . '-1.' . $extentionImg;
                 $infoImg->move($this->getParameter('dossier_photos_machine'), $nomOldImg);
-                $machine->setImg($nomOldImg);
+                $machine->setImg($nomImg);
             } else {
                 $machine->setImg($nomOldImg);
             }
+            $manager = $managerRegistry->getManager();
+            $manager->persist($machine);
+            $manager->flush();
+            $this->addFlash('success', 'La machine a bien été modifiée');
+            return $this->redirectToRoute('admin_machine_index');
         }
-        
+
         return $this->render('admin/machineForm.html.twig', [
-            'machineForm' => $form->createView(),
-            'machine' => $machine
+            'machineForm' => $form->createView()
+            /*'machine' => $machine*/
         ]);
     }
 
@@ -105,15 +129,11 @@ class MachineController extends AbstractController
             if (file_exists($chemainImg)) { //verifier si le fichier existe
                 unlink($chemainImg); // suprimer les images 
             }
-        }   
+        }
         $manager = $managerRegistry->getManager();
         $manager->remove($machine);
         $manager->flush();
         $this->addFlash('success', 'la machine à été bien suprimée'); // message de succés 
         return $this->redirectToRoute('admin_machine_index');
-    } 
+    }
 }
-    
-
-    
-    

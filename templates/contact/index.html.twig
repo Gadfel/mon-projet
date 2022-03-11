@@ -1,7 +1,64 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Contact!{% endblock %}
+{% block title %} Contact!{% endblock %}
 
 {% block body %}
+
+    <div class="text-center p-5 ">
+        <h1 > contactez-Nous</h1>
+         <h2>Formlaire a remplir </h2>
+    </div>
+        
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="row">
+                <div class="col-6 offset-3">
+                    <div class="flash-{{ label }} bg-{{ label }} text-light p-3 my-5 rounded">
+                        {{ message }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endfor %}
+                
+        {{ form_start(contactForm) }}
+
+            <div class="row my-5">
+
+                <div class="col-3 offset-3 mb-3">
+                    {{ form_row(contactForm.firstName) }}
+                    <i class="fas fa-user i"></i>
+                </div>
+                
+                <div class="col-3 mb-3">
+                    {{ form_row(contactForm.lastName) }}
+                </div>
+
+                <div class="col-6 offset-3 mb-3">
+                    {{ form_row(contactForm.emailAddress) }}
+                    <i class=" i fas fa-envelope i"></i>
+                </div>
+
+                <div class="col-6 offset-3 mb-3">
+                    {{ form_row(contactForm.phone) }}
+                    <i class="fas fa-mobile-alt i"></i>
+                </div>
+                <div class="col-6 offset-3 mb-3">
+                    {{ form_row(contactForm.companyName) }}
+                    <i class="fas fa-building i"></i>
+                </div>
+
+                <div class="col-6 offset-3 mb-3">
+                    {{ form_row(contactForm.message) }}
+                </div>
+
+                <div class="col-6 offset-3 text-end">
+                    <input type="submit" class="btn btn-success" value="Envoyer">
+                </div>
+
+            </div>
+
+        {{ form_end(contactForm) }}
+
 
 {% endblock %}

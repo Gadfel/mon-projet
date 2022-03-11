@@ -47,17 +47,4 @@ class CategoryRepository extends ServiceEntityRepository
         ;
     }
     */
-
-     /**
-     * @return Category[] 
-     *
-     */
-    public function findAll()
-    {
-        return $this->createQueryBuilder('fls')
-        ->orderBy('fls.id', 'DESC') 
-        ->getQuery() 
-        ->getResult() 
-        ;
-    }
 }
