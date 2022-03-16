@@ -1,10 +1,10 @@
-{% extends 'baseAdmin.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block title %} Utilusateurs {% endblock %}
+{% block title %} Utilisateurs {% endblock %}
 
 {% block body %}   
 
-    <h1 class="col-4 offset-3 py-5">Fiche Utilisateur </h1>
+    <h1 class="col-4 offset-3 py-5"> Fiche Utilisateur </h1>
     {{ form_start(userForm) }}
 
         <div class="row py-5">
@@ -18,7 +18,11 @@
             <div class="col-4 offset-3">
                 {{ form_row(userForm.email,{'label': 'Email'}) }}
             </div>
-
+            
+            <div class="col-4 offset-3">
+                {{ form_row(userForm.plainPassword,{'label': 'mot de passe'}) }}
+            </div>
+           
             <div class="col-4 offset-3"> 
                 {{ form_row(userForm.phone , {'label':'Telephonne'}) }}
             </div>
@@ -27,13 +31,13 @@
                 {{ form_row(userForm.company_name, {'label':'Nom de l\'entreprise'}) }}
             </div>
 
-            <div class="col-4 offset-3">
+            {# <div class="col-4 offset-3">
                 {{form_row(userForm.roles, {'label': 'Role'}) }}
-            </div>
+            </div> #}
         </div>
 
         <div class="col-12 d-flex justify-content-end">
-            <a href="{{path('profil_user_index')}}" class="btn btn-danger m-3">Annuler</a>
+            <a href="{{path('profil_user_create')}}" class="btn btn-danger m-3">retour</a>
             <button class="btn btn-success m-3">Modifier</button>
         </div>
 

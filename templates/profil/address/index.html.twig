@@ -1,10 +1,10 @@
-{% extends 'baseAdmin.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}Address{% endblock %}
 
 {% block body %}
 
-        <h1> liste des Address</h1>
+        <h1> Address</h1>
         <table class="table text-center table-hover table-sm">
             <thead>
                 <tr>
@@ -20,7 +20,7 @@
             </thead>
             <tbody>
                 
-                {% for address in  addresse %}
+                {% for address in  address %}
                     <tr>
                         <td class="align-middle">{{ loop.index }}</td>
                         <td class="align-middle">{{ address.Name }}</td>
@@ -30,15 +30,19 @@
                         <td class="align-middle">{{ address.city }}</td>
                         <td class="align-middle">{{ address.country }}</td>
                         <td class="align-middle">
-                        {# <a href="{{ path('user_update',{'id':address.id}) }}" class="text-primary"><i class="fas fa-pen-square"></i></a> #}
-                            <a href="{{ path('address_delete', {'id': address.id}) }}" class="text-danger"><i class="fas fa-trash-alt"></i></a> 
+                            <a href="{{ path('profil_address_update',{'id':address.id}) }}" class="btn btn-success"> Modifier l'addresse </a> 
+                            <a href="{{ path('profil_address_delete', {'id': address.id}) }}" class="btn btn-danger"> suprimer l'addresse </a>
                         </td>
                     </tr>
                 {% endfor %}
                 
             </tbody>
         </table>
-        {# <div class="d-flex justify-content-end my-5">
-            <a href="{{ path('address_create') }}" class="btn btn-success"> Ajouter l'addresse d'un utilisateur</a>
+        <div class="d-flex justify-content-end my-5">
+            <a href="{{ path('profil_address_create') }}" class="btn btn-success"> Ajouter une  l'addresse </a> 
+            {# <a href="{{ path('profil_index') }}" class="btn btn-success">Retour </a>  #}
+        </div>
+            {# <div class="d-flex justify-content-end my-5">
+            <a href="{{ path('cart_service') }}" class="btn btn-success"> passer à l'etape suivante </a>
         </div> #}
 {% endblock %}

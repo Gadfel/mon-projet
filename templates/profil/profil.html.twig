@@ -1,4 +1,4 @@
-{% extends 'baseAdmin.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %} Users{% endblock %}
 
@@ -12,7 +12,7 @@
             <th>prenom</th>
             <th>Nom</th>
             <th>email</th>
-            <th>Roles</th>
+            <th>Mot de passe</th>
             <th>Nom de l'entreprise</th>
             <th>Actions</th>
         </tr>
@@ -26,7 +26,6 @@
                 <td class="align-middle">{{ user.lastName }}</td>
                 <td class="align-middle">{{ user.firstName }}</td>
                 <td class="align-middle">{{ user.email }}</td>
-                <td class="align-middle">{{ user.roles|json_encode }}</td>
                 <td class="align-middle">{{ user.companyName }}</td>
                  <td class="align-middle">
                     <a href="{{ path('user_update',{'id':user.id}) }}" class="text-primary"><i class="fas fa-pen-square"></i></a>
@@ -37,8 +36,8 @@
         
     </tbody>
 </table>
-{# <div class="d-flex justify-content-end my-5">
-    <a href="{{ path('user_create') }}" class="btn btn-success">Ajouter un utilisateur</a>
-</div> #}
+ <div class="d-flex justify-content-end my-5 btn">
+    <a href="{{ path('profil_user_create') }}" class="btn btn-primary">Ajouter un utilisateur</a>
+    {# <a href="{{ path('profil_index') }}" class="btn btn-warning">Retour</a> #}
+</div>
 {% endblock %}
-

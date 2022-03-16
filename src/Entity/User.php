@@ -23,7 +23,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $email;
 
     #[ORM\Column(type: 'json')]
-    private $roles = ["ROLE_ADMIN"];
+    private $roles = [];
 
     #[ORM\Column(type: 'string')]
     private $password;
@@ -49,7 +49,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Address::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'User', targetEntity: Address::class, orphanRemoval: true)]
     private $addresses;
 
     public function __construct()

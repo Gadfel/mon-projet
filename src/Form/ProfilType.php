@@ -73,42 +73,43 @@ class ProfilType extends AbstractType
                     'maxLength' => 100
                 ]
             ])
-            ->add('address1',TextType::class, [
-                'required' => true,
-                'attr' => [
-                    'maxLenght' => 100
-                ]
-            ])
-            ->add('address2',TextType::class, [
-                'required' => false,
-                'attr' => [
-                    'maxLenght' => 100
-                ]
-            ])
-            ->add('postalCode',IntegerType::class,[
-                'required' => true,
-                'attr' => [
-                    'maxLenght' => 10
-                ]
+    //         ->add('address1',TextType::class, [
+    //             'required' => true,
+    //             'attr' => [
+    //                 'maxLenght' => 100
+    //             ]
+    //         ])
+    //         ->add('address2',TextType::class, [
+    //             'required' => false,
+    //             'attr' => [
+    //                 'maxLenght' => 100
+    //             ]
+    //         ])
+    //         ->add('postalCode',IntegerType::class,[
+    //             'required' => true,
+    //             'attr' => [
+    //                 'maxLenght' => 10
+    //             ]
 
 
-            ])
-            ->add('city',TextType::class,[
-                'required' => true, 
-                'attr' => [
-                   ' maxLenght'=> 20
-                ]
+    //         ])
+    //         ->add('city',TextType::class,[
+    //             'required' => true, 
+    //             'attr' => [
+    //                ' maxLenght'=> 20
+    //             ]
                 
-                ])
-            ->add('country', TextType::class,[
-                'required' => true, 
-                'attr' => [
-                   ' maxLenght'=> 20
-                ]
+    //             ])
+    //         ->add('country', TextType::class,[
+    //             'required' => true, 
+    //             'attr' => [
+    //                ' maxLenght'=> 20
+    //             ]
 
-            ])
-            ->add('valider', SubmitType::class);
+    //             ])
+     ;       
     }
+    
 
     public function configureOptions(OptionsResolver $resolver): void
     {

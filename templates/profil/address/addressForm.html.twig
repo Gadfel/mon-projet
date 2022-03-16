@@ -1,41 +1,52 @@
-{% extends 'baseAdmin.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}address {% endblock %}
 
 {% block body %}
 
 {{ form_start(addressForm) }}
+
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 offset-3">
                 {{ form_row(addressForm.name,{'label': 'Nom'})}}
             </div>
 
-            <div class="col-6"> 
+            <div class="col-6 offset-3"> 
                 {{ form_row(addressForm.address1 , {'label':'addresse1'}) }}
             </div>
             
-            <div class="col-6"> 
+            <div class="col-6 offset-3"> 
                 {{ form_row(addressForm.address2, {'label':'addresse2'}) }}
             </div>
          </div>
          <div class="row">
-            <div class="col-4"> 
+            <div class="col-4 offset-3"> 
                 {{ form_row(addressForm.postalCode, {'label':'code postal'}) }}
             </div>
-            <div class="col-6"> 
+            <div class="col-6 offset-3"> 
                 {{ form_row(addressForm.city, {'label':'ville'}) }}
             </div>
-            <div class="col-6"> 
+            <div class="col-6 offset-3"> 
                 {{ form_row(addressForm.country, {'label':'pays'}) }}
             </div>
+
+            {# <div class="col-6 offset-3 d-none"> 
+                {{ form_row(addressForm.user, {'label':'utilisateur'}) }}
+            </div> #}
+
 
          </div>
         
 
-        {# <div class="col-12 d-flex justify-content-end">
-            <a href="{{path('admin_address_index')}}" class="btn btn-danger m-3">Annuler</a>
-            <button class="btn btn-success ">Créer</button>
-        </div> #}
+        <div class="col-12 d-flex justify-content-end">
+            <a href="{{path('profil_address_index')}}" class="btn btn-danger m-3"></a>
+            <button class="btn btn-success ">modifier</button>
+        </div>
 
 
     {{ form_end(addressForm) }}
+
+    {% endblock %}
+   
+    
+

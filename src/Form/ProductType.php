@@ -82,7 +82,7 @@ class ProductType extends AbstractType
             // ->add('Order_ligne', EntityType::class,[
             //     'required'=> true,
             //      'class'=> OrderLigne::class,
-            //      'choice_label' => 'name'
+            //      'choice_label' => 'quantity'
             // ])
             ->add('category', EntityType::class, [
                 'required' => true,

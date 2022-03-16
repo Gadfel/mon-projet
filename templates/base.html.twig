@@ -39,7 +39,7 @@
                         <div class="m-right">
                             <a href="{{ path('home') }}" class="m-link">Accueil</a>
                             <a href="{{ path('machine_index') }}" class="m-link">Machines</a>
-                            <a href="{{ path('product_index') }}" class="m-link">Produits</a>
+                            <a href="{{ path('category_index') }}" class="m-link">Produits</a>
                             <a href="{{ path('contact_index') }}" class="m-link">Contact</a>
                             <a href="{{ path('user_index') }}" class="m-link">{% if is_granted('IS_AUTHENTICATED_FULLY') %}Profil{% else %}Connexion{% endif %}</a>
                         </div>
@@ -50,6 +50,7 @@
         <main>
             {% block body %}{% endblock %}
         </main>
+        
 
         <footer class="container-fluid ">
             <div class="row text-center p-5">

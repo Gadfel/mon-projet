@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Address;
 use App\Form\ProfilType;
+use App\Form\AddressType;
+use App\Service\CartService;
 use App\Repository\AddressRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,67 +15,151 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AddressController extends AbstractController
 {
-    #[Route('/profil', name: 'address_index')]
-    public function index(AddressRepository $addressRepository, Request $request, ManagerRegistry $managerRegistry): Response
+    #[Route('/profil/address', name: 'profil_address_index')]
+    public function index(AddressRepository $addressRepository, Request $request, ManagerRegistry $managerRegistry)
     {
-        $address = $addressRepository->find($this->getUser());
+        $address = $addressRepository->findBy(['user'=>$this->getUser()]);
         $form = $this->createForm(ProfilType::class, $address);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
             $manager = $managerRegistry->getManager();
             $manager->persist($address);
             $manager->flush();
         }
 
-        return $this->render('address/index.html.twig', [
-            'profilForm' => $form->createView()
+        return $this->render('profil/address/index.html.twig', [
+            'addressForm' => $form->createView(),
         ]);
     }
 
-    #[Route('/admin/address', name: 'admin_address_index')]
-    public function adminIndex(AddressRepository $addressRepository): Response
+    #[Route('/profil/address/liste', name: 'profil_address_liste')]
+    public function userListeAddress(AddressRepository $addressRepository)
     {
-        $addresse = $addressRepository->findAll();
-        return $this->render('admin/addresse.html.twig', [
-            'addresse' => $addresse,
+        $listeAddress = $addressRepository->findBy(['user'=>$this->getUser()]);
+
+        return $this->render('profil/address/index.html.twig', [
+            
+            'address' => $listeAddress
         ]);
     }
 
-    #[Route('/admin/addresse/create', name: 'address_create')]
-    public function create(Request $request, ManagerRegistry $managerRegistry)
+    #[Route('/profil/address/create', name: 'profil_address_create')]
+    public function createUserAddress(Request $request, ManagerRegistry $managerRegistry)
     {
+        
         $address = new Address();
         $form = $this->createForm(AddressType::class, $address);  
         $form->handleRequest($request); 
 
         if ($form->isSubmitted() && $form->isValid()) {
-
+           
+            $address->setUser($this->getUser());
 
             $manager = $managerRegistry->getManager();
             $manager->persist($address);
             $manager->flush();
 
             $this->addFlash('success', 'L\'addresse a bien été ajoutée');
-            return $this->redirectToRoute('admin_address_index');
+            return $this->redirectToRoute('profil_address_liste');
 
         }
-        return $this->render('admin/addressForm.html.twig', [
+        return $this->render('profil/address/addressForm.html.twig', [
+
             'addressForm' => $form->createView()
         ]);
     }
-    #[Route('/admin/address/delete/{id}', name: 'address_delete')]
-    public function delete(
-        AddressRepository $addressRepository,
-        int $id,
-        ManagerRegistry $managerRegistry
-    ) {
-        $address = $addressRepository->find($id); // récuperer l'address à suprimer en bdd
 
-        $manager = $managerRegistry->getManager();
-        $manager->remove($address);
-        $manager->flush();
-        $this->addFlash('success', 'l\'addresse à été bien suprimée'); 
-        return $this->redirectToRoute('admin_address_index');
-    }     
+    #[Route('/profil/address/update/{id}', name: 'profil_address_update')]
+    public function updateUserAddress(AddressRepository $addressRepository, int $id , Request $request, ManagerRegistry $managerRegistry)
+    {
+        $address = $addressRepository->find($id);
+        $form = $this->createForm(AddressType::class, $address);  
+        $form->handleRequest($request); 
+        
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+           
+            
+
+            $manager = $managerRegistry->getManager();
+            $manager->persist($address);
+            $manager->flush();
+
+            $this->addFlash('success', 'L\'addresse a bien été Modifier');
+            return $this->redirectToRoute('profil_address_liste');
+
+        }
+        return $this->render('profil/address/addressForm.html.twig', [
+           
+            'addressForm' => $form->createView()
+        ]);
+    }
+
+    #[Route('/profil/address/delete/{id}', name: 'profil_address_delete')]
+     public function deleteUserAddress(
+         AddressRepository $addressRepository,
+         int $id,
+         ManagerRegistry $managerRegistry
+     ) {
+         $address = $addressRepository->find($id);  //récuperer l'address à suprimer en bdd
+
+         $manager = $managerRegistry->getManager();
+         $manager->remove($address);
+         $manager->flush();
+         $this->addFlash('success', 'l\'addresse à été bien suprimée'); 
+         return $this->redirectToRoute('profil_address_liste');
+     }     
+
+
+     #[Route('/admin/address', name: 'admin_address_index')]
+     public function adminIndex(AddressRepository $addressRepository): Response
+     {
+         $addresse = $addressRepository->findAll();
+         return $this->render('admin/addresse.html.twig', [
+             'addresse' => $addresse,
+         ]);
+     }
+
+     
+
+    // #[Route('/admin/addresse/create', name: 'address_create')]
+    // public function create(Request $request, ManagerRegistry $managerRegistry)
+    // {
+    //     $address = new Address();
+    //     $form = $this->createForm(AddressType::class, $address);  
+    //     $form->handleRequest($request); 
+
+    //     if ($form->isSubmitted() && $form->isValid()) {
+
+
+    //         $manager = $managerRegistry->getManager();
+    //         $manager->persist($address);
+    //         $manager->flush();
+
+    //         $this->addFlash('success', 'L\'addresse a bien été ajoutée');
+    //         return $this->redirectToRoute('admin_address_index');
+
+    //     }
+    //     return $this->render('admin/addressForm.html.twig', [
+    //         'addressForm' => $form->createView()
+    //     ]);
+    // }
+
+     #[Route('/admin/address/delete/{id}', name: 'address_delete')]
+     public function delete(
+         AddressRepository $addressRepository,
+         int $id,
+         ManagerRegistry $managerRegistry
+     ) {
+         $address = $addressRepository->find($id);  //récuperer l'address à suprimer en bdd
+
+         $manager = $managerRegistry->getManager();
+         $manager->remove($address);
+         $manager->flush();
+         $this->addFlash('success', 'l\'addresse à été bien suprimée'); 
+         return $this->redirectToRoute('admin_address_index');
+     }     
 }

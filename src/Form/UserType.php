@@ -15,59 +15,77 @@ use Rollerworks\Component\PasswordStrength\Validator\Constraints\PasswordStrengt
 
 class UserType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options): void
-    {
-        $builder
+     public function buildForm(FormBuilderInterface $builder, array $options): void
+     {
+         $builder
 
-            ->add('firstName', TextType::class, [
-                'required' => true,
-                'attr' => [
-                    'maxLength' => 50
-                ]
-            ])
-            ->add('lastName', TextType::class, [
-                'required' => true,
-                'attr' => [
-                    'maxLength' => 50
-                ]
-            ])
-            ->add('roles', ChoiceType::class, [
-                'required' => true,
-                'multiple' => true,
-                'expanded' => true,
-                'choices' => [
-                    'Administrateur' => 'ROLE_ADMIN',
-                    'Utilisateur' => 'ROLE_USER',
+             ->add('firstName', TextType::class, [
+                 'required' => true,
+                 'attr' => [
+                     'maxLength' => 50
+                 ]
+             ])
+             ->add('lastName', TextType::class, [
+                 'required' => true,
+                 'attr' => [
+                     'maxLength' => 50
+                 ]
+             ])
+            //  ->add('roles', ChoiceType::class, [
+            //      'required' => true,
+            //      'multiple' => true,
+            //      'expanded' => true,
+            //      'choices' => [
+            //          'Administrateur' => 'ROLE_ADMIN',
+            //          'Utilisateur' => 'ROLE_USER',
 
+            //      ],
+
+            //  ])
+             ->add('email', EmailType::class, [
+                 'required' => true,
+                 'attr' => [
+                     'maxLength' => 180
+                 ]
+             ])
+
+             ->add('plainPassword', PasswordType::class, [
+                'required'=> false,
+                'label'=> 'mot de passe',
+                'mapped' => false,
+                'attr' => ['autocomplete' => 'new-password'],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Merci de renseigner un mot de passe',
+                    ]),
+                    new PasswordStrength([
+                        'minLength' => 8,
+                        'tooShortMessage' => 'Le mot de passe doit contenir au moins {{length}} caractères.',
+                        'minStrength' => 4,
+                        'message' => 'Le mot de passe doit contenir au moins une lettre minuscule, une lettre majuscule, une chiffre et un caractère spécial'
+                    ])
                 ],
-
-            ])
-            ->add('email', EmailType::class, [
-                'required' => true,
-                'attr' => [
-                    'maxLength' => 180
-                ]
             ])
            
-            ->add('phone', TextType::class, [
-                'required' => true,
-                'attr' => [
-                    'maxLength' => 15
-                ]
+             ->add('phone', TextType::class, [
+                 'required' => true,
+                 'attr' => [
+                     'maxLength' => 15
+                 ]
 
-            ])
-            ->add('company_name', TextType::class, [
-                'required' => true,
-                'attr' => [
-                    'maxLength' => 100
-                ]
-            ]);
-    }
+             ])
+             ->add('company_name', TextType::class, [
+                 'required' => true,
+                 'attr' => [
+                     'maxLength' => 100
+                 ]
+             ]);
+     }
 
-    public function configureOptions(OptionsResolver $resolver): void
-    {
-        $resolver->setDefaults([
-            'data_class' => User::class,
-        ]);
-    }
+     public function configureOptions(OptionsResolver $resolver): void
+     {
+         $resolver->setDefaults([
+             'data_class' => User::class,
+         ]);
+     }
 }

@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Form;
-
+use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class AddressType extends AbstractType
 {
@@ -24,7 +27,7 @@ class AddressType extends AbstractType
                 ]
             ])
             ->add('address2',TextType::class, [
-                'required' => true,
+                'required' => false,
                 'attr' => [
                     'maxLenght' => 100
                 ]
@@ -52,11 +55,11 @@ class AddressType extends AbstractType
 
             ])
 
-            ->add('user',EntityType::class,[
-                       'required' => true,
-                         'class' => user::class,
-                         'choice_label' =>'name'
-            ])        
+            // ->add('user',EntityType::class,[
+            //            'required' => true,
+            //              'class' => User::class,
+            //              'choice_label' =>'firstName'
+            // ])        
         ;
     }
 
