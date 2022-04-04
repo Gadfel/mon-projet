@@ -5,5 +5,18 @@
 {% block body %}
 
 <h1>Nos Category</h1>
-
+        <div class="row ">
+            {% for category  in categories %}
+            <div class="col-6 p-5">
+                <div class="card">
+                    <img src="{{ asset('images/categorie/'~ category.img)}}" class="card-img-top" alt=" aprovisionnement">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{category.title}}   </h5>
+                            <p class="card-text">{{ category.description}}</p>
+                            <a href="{{ path('product_index') }}" class="btn btn-primary">voir plus</a>
+                        </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
 {% endblock %}

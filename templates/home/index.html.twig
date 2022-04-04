@@ -29,20 +29,17 @@
     </section>
 
     <section class="section1">
-        <article class="article">
             <h2 class= "titre">Créer une convivialité au sein de vôtre entreprise </h2>
             <p class="introduction">Installer des machines à café est une excellente manière
                     pour satisfaire ses collaborateurs et
                     ses clients en ayant des boissons à proximité,
                     tout en étant rentable pour vous !</p>
             <img class="img" src="{{ asset('images/group.jpg')}}" alt="image"  />
-
-        </article>
         
         <div class="row">
             {% for machine in machines %}
                 <div class="col-6 p-5">
-                    <div class="card">
+                    <div class="card1">
                         <img src="{{ asset('images/machine/'~ machine.img)}}" class="card-img-top" alt="machine a café LAVAZZA">
                             <div class="card-body text-center">
                                 <h5 class="card-title">{{machine.name}}  {{ machine.model}} </h5>

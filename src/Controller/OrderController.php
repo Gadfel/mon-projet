@@ -32,59 +32,59 @@ class OrderController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/order/create', name: 'order_create')]
-    public function create(Request $request, ManagerRegistry $managerRegistry){
+    // #[Route('/admin/order/create', name: 'order_create')]
+    // public function create(Request $request, ManagerRegistry $managerRegistry){
 
-        $order = new Order();
-        $form = $this->createForm(OrderType::class, $order);
-        $form ->handleRequest($request);
+    //     $order = new Order();
+    //     $form = $this->createForm(OrderType::class, $order);
+    //     $form ->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()){
+    //     if ($form->isSubmitted() && $form->isValid()){
 
-            $manager = $managerRegistry->getManager();
-            $manager->persist($order);
-            $manager->flush();
+    //         $manager = $managerRegistry->getManager();
+    //         $manager->persist($order);
+    //         $manager->flush();
 
-            $this->addflash('success','la commande à été bien Ajouter');
-            return $this->redirectToRoute('admin_order_index');
-        }
-        return $this->render('admin/orderForm.html.twig',[
-            'orderForm' => $form->createView()
-        ]);
-    }
+    //         $this->addflash('success','la commande à été bien Ajouter');
+    //         return $this->redirectToRoute('admin_order_index');
+    //     }
+    //     return $this->render('admin/orderForm.html.twig',[
+    //         'orderForm' => $form->createView()
+    //     ]);
+    // }
 
-    #[Route('/admin/order/update/{id}', name:'order_update')]
-    public function update(OrderRepository $orderRepository, int $id, Request $request, ManagerRegistry $managerRegistry) 
-    {
-        $order = $orderRepository->find($id);
-        $form = $this->createForm(OrderType::class, $order);
-        $form->handleRequest($request);
+    // #[Route('/admin/order/update/{id}', name:'order_update')]
+    // public function update(OrderRepository $orderRepository, int $id, Request $request, ManagerRegistry $managerRegistry) 
+    // {
+    //     $order = $orderRepository->find($id);
+    //     $form = $this->createForm(OrderType::class, $order);
+    //     $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()){
+    //     if ($form->isSubmitted() && $form->isValid()){
 
-            $manager = $managerRegistry->getManager();
-            $manager->persist($order);
-            $manager->flush();
+    //         $manager = $managerRegistry->getManager();
+    //         $manager->persist($order);
+    //         $manager->flush();
 
-            $this->addflash('success','la commande à été bien Modifier');
-            return $this->redirectToRoute('admin_order_index');
-        }
+    //         $this->addflash('success','la commande à été bien Modifier');
+    //         return $this->redirectToRoute('admin_order_index');
+    //     }
 
-        return $this->render('/admin/orderForm.html.twig',[
-            'orderForm' =>$form->createView()
+    //     return $this->render('/admin/orderForm.html.twig',[
+    //         'orderForm' =>$form->createView()
 
-        ]);
-    }
+    //     ]);
+    // }
 
-    #[Route('/admin/order/delete/{id}', name: 'order_delete')]
-    public function delete(OrderRepository $orderRepository, int $id, ManagerRegistry $managerRegistry)
-    {
-        $order = $orderRepository->find($id);
+    // #[Route('/admin/order/delete/{id}', name: 'order_delete')]
+    // public function delete(OrderRepository $orderRepository, int $id, ManagerRegistry $managerRegistry)
+    // {
+    //     $order = $orderRepository->find($id);
 
-        $manager = $managerRegistry->getManager();
-        $manager->remove($order);
-        $manager->flush();
-        $this->addFlash('success','la commande à été bien suprimée');
-        return $this->redirectToRoute('admin_order_index');
-    }
+    //     $manager = $managerRegistry->getManager();
+    //     $manager->remove($order);
+    //     $manager->flush();
+    //     $this->addFlash('success','la commande à été bien suprimée');
+    //     return $this->redirectToRoute('admin_order_index');
+    // }
 }

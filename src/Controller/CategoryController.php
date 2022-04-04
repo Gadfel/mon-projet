@@ -70,13 +70,13 @@ class CategoryController extends AbstractController
             $infoImg = $form['img']->getData();
             $nomOldImg = $category->getImg();
             if ($infoImg !== null) {
-                $cheminOldImg = $this->getParameter('dossier_photos_produits') . '/' . $nomOldImg;
+                $cheminOldImg = $this->getParameter('dossier_photos_categorie') . '/' . $nomOldImg;
                 if (file_exists($cheminOldImg)) {
                     unlink($cheminOldImg);
                 }
                 $extentionImg = $infoImg->guessExtension();
                 $nomImg = time() . '-1.' . $extentionImg;
-                $infoImg->move($this->getParameter('dossier_photos_produits'), $nomImg);
+                $infoImg->move($this->getParameter('dossier_photos_categorie'), $nomImg);
                 $category->setImg($nomImg);
             } else {
                 $category->setImg($nomOldImg);
@@ -103,7 +103,7 @@ class CategoryController extends AbstractController
         $category = $categoryRepository->find($id); // récuperer la categorie à suprimer en bdd
         $nomImg = $category->getImg();
         if ($nomImg !== null) {
-            $chemainImg = $this->getParameter('dossier_photos_produits') . '/' . $nomImg; //reconstituer  le chemain de l'image
+            $chemainImg = $this->getParameter('dossier_photos_categorie') . '/' . $nomImg; //reconstituer  le chemain de l'image
             if (file_exists($chemainImg)) { //verifier si le fichier existe
                 unlink($chemainImg); // suprimer les images 
             }

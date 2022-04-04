@@ -126,27 +126,7 @@ php bin/console make:migration
 php bin/console doctrine:migrations:migrate
 ```
 
-## FIXTURES
 
-- installer le bundle :
-```
-composer require --dev orm-fixtures
-```
-- compléter le fichier srv/DataFixtures/AppFixtures.php
-- persist()
-- flush()
-- envoyer en base de données (en écrasant) :
-```
-php bin/console doctrine:fixtures:load
-```
-- envoyer en base de données (en ajoutant à la suite) :
-```
-php bin/console doctrine:fixtures:load --append
-```
-- bundle pour générer de fausses données :
-```
-composer require fakerphp/faker
-```
 
 ## ROUTER
 
@@ -175,7 +155,7 @@ twig:
 
 - dans un controller :
 ```PHP
-$this->addFlash('success', 'La maison a bien été ajoutée');
+$this->addFlash('success', 'La machine  a bien été ajoutée');
 ```
 - à l'endroit où l'on veut afficher les messages (template) :
 ```PHP
@@ -286,7 +266,7 @@ framework:
     mailer:
         dsn: 'null://null' # désactive l'envoi de mail
         envelope:
-            recipients: ['david.hurtrel@gmail.com'] # envoie tous les mails à cette adresse
+            recipients: ['gadfellouiza@gmail.com'] # envoie tous les mails à cette adresse
 ```
 
 ## FORMULAIRE DE CONTACT

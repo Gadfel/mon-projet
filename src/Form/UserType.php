@@ -55,9 +55,7 @@ class UserType extends AbstractType
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
-                    new NotBlank([
-                        'message' => 'Merci de renseigner un mot de passe',
-                    ]),
+                    
                     new PasswordStrength([
                         'minLength' => 8,
                         'tooShortMessage' => 'Le mot de passe doit contenir au moins {{length}} caractères.',

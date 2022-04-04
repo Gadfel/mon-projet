@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Form\ProfilType;
+use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,7 +17,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class UserController extends AbstractController
 {
     #[Route('/profil', name: 'user_index')]
-    public function index(UserRepository $userRepository, Request $request, UserPasswordHasherInterface $userPasswordHasher, ManagerRegistry $managerRegistry): Response
+    public function index(UserRepository $userRepository, Request $request, ManagerRegistry $managerRegistry): Response
     {
         $user = $userRepository->find(['id'=>$this->getUser()]);
         $form = $this->createForm(ProfilType::class, $user);
@@ -35,12 +36,12 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/profil/liste', name: 'profil_user_liste')]
-    public function userListeAddress(UserRepository $userRepository)
+    #[Route('/profil/liste', name: 'profil_liste')]
+    public function userListe(UserRepository $userRepository)
     {
-        $listeUser = $userRepository->find(['id'=>$this->getUser()]);
-
-        return $this->render('profil/index.html.twig', [
+        $listeUser = $userRepository->findBy(['id'=>$this->getUser()]);
+    
+        return $this->render('profil/profil.html.twig', [
             
             'user' => $listeUser
         ]);
@@ -50,7 +51,7 @@ class UserController extends AbstractController
     public function createUserAddress(Request $request, ManagerRegistry $managerRegistry): Response
     {
         $user = new User();
-        $form = $this->createForm(UserType::class, $user);  
+        $form = $this->createForm(ProfilType::class, $user);  
         $form->handleRequest($request); 
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -60,7 +61,7 @@ class UserController extends AbstractController
             $manager->flush();
 
             $this->addFlash('success', 'L\'utilisateur a bien été ajoutée');
-            return $this->redirectToRoute('profil_user_liste');
+            return $this->redirectToRoute('profil_liste');
 
         }
         return $this->render('profil/userForm.html.twig', [
@@ -69,54 +70,59 @@ class UserController extends AbstractController
     }
 
     #[Route('/profil/user/update/{id}', name: 'profil_user_update')]
-    public function updateUser(UserRepository $userRepository, int $id, Request $request, ManagerRegistry $managerRegistry,UserPasswordHasher $userPasswordHasher)
+    public function updateUser(UserRepository $userRepository, int $id, Request $request, ManagerRegistry $managerRegistry,UserPasswordHasherInterface $userPasswordHasher):Response
     {
-        $user = $userRepository->find($id); //récuperer l'id et du user 
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
+        // $user = $userRepository->find($id); //récuperer l'id et du user 
+        // // $form = $this->createForm(UserType::class, $user);
+        // $form = $this->createForm(RegistrationFormType::class, $user);
+        // $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        // if ($form->isSubmitted() && $form->isValid()) {
 
-        $user = $userRepository->find($this->getUser());
-        $form = $this->createForm(ProfilType::class, $user);
-        $form->handleRequest($request);
+            $user = $userRepository->find($id);
+            $form = $this->createForm(ProfilType::class, $user);
+            $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+            if ($form->isSubmitted() && $form->isValid()) {
 
 
-            if($form->get('plainPassword')->getData() == null) {
-                $user->setPassword($user->getPassword());
-            }else{
-               $user->setPassword(
-                $userPasswordHasher->hashPassword(
-                    $user,
-                    $form->get('plainPassword')->getData()
-                )
+                if($form->get('plainPassword')->getData() == null) {
+                    $user->setPassword($user->getPassword());
+                }else{
+                $user->setPassword(
+                    $userPasswordHasher->hashPassword(
+                        $user,
+                        $form->get('plainPassword')->getData()
+                    )
             );
             }
-            $user->setIsVerified(true);
-            
-            $manager = $managerRegistry->getManager();
-            $manager->persist($user);
-            $manager->flush();
-        }
-
-        return $this->render('profil/index.html.twig', [
-            'profilForm' => $form->createView()
-        ]);
-
-            $manager = $managerRegistry->getManager();
-            $manager->persist($user);
-            $manager->flush();
+                $user->setIsVerified(true);
+                
+                $manager = $managerRegistry->getManager();
+                $manager->persist($user);
+                $manager->flush();
+        // }
 
             $this->addFlash('success', 'Le profile a bien été modifiée');
-            return $this->redirectToRoute('profil_user_liste');
+            return $this->redirectToRoute('profil_liste');
         }
 
         return $this->render('profil/userForm.html.twig', [
             'userForm' => $form->createView(),
 
         ]);
+    }
+
+    #[Route('/profil/user/delete/{id}', name: 'profil_user_delete')]
+    public function deleteUser(UserRepository $userRepository, ManagerRegistry $managerRegistry):Response  
+     {
+        $user = $userRepository->find($this->getUser()); // récuperer le user à suprimer en bdd
+
+        $manager = $managerRegistry->getManager();
+        $manager->remove($user);
+        $manager->flush();
+        $this->addFlash('success', 'le profile à été bien suprimée');
+        return $this->redirectToRoute('home');
     }
 
     #[Route('/admin/user', name: 'admin_user_index')]

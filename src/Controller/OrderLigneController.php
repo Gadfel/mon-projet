@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class OrderLigneController extends AbstractController
 {
     #[Route('/profil/orderLigne', name: 'orderLigne_index')]
-    public function index(orderLigneRepository $orderLigneRepository): Response
+    public function index(): Response
     {
         return $this->render('order_ligne/index.html.twig', [
             'controller_name' => 'OrderLigneController',

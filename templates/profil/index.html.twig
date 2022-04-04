@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    <h1 class="text-center py-5"> inscription des Utilisateur</h1>
+    <h1 class="text-center py-5"> Mon Profil</h1>
         <table class="table text-center table-hover table-sm">
            
             <div class="col-11" id="content">
@@ -21,9 +21,9 @@
                 </div>
         
         </table>
-        <div class="text-center my-5">
-            <a href="{{ path('profil_user_liste') }}" class="btn btn-success"> gérer mes coordonée</a>
-            <a href="{{ path('profil_address_liste') }}" class="btn btn-success">gérer mes addresses</a>
-             <a href="#" class="btn btn-success"> gérer mes commandes </a>  
+        <div class="text-center my-5 lien">
+            <a href="{{ path('profil_liste') }}" class="btn btn-warning p-5 m-5 "> gérer mes coordonée</a>
+            <a href="{{ path('profil_address_liste') }}" class="btn btn-success p-5 m-5">gérer mes addresses</a>
+             <a href="{{ path('order_index')}}" class="btn btn-warning p-5 m-5"> gérer mes commandes </a>  
         </div> 
 {% endblock %}

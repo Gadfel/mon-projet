@@ -8,9 +8,10 @@
 <table class="table text-center table-hover table-sm">
     <thead>
         <tr>
+           
             <th>N°</th>
-            <th>prenom</th>
             <th>Nom</th>
+            <th>prenom</th>
             <th>email</th>
             <th>Mot de passe</th>
             <th>Nom de l'entreprise</th>
@@ -20,16 +21,17 @@
 
     <tbody>
         
-        {% for user in  users %}
+        {% for users in  user %}
             <tr>
                 <td class="align-middle">{{ loop.index }}</td>
-                <td class="align-middle">{{ user.lastName }}</td>
-                <td class="align-middle">{{ user.firstName }}</td>
-                <td class="align-middle">{{ user.email }}</td>
-                <td class="align-middle">{{ user.companyName }}</td>
+                <td class="align-middle">{{ users.firstName }}</td>
+                <td class="align-middle">{{ users.lastName }}</td>
+                <td class="align-middle">{{ users.email }}</td>
+                <td class="align-middle">{{ users.Password}}></td>
+                <td class="align-middle">{{ users.companyName }}</td>
                  <td class="align-middle">
-                    <a href="{{ path('user_update',{'id':user.id}) }}" class="text-primary"><i class="fas fa-pen-square"></i></a>
-                    <a href="{{ path('user_delete', {'id': user.id}) }}" class="text-danger"><i class="fas fa-trash-alt"></i></a> 
+                    <a href="{{ path('profil_user_update',{'id':users.id}) }}" class="text-primary"><i class="fas fa-pen-square"></i></a>
+                    <a href="{{ path('profil_user_delete') }}" class="text-danger"><i class="fas fa-trash-alt"></i></a> 
                 </td>
             </tr>
         {% endfor %}
@@ -37,7 +39,7 @@
     </tbody>
 </table>
  <div class="d-flex justify-content-end my-5 btn">
-    <a href="{{ path('profil_user_create') }}" class="btn btn-primary">Ajouter un utilisateur</a>
-    {# <a href="{{ path('profil_index') }}" class="btn btn-warning">Retour</a> #}
+    <a href="{{ path('user_index') }}" class="btn btn-primary">Retour</a>
+     
 </div>
 {% endblock %}

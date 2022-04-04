@@ -66,7 +66,6 @@ class AddressController extends AbstractController
 
         }
         return $this->render('profil/address/addressForm.html.twig', [
-
             'addressForm' => $form->createView()
         ]);
     }
@@ -80,9 +79,8 @@ class AddressController extends AbstractController
         
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
+                
            
-            
 
             $manager = $managerRegistry->getManager();
             $manager->persist($address);
@@ -93,7 +91,6 @@ class AddressController extends AbstractController
 
         }
         return $this->render('profil/address/addressForm.html.twig', [
-           
             'addressForm' => $form->createView()
         ]);
     }
@@ -117,9 +114,9 @@ class AddressController extends AbstractController
      #[Route('/admin/address', name: 'admin_address_index')]
      public function adminIndex(AddressRepository $addressRepository): Response
      {
-         $addresse = $addressRepository->findAll();
-         return $this->render('admin/addresse.html.twig', [
-             'addresse' => $addresse,
+         $address = $addressRepository->findAll();
+         return $this->render('admin/address.html.twig', [
+             'address' => $address,
          ]);
      }
 

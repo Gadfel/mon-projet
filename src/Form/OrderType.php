@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\User;
 use App\Entity\Order;
 use App\Entity\Address;
+use App\Entity\OrderLigne;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -45,7 +46,12 @@ class OrderType extends AbstractType
                 'class' => Address::class,
                 'choice_label' =>'address'
             ])
-            ->add('OrderLigne')
+            ->add('OrderLigne',EntityType::class,[
+                'required' => true,
+                'class' => OrderLigne::class,
+                'choice_label' => 'quantité'
+
+            ])
         ;
     }
 

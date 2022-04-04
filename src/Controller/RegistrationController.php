@@ -65,7 +65,11 @@ class RegistrationController extends AbstractController
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
             // do anything else you need here, like send an email
-
+            if ($user->getRoles() =='ROLE_ADMIN'){
+                return $this->redirectToRoute('admin');
+            }else{
+                return $this->redirectToRoute('user_index');
+            }
             return $this->redirectToRoute('home');
         }
 

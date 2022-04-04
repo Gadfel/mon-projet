@@ -44,13 +44,12 @@ class ProfilType extends AbstractType
                 ]
             ])
             ->add('plainPassword', PasswordType::class, [
+                'required' => false,
                 'label'=> 'mot de passe',
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
-                    new NotBlank([
-                        'message' => 'Merci de renseigner un mot de passe',
-                    ]),
+                   
                     new PasswordStrength([
                         'minLength' => 8,
                         'tooShortMessage' => 'Le mot de passe doit contenir au moins {{length}} caractères.',

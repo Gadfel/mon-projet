@@ -1,3 +1,5 @@
+/******************************** GLOBAL  *****************************************************************************/
+
 @import url("https://fonts.googleapis.com/css2? family= Oswald & family= Roboto+Condensed:wght@400;700 & family= Roboto:wght@400;900 & display=swap");
 
 *,
@@ -6,44 +8,45 @@ padding: 0;
 margin: 0;
 box-sizing: border-box;
 
+
 }
 html,
 body {
  
-  display: grid;  
+  /* display: grid;   */
   color: #0f0f0f; 
-  background-color: #f5e8d6; 
+  background-color: #f5e8d6;  
 }
-
+/********************************************************** HEADER  ****************************************************************/
 .menu {
-  background: #f8c77e;
+  background: #f5e1c1;
   width: 100%;
-  height: 120px;
+  height: 115px;
  
 }
 .m-left {
   float: left;
 }
-.logo {
+/* .logo {
   margin: 0;
   padding: 0;
-}
+} */
 .m-right {
   float: right;
   font-weight: bold;
   font-family: "roboto" sans-serif;
   font-size: 35px;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   display: flex;
-  list-style-type: none;
+  /* list-style-type: none; */
   
 }
 .m-link {
   color: rgb(22, 18, 7);
-  text-decoration: none;
+  /* text-decoration: none; */
   font-weight: 400;
-  padding: 15px;
-  margin: 10 px;
+  padding: 25px;
+  /* margin: 15 px; */
   /* border-bottom: 2px solid transparent; */
 }
 .m-link:hover {
@@ -53,19 +56,28 @@ body {
   color:rgb(247, 242, 236)
   
 }
+
+/************************************************************** Main ********************************************/
 .video {
     height: 100%;
     width: 100%;
     overflow: hidden;
     color: white;
     position: relative;
-    z-index:-1;
-    opacity: 0.8;
+    z-index:5;
+    opacity: 0.9;
     
   }
+  .texte h1 {
+    margin-top: -30em;
+    display: flex;
+    justify-content: center;
+    color: black;
+    z-index: 30;
+}
   
   .texte { 
-    color: rgb(13, 14, 13);
+    color: rgb(7, 7, 7);
     font-family: roboto sans-serif;
     text-transform: capitalize;
     text-align: center;
@@ -73,26 +85,27 @@ body {
     text-shadow: 1px 1px 1px rgb(160, 161, 156);
     line-height: 1.20;
     letter-spacing: 0.15em;
-    z-index: 1;
+    z-index: 10;
     display:flex;
     justify-content: center;
     flex-direction:column;
   }
-  .texte h1 {
-      margin-top: -30em;
-      display: flex;
-      justify-content: center;
+
+  .citation {
+    color: black;
+    z-index: 30;
   }
-  .section1 {
-    background-color: rgb(243, 227, 205);
-    padding-top: 10px;
-    vertical-align: inherit;
-    
+
+  .section {
+    z-index: 20;
   }
- .article { 
+  
+ .section1 { 
    color: black;
      margin:100px;
-     text-align: center;
+     text-align: center; 
+     
+     
  }
  .titre {
      padding:50px;
@@ -104,9 +117,7 @@ body {
   width: 50%;
   border-radius: 50%;
   } 
- 
- 
-
+  
 .h5 {
   font-weight: bold;
 }
@@ -115,37 +126,53 @@ body {
   background-color: rgb(216, 214, 200);
   font-size:small;
 } */
- a{ 
+ /* a{ 
   color: black;
   flex-direction:column;
-}
-.card {
-  width:80% ;
-  margin: 100px;
+} */
+.card1 {
+  left: 50px; 
+  top: 50px;
+  width:60% ; 
+  height: 200px;
+  /* margin: 100px; */
   color: rgb(37, 22, 1);
   background-color: rgb(243, 211, 169);
-  border-radius: 20%;
+  border-radius: 10%;
   box-shadow: 0 4px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
   margin-bottom: 25px; 
-  height:500px; 
-  padding: 25px;
+  height:500px;  
+  padding: 30px; 
   display:flex; 
-  align-items: center;
-  justify-content: center
+  align-items: center; 
+  justify-content: center  
   /* align-content: center; */
  
 } 
-.card-img-top { 
+/* .card-img-top { 
   max-width: 100%;
   max-height: 200px;
- } 
-/* .i{
+ }  */
+  .fa-user {
   position: absolute;
-  left: 0;
-  top: 25px;
+  /* left: 0; */
+  
   padding:9px 8px ;
   color:rgb(102, 71, 5);
+  display: flex;
   } 
-   */
+  .lien{
+    border-radius:50px;
+  }
+  .btn{
+    background-color: #7c602d;
+    color:black;
+  }
 
+  /************************************************************ FOOTER ***********************************************************/
+  
+  .footer {
+    background-color: rgb(248, 199, 126);
+  }
+ 
 

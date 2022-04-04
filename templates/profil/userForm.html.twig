@@ -28,7 +28,7 @@
             </div>
 
             <div class="col-4 offset-3"> 
-                {{ form_row(userForm.company_name, {'label':'Nom de l\'entreprise'}) }}
+                {{ form_row(userForm.companyName, {'label':'Nom de l\'entreprise'}) }}
             </div>
 
             {# <div class="col-4 offset-3">
@@ -36,10 +36,10 @@
             </div> #}
         </div>
 
-        <div class="col-12 d-flex justify-content-end">
-            <a href="{{path('profil_user_create')}}" class="btn btn-danger m-3">retour</a>
-            <button class="btn btn-success m-3">Modifier</button>
+        <div class=" col-3">
+            <button class="btn btn-success">Valider</button>
         </div>
+
 
     {{ form_end(userForm) }}
 
