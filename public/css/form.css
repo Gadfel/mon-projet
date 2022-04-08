@@ -89,10 +89,10 @@ form .pied-formulaire #btn{
 form .pied-formulaire #btn:hover{
  transform:scale(1.5);
 }
-/* @media screen and(max-width:920px) {
+ /* @media screen and(max-width:920px) {
     form .corps-formulaire .droite{
         margin-left: 0px;
     
-    }
-}
-    */
+    } */
+
+   

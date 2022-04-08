@@ -14,6 +14,7 @@ class CartController extends AbstractController
     #[Route('/cart', name: 'cart_index')]
     public function index(CartService $cartService, ProductRepository $productRepository): Response
     {
+        
         $cart = $cartService->getCart();
         $total = $cartService->getTotal();
         $latestProducts = $productRepository->findBy([], ['id' => 'DESC'], 3);
@@ -27,6 +28,8 @@ class CartController extends AbstractController
     #[Route('/cart/add/{id}', name: 'cart_add')]
     public function add(CartService $cartService, int $id): Response
     {
+      
+    
         $cartService->add($id);
         return $this->redirectToRoute('cart_index'); // redirection
     }

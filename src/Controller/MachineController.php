@@ -96,9 +96,9 @@ class MachineController extends AbstractController
                 if (file_exists($cheminOldImg)) {
                     unlink($cheminOldImg);
                 }
-                $extentionImg = $infoImg->guessExtension();
-                $nomImg = time() . '-1.' . $extentionImg;
-                $infoImg->move($this->getParameter('dossier_photos_machine'), $nomOldImg);
+                $extensionImg = $infoImg->guessExtension();
+                $nomImg = time() . '-1.' . $extensionImg;
+                $infoImg->move($this->getParameter('dossier_photos_machine'), $nomImg);
                 $machine->setImg($nomImg);
             } else {
                 $machine->setImg($nomOldImg);

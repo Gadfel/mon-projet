@@ -121,21 +121,21 @@ body {
 .h5 {
   font-weight: bold;
 }
-/* .container-fluid {
+.container-fluid {
   color: rgb(10, 6, 1);
   background-color: rgb(216, 214, 200);
   font-size:small;
-} */
+} 
  /* a{ 
   color: black;
   flex-direction:column;
 } */
-.card1 {
+.card {
   left: 50px; 
   top: 50px;
   width:60% ; 
   height: 200px;
-  /* margin: 100px; */
+  margin: 100px; 
   color: rgb(37, 22, 1);
   background-color: rgb(243, 211, 169);
   border-radius: 10%;
@@ -145,29 +145,82 @@ body {
   padding: 30px; 
   display:flex; 
   align-items: center; 
-  justify-content: center  
-  /* align-content: center; */
+  justify-content: center ; 
+  align-content:center; 
  
 } 
-/* .card-img-top { 
+ .card card-img-top1 { 
   max-width: 100%;
-  max-height: 200px;
- }  */
-  .fa-user {
+  max-height: 300px;
+ } 
+ .card2 {
+  left: 50px; 
+  top: 50px;
+  width:60% ; 
+  height: 200px;
+  margin: 100px; 
+  color: rgb(37, 22, 1);
+  background-color: rgb(243, 211, 169);
+  border-radius: 10%;
+  box-shadow: 0 4px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
+  margin-bottom: 25px; 
+  height:500px;  
+  padding: 30px; 
+  display:flex; 
+  align-items: center; 
+  justify-content: center ; 
+  align-content:center; 
+ 
+} 
+ .card2 card-img-top2 { 
+  max-width: 100%;
+  max-height: 300px;
+ } 
+ .card5 { 
+  /* left: 50px;  */
+  top: auto;
+  width:60% ; 
+  height: 200px;
+  margin: 100px; 
+  color: rgb(37, 22, 1);
+  background-color: rgb(243, 211, 169);
+  border-radius: 10%;
+  box-shadow: 0 4px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
+  margin-bottom: 25px; 
+  height:500px;  
+  padding: 30px; 
+  display:flex; 
+  align-items: center; 
+  justify-content: center ; 
+  align-content:center; 
+ 
+ }
+ .card5 card-img-top3 {
+  width: 100px;
+  max-width: 100%;
+  max-height: 500px;  
+ 
+ } 
+  /*.fa-user {
   position: absolute;
-  /* left: 0; */
+   left: 0; 
   
   padding:9px 8px ;
   color:rgb(102, 71, 5);
   display: flex;
-  } 
-  .lien{
+  } */
+  /* .lien{
     border-radius:50px;
-  }
+  } */
   .btn{
-    background-color: #7c602d;
+    background-color: #CC9544;
     color:black;
   }
+  .btn.hover {
+    background-color: rgb(61, 41, 4);
+    color:white ;
+  }
+  
 
   /************************************************************ FOOTER ***********************************************************/
   

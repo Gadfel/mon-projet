@@ -21,6 +21,7 @@
                     </thead>
                     <tbody>
                         {% for line in cart %}
+                            {{ line.product.price}}
                             <tr>
                                 <td>
                                     <a href="{{ path('product_index', {'id': line.product.id}) }}">
@@ -51,7 +52,7 @@
                     <a href="{{ path('payment') }}" class="btn btn-success">Valider le panier</a>
                 </div>
             {% else %}
-                <p class="text-center my-5">Votre panier est vide : <a href="{{ path('product_index') }}" class="text-primary">parcourir les produits</a></p>
+                <p class="text-center my-5">Votre panier est vide : <a href="{{ path('category_index') }}" class="text-primary">parcourir les produits</a></p>
             {% endif %}
         </div>       
     </div>

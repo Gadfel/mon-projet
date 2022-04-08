@@ -39,8 +39,8 @@
         <div class="row">
             {% for machine in machines %}
                 <div class="col-6 p-5">
-                    <div class="card1">
-                        <img src="{{ asset('images/machine/'~ machine.img)}}" class="card-img-top" alt="machine a café LAVAZZA">
+                    <div class="card">
+                        <img src="{{ asset('images/machine/'~ machine.img)}}" class="card-img-top1" alt="machine a café LAVAZZA">
                             <div class="card-body text-center">
                                 <h5 class="card-title">{{machine.name}}  {{ machine.model}} </h5>
                                 <p class="card-text">{{ machine.description}}</p>

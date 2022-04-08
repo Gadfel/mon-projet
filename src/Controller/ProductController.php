@@ -13,11 +13,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ProductController extends AbstractController
 {
-    #[Route('/products', name: 'product_index')]
-    public function index(ProductRepository $productRepository): Response
+    #[Route('/products/{id}', name: 'product_index')]
+    public function index(ProductRepository $productRepository, int $id): Response
     {
         $products = $productRepository->findAll();
+        $categoryId = $id ;
         return $this->render('product/index.html.twig', [
+            'id' => $categoryId,
             'products' => $products,
         ]);
     }
@@ -79,7 +81,7 @@ class ProductController extends AbstractController
                 }
                 $extentionImg = $infoImg->guessExtension();
                 $nomImg = time() . '-1.' . $extentionImg;
-                $infoImg->move($this->getParameter('dossier_photos_produits'), $nomOldImg);
+                $infoImg->move($this->getParameter('dossier_photos_produits'), $nomImg);
                 $product->setImg($nomImg);
             } else {
                 $product->setImg($nomOldImg);
