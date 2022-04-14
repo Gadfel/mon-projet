@@ -44,14 +44,14 @@
                             <div class="card-body text-center">
                                 <h5 class="card-title">{{machine.name}}  {{ machine.model}} </h5>
                                 <p class="card-text">{{ machine.description}}</p>
-                                <a href="{{ path('machine_show', {'id': machine.id}) }}" class="btn btn-warning">Détail</a>
-                                <a href="{{ path('machine_index_marque', {'marque': machine.name}) }}" class="btn btn-success">Voir la marque</a>
+                                <a href="{{ path('machine_show', {'id': machine.id}) }}" class="btn btn-1">Détail</a>
+                                <a href="{{ path('machine_index_marque', {'marque': machine.name}) }}" class="btn btn-2">Voir la marque</a>
                             </div>
                     </div>
                 </div>
             {% endfor %}
             <div class="col-12 text-center">
-                <a href="{{ path('machine_index') }}" class="btn btn-warning my-5">Voir toutes les machines</a>
+                <a href="{{ path('machine_index') }}" class="btn btn-machine">Voir toutes les machines</a>
             </div>
         </div>
     </section1>

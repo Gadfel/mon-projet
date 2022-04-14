@@ -5,8 +5,8 @@
 {% block body %}
 
     <div class="text-center p-5 ">
-        <h1 > contactez-Nous</h1>
-         <h2>Formlaire a remplir </h2>
+        <h1 > Contactez-Nous</h1>
+         <h2>Formlaire a Remplir </h2>
     </div>
         
     {% for label, messages in app.flashes %}
@@ -52,8 +52,8 @@
                     {{ form_row(contactForm.message) }}
                 </div>
 
-                <div class="col-6 offset-3 text-end">
-                    <input type="submit" class="btn btn-success" value="Envoyer">
+                <div class="col-6 offset-3 text-center">
+                    <input type="submit" class="btn btn-form" value="Envoyer">
                 </div>
 
             </div>

@@ -10,11 +10,11 @@
     <div class="row">
         {% for machines in machine %}
         <div class="col-6 p-3">
-            <div class="card">
+            <div class="card3">
                 <img src="{{ asset('images/machine/'~ machines.img)}}" class="card-img-top" alt="machine a café ">
                     <div class="card-body text-center">
                         <h5 class="card-title">{{machines.name}}  {{ machines.model}} </h5>
-                        <p class="card-text">{{ machines.description}}</p>
+                        <p class="card-text">{{ machines.description|u.truncate(90, '...')}}</p>
                         <a href="{{ path('machine_show', {'id': machines.id}) }}" class="btn btn-warning">details</a>
                     </div>
             </div>

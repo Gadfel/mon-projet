@@ -4,12 +4,12 @@
 
 {% block body %}
 
-<h1>Nos Category</h1>
+<h1 class="text-center p-5">Vous Trouvze Tout Nos Categories </h1>
         <div class="row ">
             {% for category  in categories %}
-            <div class="col-6 p-5">
+            <div class="col-6">
                 <div class="card5">
-                    <img src="{{ asset('images/categorie/'~ category.img)}}" class="card-img-top3" alt=" aprovisionnement">
+                    <img src="{{ asset('images/categorie/'~ category.img)}}" class="card-img-top" alt=" aprovisionnement">
                         <div class="card-body text-center">
                             <h5 class="card-title">{{category.title}}   </h5>
                             <p class="card-text">{{ category.description}}</p>

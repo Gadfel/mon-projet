@@ -9,16 +9,21 @@
 
     <div class="row">
         {% for machines in machine %}
-        <div class="col-6 p-3">
-            <div class="card">
+        <div class="col-6 p-2">
+            <div class="card4">
                 <img src="{{ asset('images/machine/'~ machines.img)}}" class="card-img-top" alt="machine a café ">
                     <div class="card-body text-center">
                         <h5 class="card-title">{{machines.name}}  {{ machines.model}} </h5>
-                        <p class="card-text">{{ machines.description}}</p>
-                        <a href="{{ path('machine_index') }}" class="btn ">retour</a>
+                        
+                        <a href="{{ path('machine_index') }}" class="btn-machine">retour</a>
+                        <a href="{{ path('contact_index') }}" class="btn-form">reservez</a>
+
                     </div>
             </div>
         </div>
+            <div class="col-4">
+                <p>{{ machines.description}}</p>
+            </div>
         {% endfor %}
     </div>
     {% endblock %}
