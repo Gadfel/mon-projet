@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\InvoiceLineRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\InvoiceLineRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: InvoiceLineRepository::class)]
 class InvoiceLine
@@ -24,6 +25,11 @@ class InvoiceLine
     #[ORM\JoinColumn(nullable: false)]
     private $invoice;
 
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+       
+    }
     
     public function getId(): ?int
     {
