@@ -55,11 +55,11 @@ class AddressType extends AbstractType
 
             ])
 
-            // ->add('user',EntityType::class,[
-            //            'required' => true,
-            //              'class' => User::class,
-            //              'choice_label' =>'firstName'
-            // ])        
+            ->add('user',EntityType::class,[
+                       'required' => true,
+                         'class' => User::class,
+                         'choice_label' =>'firstName'
+            ])        
         ;
     }
 

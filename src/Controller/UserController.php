@@ -72,7 +72,7 @@ class UserController extends AbstractController
     #[Route('/profil/user/update/{id}', name: 'profil_user_update')]
     public function updateUser(UserRepository $userRepository, int $id, Request $request, ManagerRegistry $managerRegistry,UserPasswordHasherInterface $userPasswordHasher):Response
     {
-        // $user = $userRepository->find($id); //récuperer l'id et du user 
+        // $user = $userRepository->find($id); //récuperer l'id  du user 
         // // $form = $this->createForm(UserType::class, $user);
         // $form = $this->createForm(RegistrationFormType::class, $user);
         // $form->handleRequest($request);
