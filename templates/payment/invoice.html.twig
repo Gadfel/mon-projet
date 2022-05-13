@@ -16,14 +16,14 @@
     <body>
 
         <header>
-            <div>
-                <h2>{{ contact_company|upper }}</h2>
+            {# <div>
+                <h2>{{ contact_companyName|upper }}</h2>
                 <p>{{ contact_address }}</p>
                 <p>{{ contact_zip }} {{ contact_city }}</p>
                 <p>{{ contact_phone }}</p>
                 <p>{{ contact_email }}</p>
                 <p>SIRET : 123 456 789 00000</p>
-            </div>
+            </div> #}
             <div class="col-xs-4 text-center">
                 <img src="{{ asset('images/logo.png')}}" alt="logo A.G Distribution" class="w-200px">
             </div> 
@@ -51,7 +51,7 @@
                 <tbody>
                     {% for line in cart %}
                         <tr>
-                            <td>{# <img src="{{ asset('img/product/' ~ line.product.img) }}" alt="image {{ line.product.title }}">  #}{{ line.product.title }}</td>
+                            <td>{# <img src="{{ asset('img/product/' ~ line.product.img) }}" alt="image {{ line.product.title }}">  #}{{ line.product.name }}</td>
                             <td class="text-right">{{ line.produc.price|number_format(2, ',', ' ') }} €</td>
                             <td class="text-center">{{ line.quantity }}</td>
                             <td class="text-right">{{ (line.product.price * line.quantity)|number_format(2, ',', ' ') }} €</td>

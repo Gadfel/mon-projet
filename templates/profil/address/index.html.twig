@@ -4,7 +4,7 @@
 
 {% block body %}
 
-        <h1> Address</h1>
+        <h1 class=" text-center py-5"> Address</h1>
         <table class="table text-center table-hover table-sm">
             <thead>
                 <tr>
@@ -21,7 +21,7 @@
             <tbody>
                 
                 {% for addresse in  address %}
-                    <tr>
+                    <tr class="">
                         <td class="align-middle">{{ loop.index }}</td>
                         <td class="align-middle">{{ addresse.Name }}</td>
                         <td class="align-middle">{{ addresse.address1 }}</td>

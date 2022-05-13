@@ -7,7 +7,7 @@
 {{ form_start(addressForm) }}
 
         <div class="row">
-            <div class="col-12 offset-3">
+            <div class="col-6 offset-3">
                 {{ form_row(addressForm.name,{'label': 'Nom'})}}
             </div>
 
@@ -20,7 +20,7 @@
             </div>
          </div>
          <div class="row">
-            <div class="col-4 offset-3"> 
+            <div class="col-6 offset-3"> 
                 {{ form_row(addressForm.postalCode, {'label':'code postal'}) }}
             </div>
             <div class="col-6 offset-3"> 
@@ -30,17 +30,17 @@
                 {{ form_row(addressForm.country, {'label':'pays'}) }}
             </div>
 
-            {# <div class="col-6 offset-3 d-none"> 
+            <div class="col-6 offset-3"> 
                 {{ form_row(addressForm.user, {'label':'utilisateur'}) }}
-            </div> #}
+            </div>
 
 
          </div>
         
 
-        <div class="col-12 d-flex justify-content-end">
-            <a href="{{path('profil_address_index')}}" class="btn btn-danger m-3">Retour</a>
-            <button class="btn btn-success ">Valider</button>
+        <div class="col-6 d-flex justify-content-end py-5">
+            {# <a href="{{path('profil_address_index')}}" class="btn btn-danger m-3">Retour</a> #}
+            <button class="btn btn-warning ">Valider</button>
         </div>
 
 

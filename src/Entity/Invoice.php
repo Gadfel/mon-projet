@@ -25,21 +25,32 @@ class Invoice
     #[ORM\Column(type: 'datetime')]
     private $payment_date;
 
+    #[ORM\OneToMany(mappedBy: 'invoice', targetEntity: InvoiceLine::class, orphanRemoval: true)]
+    private $invoiceLines;
+
     #[ORM\Column(type: 'integer')]
     private $amount;
 
-    #[ORM\OneToMany(mappedBy: 'invoice', targetEntity: InvoiceLine::class)]
-    private $Product;
-
     public function __construct()
     {
-        $this->invoices = new ArrayCollection();
-        $this->Product = new ArrayCollection();
+        $this->invoiceLines = new ArrayCollection();
     }
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
     }
 
     public function getNumber(): ?string
@@ -66,6 +77,36 @@ class Invoice
         return $this;
     }
 
+    /**
+     * @return Collection<int, InvoiceLine>
+     */
+    public function getInvoiceLines(): Collection
+    {
+        return $this->invoiceLines;
+    }
+
+    public function addInvoiceLine(InvoiceLine $invoiceLine): self
+    {
+        if (!$this->invoiceLines->contains($invoiceLine)) {
+            $this->invoiceLines[] = $invoiceLine;
+            $invoiceLine->setInvoice($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInvoiceLine(InvoiceLine $invoiceLine): self
+    {
+        if ($this->invoiceLines->removeElement($invoiceLine)) {
+            // set the owning side to null (unless already changed)
+            if ($invoiceLine->getInvoice() === $this) {
+                $invoiceLine->setInvoice(null);
+            }
+        }
+
+        return $this;
+    }
+
     public function getAmount(): ?int
     {
         return $this->amount;
@@ -74,78 +115,6 @@ class Invoice
     public function setAmount(int $amount): self
     {
         $this->amount = $amount;
-
-        return $this;
-    }
-
-    public function getUser(): ?self
-    {
-        return $this->User;
-    }
-
-    public function setUser(?self $User): self
-    {
-        $this->User = $User;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, self>
-     */
-    public function getInvoices(): Collection
-    {
-        return $this->invoices;
-    }
-
-    public function addInvoice(self $invoice): self
-    {
-        if (!$this->invoices->contains($invoice)) {
-            $this->invoices[] = $invoice;
-            $invoice->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeInvoice(self $invoice): self
-    {
-        if ($this->invoices->removeElement($invoice)) {
-            // set the owning side to null (unless already changed)
-            if ($invoice->getUser() === $this) {
-                $invoice->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, InvoiceLine>
-     */
-    public function getProduct(): Collection
-    {
-        return $this->Product;
-    }
-
-    public function addProduct(InvoiceLine $product): self
-    {
-        if (!$this->Product->contains($product)) {
-            $this->Product[] = $product;
-            $product->setInvoice($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProduct(InvoiceLine $product): self
-    {
-        if ($this->Product->removeElement($product)) {
-            // set the owning side to null (unless already changed)
-            if ($product->getInvoice() === $this) {
-                $product->setInvoice(null);
-            }
-        }
 
         return $this;
     }

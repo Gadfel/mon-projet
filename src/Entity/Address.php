@@ -40,6 +40,9 @@ class Address
     #[ORM\JoinColumn(nullable: false)]
     private $user;
 
+    #[ORM\Column(type: 'string', length: 35)]
+    private $Address;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -161,6 +164,18 @@ class Address
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->Address;
+    }
+
+    public function setAddress(string $Address): self
+    {
+        $this->Address = $Address;
 
         return $this;
     }

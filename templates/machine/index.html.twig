@@ -4,7 +4,7 @@
 
 {% block body %}
 
- <h1 class="text-center"> Vous trouvez tout nos machines</h1>
+ <h1 class=" my-5 text-center"> Vous trouvez tout nos machines</h1>
 
 
     <div class="row ">
@@ -15,7 +15,7 @@
                     <div class="card-body text-center">
                         <h5 class="card-title">{{machine.name}}  {{ machine.model}} </h5>
                         <p class="card-text">{{ machine.description}}</p>
-                        <a href="{{ path('machine_show', {'id': machine.id}) }}" class="btn btn-warning">voir plus</a>
+                        <a href="{{ path('machine_show', {'id': machine.id}) }}" class=" btn-mache">voir plus</a>
                     </div>
             </div>
         </div>

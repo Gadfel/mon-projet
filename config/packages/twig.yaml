@@ -2,7 +2,7 @@ twig:
     default_path: '%kernel.project_dir%/templates'
     form_themes: ['bootstrap_5_layout.html.twig']
     #  globals:
-    #     contact_company: 'A.G Distribution'
+    #     contact_companyName: 'A.G Distribution'
     #     contact_address: '47 jules ferry '
     #     contact_zip: '91200'
     #     contact_city: 'Morsang sur Orge '

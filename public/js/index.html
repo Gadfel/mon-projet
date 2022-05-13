@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+    <script src="/tarteaucitron/tarteaucitron.js"></script>
+
+        <script type="text/javascript">
+        tarteaucitron.init({
+    	  "privacyUrl": "", /*url de la page de la politique de vie privée */
+          "bodyPosition": "bottom", /* ou top pour l'amener comme premier élément d'accessibilité */
+
+    	  "hashtag": "#tarteaucitron", /* Ouvrir le panneau avec ce hashtag */
+    	  "cookieName": "tarteaucitron", /* Nom de Cookie */
+    
+    	  "orientation": "middle", /* position de la bannière (top - bottom) */
+       
+          "groupServices": false, /* Regrouper les services par catégorie*/
+                           
+    	  "showAlertSmall": false, /* Voir la bannière réduite en bas à droite */
+    	  "cookieslist": false, /* Voir la listes des cookies */
+                           
+          "closePopup": false, /* Afficher un X fermé sur la bannière */
+
+          "showIcon": true, /* Afficher l'icône de cookie pour gérer les cookies */
+          //"iconSrc": "", /* Optionnal: URL or base64 encoded image */
+          "iconPosition": "BottomRight", /* En bas à droite, en bas à gauche, en haut à droite et en haut à gauche */
+
+    	  "adblocker": false, /* Voir une alerte si un bloqueur de publicité est détecté */
+                           
+          "DenyAllCta" : true, /* Afficher le bouton Refuser tout */
+          "AcceptAllCta" : true, /* Voir le bouton accepter tout (quand highPrivacy est à true) */
+          "highPrivacy": true, /* Désactiver le consetement automatique (appliquer sur l'EU)*/ 
+                           
+    	  "handleBrowserDNTRequest": true, /* Si la protection du suivi du navigateur est activée, tout interdire */
+
+    	  "removeCredit": false, /* Retirer  le lien vers tarteaucitron.js*/
+    	  "moreInfoLink": true, /* Afficher le lien "voir plus d'info" */
+
+          "useExternalCss": false, /* si false, tarteaucitron.css le fichier sera chargé */
+          "useExternalJs": false, /* si false,  tarteaucitron.js le fichier sera chargé */
+
+    	  //"cookieDomain": ".my-multisite-domaine.fr", /* Shared cookie for multisite */
+                          
+          "readmoreLink": "", /* Lien vers la page lire plus */
+
+          "mandatory": false, /* Afficher un message sur les cookies obligatoires*/
+          "mandatoryCta": true /* Afficher le bouton d'acceptation désactivé lorsqu'il est obligatoire 
+          */
+        });
+
+        tarteaucitron.user.gajsUa = 'UA-97102682-4';
+        tarteaucitron.user.gajsMore = function () { /* add here your optionnal _ga.push() */ };
+        (tarteaucitron.job = tarteaucitron.job || []).push('gtag.js');
+        </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>

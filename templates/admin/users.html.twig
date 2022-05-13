@@ -4,7 +4,7 @@
 
 {% block body %}
 
-<h1> inscription des Utilusateurs</h1>
+<h1> inscription des Utilisateurs</h1>
 <table class="table text-center table-hover table-sm">
     <thead>
         <tr>
@@ -29,7 +29,7 @@
                 <td class="align-middle">{{ user.roles|json_encode }}</td>
                 <td class="align-middle">{{ user.companyName }}</td>
                  <td class="align-middle">
-                    <a href="{{ path('user_update',{'id':user.id}) }}" class="text-primary"><i class="fas fa-pen-square"></i></a>
+                    {# <a href="{{ path('user_update',{'id':user.id}) }}" class="text-primary"><i class="fas fa-pen-square"></i></a> #}
                     <a href="{{ path('user_delete', {'id': user.id}) }}" class="text-danger"><i class="fas fa-trash-alt"></i></a> 
                 </td>
             </tr>

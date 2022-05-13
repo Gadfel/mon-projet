@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CartController!{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body %}
 
@@ -61,7 +61,7 @@
             <div class="row">
                 <h2 class="mb-5">les derniers produits</h2>
                 {% for product in latestProducts %}
-                    <div class="col-6">
+                    <div class="col-6 py-3">
                         <div class="card">
                             <img src="{{ asset('images/produits/' ~ product.img) }}" alt="photo produit {{ product.name}}" class="card-img-top">
                             <div class="card-body">
@@ -70,12 +70,40 @@
                             </div>
                             <div class="card-body text-end">
                                 <a href="{{ path('product_index', {'id': product.category.id}) }}" class="btn btn-outline-secondary btn-sm">Voir</a>
-                                <a href="{{ path('cart_add', {'id': product.id}) }}" class="btn btn-success btn-sm">Ajouter au panier</a>
-                              
+                                <a href="{{ path('cart_add', {'id': product.id}) }}" class="btn btn-success btn-sm">Ajouter au panier</a> 
                             </div>
                         </div>
                     </div>
                 {% endfor %}
+                {# <hr>
+                <h2>Confirmer Votre Commande en Remplissant Ce Formulaire</h2>
+
+                {{ form_start(orderForm) }}
+
+                    <div class="row">
+                        <div class="col-6 offset-3">
+                            {{ form_row(orderForm.date,{'label': 'date'})}}
+                        </div>
+
+                        <div class="col-6 offset-3"> 
+                            {{ form_row(orderForm.total_amount , {'label':'total'}) }}
+                        </div>
+                        
+                        <div class="col-6 offset-3"> 
+                            {{ form_row(orderForm.user, {'label':'utilisateur'}) }}
+                        </div>
+                        <div class="col-6 offset-3"> 
+                            {{ form_row(orderForm.address, {'label':'adresse'}) }}
+                        </div>
+
+                    </div>
+                    
+                    <div class="col-6 d-flex justify-content-end py-5">
+                        <a href="{{path('cart_index')}}" class="btn btn-danger m-3">Retour</a> 
+                        <button class="btn btn-warning ">confirmer </button>
+                    </div>
+
+                {{ form_end(orderForm) }} #}
             </div>
         </div>
     </div>

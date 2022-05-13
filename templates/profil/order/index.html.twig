@@ -1,10 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} les commandes {% endblock %}
+{% block title %} Mes  commandes {% endblock %}
 
 {% block body %}
 
-        
+       <h1 class="text-center py-5">Mes Commandes</h1> 
+
+       <table class="table">
+           <thead>
+               <tr>
+                   <th> Numero</th>
+                   <th> Adresse</th> </th>
+                   <th> date de commande</th>
+                   <th>Produits </th>
+                   <th>Quantité</th>
+                   <th>Montant</th>
+                   <th>total</th> 
+                </tr>
+           </thead>
+           <tbody>
+               {% for p in order %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ p.user.lastName }} , {{p.user.firstName}}</td>
+                        <td>{{ p.address}} <br>{{p.postalCode}}, {{p.city}}</td>
+                        <td>{{ p.date | date('d/m/y H:i') }}</td>
+                        <td>
+                            <ul>
+                                {% for line in p.orderLine %}
+                                  <li>{{ line.quantity }}x</li>
+                                  <li>{{ line.product }}</li>
+                                  <li>{{ line.product.price }}</li>
+                        
+                                {% endfor %}
+                            </ul>
+                        </td>
+                        <td>{{ p.total_amount / 100 }}  € </td>
+                    </tr>
+               {% endfor %}
+           </tbody>
+       </table>
         
 {% endblock %}
    

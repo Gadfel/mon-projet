@@ -80,7 +80,7 @@ class RegistrationFormType extends AbstractType
                         'minLength' => 8,
                         'tooShortMessage' => 'Le mot de passe doit contenir au moins {{length}} caractères.',
                         'minStrength' => 4,
-                        'message' => 'Le mot de passe doit contenir au moins une lettre minuscule, une lettre majuscule, une chiffre et un caractère spécial'
+                        'message' => 'Le mot de passe doit contenir au moins une lettre minuscule, une lettre majuscule, un chiffre et un caractère spécial'
                     ])
                 ],
             ]);
