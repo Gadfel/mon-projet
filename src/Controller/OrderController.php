@@ -25,13 +25,14 @@ class OrderController extends AbstractController
        /**
         * @var User */
         $user = $this->getUser();
-       
+    
         $order = $orderRepository->find($this->getUser());
         $order = $orderRepository->findAll();
     
         return $this->render('profil/order/index.html.twig', [
         
             'order' => $user->getOrders()
+           
         ]);
     }
 
@@ -39,6 +40,7 @@ class OrderController extends AbstractController
     public function create(Request $request, ManagerRegistry $managerRegistry){
 
         $order = new Order();
+       
         $form = $this->createForm(OrderType::class, $order);
         $form ->handleRequest($request);
 
@@ -54,40 +56,8 @@ class OrderController extends AbstractController
         return $this->render('profil/orderForm.html.twig',[
             'orderForm' => $form->createView()
         ]);
+        
     }
 
-    // #[Route('/admin/order/update/{id}', name:'order_update')]
-    // public function update(OrderRepository $orderRepository, int $id, Request $request, ManagerRegistry $managerRegistry) 
-    // {
-    //     $order = $orderRepository->find($id);
-    //     $form = $this->createForm(OrderType::class, $order);
-    //     $form->handleRequest($request);
-
-    //     if ($form->isSubmitted() && $form->isValid()){
-
-    //         $manager = $managerRegistry->getManager();
-    //         $manager->persist($order);
-    //         $manager->flush();
-
-    //         $this->addflash('success','la commande à été bien Modifier');
-    //         return $this->redirectToRoute('admin_order_index');
-    //     }
-
-    //     return $this->render('/admin/orderForm.html.twig',[
-    //         'orderForm' =>$form->createView()
-
-    //     ]);
-    // }
-
-    // #[Route('/admin/order/delete/{id}', name: 'order_delete')]
-    // public function delete(OrderRepository $orderRepository, int $id, ManagerRegistry $managerRegistry)
-    // {
-    //     $order = $orderRepository->find($id);
-
-    //     $manager = $managerRegistry->getManager();
-    //     $manager->remove($order);
-    //     $manager->flush();
-    //     $this->addFlash('success','la commande à été bien suprimée');
-    //     return $this->redirectToRoute('admin_order_index');
-    // }
+    
 }

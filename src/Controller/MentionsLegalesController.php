@@ -7,19 +7,18 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class CguController extends AbstractController
+class MentionsLegalesController extends AbstractController
 {
-    #[Route('/cgu', name: 'app_cgu')]
+    #[Route('/mentions/legales', name: 'app_mentions_legales')]
     public function index(GithubMarkdown $parser): Response
     {
-
-        $content = file_get_contents('./../cgu.md'); // récupère le contenu du README
+        $content = file_get_contents('./../mentions_legales.md'); // récupère le contenu du README
         // dd($content);
 
         $parsedContent = $parser->parse($content);
         // dd($parsedContent);
-        return $this->render('cgu/index.html.twig', [
-            'content' =>  $parsedContent,
+        return $this->render('mentions_legales/index.html.twig', [
+            'content' => $parsedContent,
         ]);
     }
 }

@@ -6,7 +6,7 @@
 
        <h1 class="text-center py-5">Mes Commandes</h1> 
 
-       <table class="table">
+       <table class="table text-center table-hover table-sm">
            <thead>
                <tr>
                    <th> Numero</th>
@@ -22,20 +22,20 @@
                {% for p in order %}
                     <tr>
                         <td>{{ loop.index }}</td>
-                        <td>{{ p.user.lastName }} , {{p.user.firstName}}</td>
-                        <td>{{ p.address}} <br>{{p.postalCode}}, {{p.city}}</td>
-                        <td>{{ p.date | date('d/m/y H:i') }}</td>
+                        {# <td>{{ p.user.lastName }} , {{p.user.firstName}}</td>
+                        <td>{{ p.address}} <br>{{p.postalCode}}, {{p.city}}</td> #}
+                        <td>{{ p. order.date | date('d/m/y H:i') }}</td>
                         <td>
                             <ul>
-                                {% for line in p.orderLine %}
-                                  <li>{{ line.quantity }}x</li>
-                                  <li>{{ line.product }}</li>
-                                  <li>{{ line.product.price }}</li>
+                                {% for line in p.orderLigne %}
+                                  <li>{{ line.orderLigne.quantity }}x</li>
+                                  {# <li>{{ line.product }}</li>
+                                  <li>{{ line.product.price }}</li> #}
                         
                                 {% endfor %}
                             </ul>
                         </td>
-                        <td>{{ p.total_amount / 100 }}  € </td>
+                        <td>{{ p.order.total_amount / 100 }}  € </td>
                     </tr>
                {% endfor %}
            </tbody>

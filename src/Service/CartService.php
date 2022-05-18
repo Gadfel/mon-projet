@@ -15,6 +15,7 @@ class CartService
         $this->sessionInterface = $sessionInterface;
         $this->productRepository = $productRepository;
     }
+    public function empty() {}
 
     public function add(int $id): void
     {

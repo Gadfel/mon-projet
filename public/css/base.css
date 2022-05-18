@@ -7,12 +7,13 @@
 padding: 0;
 margin: 0;
 box-sizing: border-box;
+font-family: roboto sans-serif;
 }
 html,
 body {
   color: #0f0f0f; 
   background-color: #f3ece1;
- font-family: "Roboto", sans-serif; 
+ 
 }
 /********************************************************** HEADER  ****************************************************************/
 .menu {
@@ -41,7 +42,7 @@ body {
 }
 .m-link:hover {
   border-radius: 50%;
-  background-color: rgb(56, 25, 2);
+  background-color: #032A2D;
   color:rgb(247, 242, 236)
   
 }
@@ -108,7 +109,7 @@ body {
   
 .texte { 
     color: rgb(37, 22, 1);
-    font-family: roboto sans-serif;
+    font-family: "Roboto", sans-serif; 
     text-transform: capitalize;
     text-align: center;
     font-size: 35px;
@@ -237,7 +238,7 @@ body {
     padding: 10px 20px; 
     background-color: #CC9544;
     border-radius: 40%;
-    color:rgb(37, 22, 1);;
+    color:rgb(37, 22, 1);
     box-shadow: 0 4px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
 }
 .btn-machine:hover{
@@ -264,9 +265,6 @@ body {
   color:rgb(247, 242, 236)
 }
 .card2 {
-  
-  /* margin-left: auto;
-  margin-right: auto; */
   margin: auto;
   width: 500px; 
   padding: 30px;
@@ -277,10 +275,10 @@ body {
  
 } 
 .card2 card-img-top2 { 
-  /* max-width: 100%;
-  max-height: 300px; */
- margin: auto;
-  display: block;
+ margin-left: 50px;
+ margin-right: 50px;
+ display: block;
+
 } 
 .card3 {
   margin-left: auto;
@@ -309,14 +307,19 @@ body {
   margin: auto;
   display: block;
 } 
-/*.card card-body {
-  top: 30px;
-  width: 100%; 
+.card-img-top4 {
+  margin: auto;
+  padding: 30px;
+  display: block;
+} 
+.card card-body4 {
+  width: 100px; 
   height: 30vh;
-}   */
+  margin: 20px;
+  padding: 30px;
+}  
  
-.card6 {
-  
+.card6 { 
   /* margin-left: auto;
   margin-right: auto; */
   margin: auto;
@@ -328,7 +331,16 @@ body {
   box-shadow: 0 4px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
  
 } 
-  
+.container-fluid{
+  font-size: 20px;
+  font-family: Roboto;
+  color: rgb(37, 22, 1);
+}
+.commande{
+  display:border;
+  padding-bottom: 10px;
+}
+
 
   /************************************************************ FOOTER ***********************************************************/
   

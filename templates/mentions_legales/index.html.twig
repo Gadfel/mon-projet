@@ -1,19 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Générales de Vente!{% endblock %}
+{% block title %}Hello MentionsLegalesController!{% endblock %}
 
 {% block body %}
 
     <header class="container-fluid p-5 text-center bg-light">
         <h1>A.G-Distribution </h1>
-        <h2>Les Conditions Générales De Vente</h2>
+        <h2>Les Mentions Légales</h2>
     </header>
 
     <main class="container-fluid">
         <div class="row p-5">
-            <div class="col-8 offset-2">
+            <div class="col-8 offset-2 col">
                 {{ content|raw }}
             </div>
         </div>
-    </main>
+    </main> 
 {% endblock %}

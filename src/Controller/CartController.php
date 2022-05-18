@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Service\CartService;
+use App\Form\CartConfirmationType;
 use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,17 +18,19 @@ class CartController extends AbstractController
     {
 
         
-        // $Form = $this->createForm(order::class);
+        $Form = $this->createForm(CartConfirmationType::class);
 
         $cart = $cartService->getCart();
         $total = $cartService->getTotal();
-        $latestProducts = $productRepository->findBy([], ['id' => 'DESC'], 3);
+        $latestProducts = $productRepository->findBy([], ['id' => 'DESC'], 2);
         return $this->render('cart/index.html.twig', [
             'cart' => $cart,
             'total' => $total,
             'latestProducts' => $latestProducts,
-            // 'orderForm' => $Form->createView()
+             'confirmationForm' => $Form->createView()
         ]);
+
+        
     }
 
     #[Route('/cart/add/{id}', name: 'cart_add')]

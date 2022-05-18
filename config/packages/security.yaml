@@ -39,6 +39,9 @@ security:
         - { path: ^/user, roles: ROLE_USER }
         - { path: ^/profil, roles: ROLE_USER }
         - { path: ^/payment, roles: ROLE_USER }
+        # - { path: ^/cart_confirmation, roles: ROLE_USER }
+        
+        
 
 when@test:
     security:
