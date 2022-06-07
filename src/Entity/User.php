@@ -40,7 +40,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 100)]
     private $company_name;
 
-    #[ORM\OneToMany(mappedBy: 'User', targetEntity: Machine::class)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Machine::class)]
     private $machines;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Order::class)]
@@ -49,7 +49,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
-    #[ORM\OneToMany(mappedBy: 'User', targetEntity: Address::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Address::class, orphanRemoval: true)]
     private $addresses;
 
     public function __construct()

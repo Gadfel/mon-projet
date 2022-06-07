@@ -4,7 +4,7 @@
 
 {% block body %}
 
-<h1> liste des produits</h1>
+<h1 class="text-center"> liste des produits</h1>
 <table class="table text-center table-hover table-sm">
     <thead>
         <tr>
@@ -25,7 +25,7 @@
                 <td class="align-middle">{{ loop.index }}</td>
                 <td class="align-middle">{{ product.name }}</td>
                 <td class="align-middle">{{ product.quantity }}</td>
-                <td class="align-middle">{{ product.price |number_format(0, ',', ' ') }} €</td>
+                <td class="align-middle">{{ product.price |number_format(2, ',', ' ') }} €</td>
                 <td class="align-middle">{{ product.description }}</td>
                 <td class="align-middle"><img src="{{ asset('images/produits/'~ product.img)}}"alt="photo principale{{ product.name}}"></td>
               

@@ -10,7 +10,8 @@
         <tr>
             <th>N°</th>
             <th>Nom</th>
-            <th>Model</th>
+            <th>Model</th>  
+            <th>Déscriptif</th>
             <th>Image </th>
             <th>Actions</th>
         </tr>
@@ -23,6 +24,7 @@
                 <td class="align-middle">{{ loop.index }}</td>
                 <td class="align-middle">{{ machine.name }}</td>
                 <td class="align-middle">{{ machine.model }}</td>
+                <td class="align-middle">{{ machine.description |u.truncate(90, '...') }}</td>
                 <td class="align-middle"><img src="{{ asset('images/machine/'~ machine.img)}}"alt="photo principale{{ machine.name}}"></td>
               
                 <td class="align-middle">

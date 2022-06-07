@@ -15,29 +15,29 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class OrderController extends AbstractController
 {
-    #[Route('/profil/order', name: 'order_index')]
-    /**
-     * @IsGranted("ROLE_USER", message="Vous devez être connecté pour accéder à vos commandes ");
-     */
+    // #[Route('/profil/order', name: 'order_index')]
+    // /**
+    //  * @IsGranted("ROLE_USER", message="Vous devez être connecté pour accéder à vos commandes ");
+    //  */
     
-    public function index(OrderRepository $orderRepository, Request $request, ManagerRegistry $managerRegistry): Response
-    {
-       /**
-        * @var User */
-        $user = $this->getUser();
+    // public function index(OrderRepository $orderRepository, Request $request, ManagerRegistry $managerRegistry): Response
+    // {
+    //    /**
+    //     * @var User */
+    //     $user = $this->getUser();
     
-        $order = $orderRepository->find($this->getUser());
-        $order = $orderRepository->findAll();
+    //     $order = $orderRepository->find($this->getUser());
+    //     $order = $orderRepository->findAll();
     
-        return $this->render('profil/order/index.html.twig', [
-        
-            'order' => $user->getOrders()
+    //     return $this->render('profil/order/index.html.twig', [
+    //         'orders' => $user->getOrders()
            
-        ]);
-    }
+    //     ]);
+    // }
 
     #[Route('/profil/order/create', name: 'order_create')]
     public function create(Request $request, ManagerRegistry $managerRegistry){
+
 
         $order = new Order();
        
@@ -45,6 +45,7 @@ class OrderController extends AbstractController
         $form ->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
+
 
             $manager = $managerRegistry->getManager();
             $manager->persist($order);
@@ -59,5 +60,15 @@ class OrderController extends AbstractController
         
     }
 
+    #[Route('/profil/order/liste', name: 'profil_order_liste')]
+    public function userListeOrder(OrderRepository $orderRepository)
+    {
+        $listeOrder = $orderRepository->findBy(['user'=>$this->getUser()]);
+
+        return $this->render('profil/order/index.html.twig', [
+            
+            'orders' => $listeOrder
+        ]);
+    }
     
 }

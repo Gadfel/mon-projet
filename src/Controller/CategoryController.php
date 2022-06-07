@@ -38,10 +38,11 @@ class CategoryController extends AbstractController
         $form->handleRequest($request); 
 
         if($form->isSubmitted() && $form->isValid()){
+
             $infoImg = $form['img']->getData(); //récuperer les info de l'image
             $extentionImg = $infoImg->guessExtension(); //récuperer l'extention de l'image
             $nomImg = time() . '-1.' . $extentionImg; //créer un nom unique pour l'image 
-            $infoImg->move($this->getParameter('dossier_photos_produits'), $nomImg); //télécharger l'image dans le dossier adéquat
+            $infoImg->move($this->getParameter('dossier_photos_categorie'), $nomImg); //télécharger l'image dans le dossier adéquat
             $category->setImg($nomImg); //définit le nom de l'image à mettre en bdd
             
             $manager = $managerRegistry->getManager();

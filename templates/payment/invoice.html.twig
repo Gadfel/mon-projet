@@ -16,16 +16,16 @@
     <body>
 
         <header>
-            {# <div>
+            <div>
                 <h2>{{ contact_companyName|upper }}</h2>
                 <p>{{ contact_address }}</p>
                 <p>{{ contact_zip }} {{ contact_city }}</p>
                 <p>{{ contact_phone }}</p>
                 <p>{{ contact_email }}</p>
-                <p>SIRET : 123 456 789 00000</p>
-            </div> #}
+                <p>SIRET : 890154856 </p>
+            </div>
             <div class="col-xs-4 text-center">
-                <img src="{{ asset('images/logo.png')}}" alt="logo A.G Distribution" class="w-200px">
+                <img class="logo" src="{{ asset('images/logo.png')}}" alt="logo"></a>
             </div> 
             <div class="col-xs-4 text-right" id="client">
                 <h3>Client :</h3>
@@ -38,7 +38,7 @@
         </header>
     
         <main>
-            <h1>{{ invoice.number }} (du {{ invoice.paymentDate|format_datetime('long', 'none', locale='fr') }})</h1>
+            <h1>{{ invoice.number }} (du {{ invoice.paymentDate|format_datetime('long', 'none', ('d/m/y H:i') ) }})</h1>
             <table>
                 <thead>
                     <tr>
@@ -51,8 +51,8 @@
                 <tbody>
                     {% for line in cart %}
                         <tr>
-                            <td>{# <img src="{{ asset('img/product/' ~ line.product.img) }}" alt="image {{ line.product.title }}">  #}{{ line.product.name }}</td>
-                            <td class="text-right">{{ line.produc.price|number_format(2, ',', ' ') }} €</td>
+                            <td> <img src="{{ asset('images/produits/' ~ line.product.img) }}" alt="image {{ line.product.name}}"> {{ line.product.name }}</td> 
+                            <td class="text-right">{{ line.product.price|number_format(2, ',', ' ') }} €</td>
                             <td class="text-center">{{ line.quantity }}</td>
                             <td class="text-right">{{ (line.product.price * line.quantity)|number_format(2, ',', ' ') }} €</td>
                         </tr>

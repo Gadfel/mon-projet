@@ -14,6 +14,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ProductType extends AbstractType
@@ -25,18 +26,18 @@ class ProductType extends AbstractType
                 'required' => true,
                 'label' => 'nom',
                 'attr' => [
-                    'maxlength' => 25,
-                    'placeholder' => 'votre Nom'
+                    'maxlength' => 50,
+                    
 
                 ]
             ])
-            ->add('price', IntegerType::class, [
+            ->add('price', NumberType::class, [
                 'required' => true,
                 'label' => 'Prix (€)',
                 'attr' => [
                     'min' => 1,
                     'max' => 9999999,
-                    'placeholder' => '100€'
+                    'placeholder' => '10€'
                 ]
             ])
             ->add('description', TextareaType::class, [
@@ -57,7 +58,7 @@ class ProductType extends AbstractType
                 ]
             ])
             ->add('img', FileType::class, [
-                'required' => true,
+                'required' => false,
                 'label' => 'photo',
                 'mapped' => false,
                 'help' => 'png , jpg, jpeg, jp2 ou webpb - 1Mo maximum',

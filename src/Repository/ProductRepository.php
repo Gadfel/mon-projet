@@ -29,7 +29,7 @@ class ProductRepository extends ServiceEntityRepository
             ->andWhere('p.exampleField = :val')
             ->setParameter('val', $value)
             ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
+            ->setMaxResults(4)
             ->getQuery()
             ->getResult()
         ;

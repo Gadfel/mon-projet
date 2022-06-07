@@ -9,13 +9,13 @@
      <div class="row">
           {% for product in products %}
             {% if id is same as (product.category.id ) %}
-                <div class="col-6 p-3">
+                <div class="col-3 ">
                     <div class="card">
-                        <img src="{{ asset('images/produits/'~ product.img)}}" class="card-img-top" alt="aprovisionnement">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">{{product.name}} <br> {{ product.quantity}} <br> {{ product.price}} € </h5>
+                        <img src="{{ asset('images/produits/'~ product.img)}}" class="img-fluid" alt="aprovisionnement">
+                            <div class="card-body1 text-center">
+                                 <h5 class="card-title">{{product.name}}  <br> {#{{ product.quantity}} #}<br> {{ product.price|number_format(2,',', '')}} €  TTC</h5>
                                 <p class="card-text">{{ product.description}}</p>
-                                <a href="{{ path('cart_add', {'id': product.id}) }}"  class="btn btn-primary">commander</a>
+                                <a href="{{ path('cart_add', {'id': product.id}) }}"  class="btn btn-primary">Ajouter au panier</a>
                             </div>
                     </div>
                 </div>

@@ -13,7 +13,7 @@
             <th>Nom</th>
             <th>prenom</th>
             <th>email</th>
-            {# <th>Mot de passe</th> #}
+            {# <th>Mot de passe</th>  #}
             <th>Nom de l'entreprise</th>
             <th>Actions</th>
         </tr>
@@ -27,11 +27,11 @@
                 <td class="align-middle">{{ users.firstName }}</td>
                 <td class="align-middle">{{ users.lastName }}</td>
                 <td class="align-middle">{{ users.email }}</td>
-                {# <td class="align-middle">{{ users.Password}}></td> #}
+                {# <td class="align-middle">{{ users.Password}}></td>  #}
                 <td class="align-middle">{{ users.companyName }}</td>
                  <td class="align-middle">
                     <a href="{{ path('profil_user_update',{'id':users.id}) }}" class="text-primary"><i class="fas fa-pen-square"></i></a>
-                    <a href="{{ path('profil_user_delete',{'id':users.id}) }}" class="text-danger"><i class="fas fa-trash-alt"></i></a> 
+                    <a href="{{ path('profil_user_delete',{'id':users.id}) }}" class="text-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer')"><i class="fas fa-trash-alt"></i></a> 
                 </td>
             </tr>
         {% endfor %}

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}address {% endblock %}
+
+{% block body %}
+
+{{ form_start(addressForm) }}
+
+        <div class="row">
+            <div class="col-6 offset-3">
+                {{ form_row(addressForm.name,{'label': 'Nom'})}}
+            </div>
+
+            <div class="col-6 offset-3"> 
+                {{ form_row(addressForm.address , {'label':'addresse'}) }}
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-6 offset-3"> 
+                {{ form_row(addressForm.postalCode, {'label':'code postal'}) }}
+            </div>
+            <div class="col-6 offset-3"> 
+                {{ form_row(addressForm.city, {'label':'ville'}) }}
+            </div>
+            <div class="col-6 offset-3"> 
+                {{ form_row(addressForm.country, {'label':'pays'}) }}
+            </div>
+
+            
+
+
+         </div>
+        
+
+        <div class="col-6 d-flex justify-content-end py-5">
+            <button class="btn btn-warning ">Valider</button>
+        </div>
+
+
+    {{ form_end(addressForm) }}
+
+    {% endblock %}
+   
+    

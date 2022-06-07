@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\InvoiceLineRepository;
-use Doctrine\Common\Collections\ArrayCollection;
+
 
 #[ORM\Entity(repositoryClass: InvoiceLineRepository::class)]
 class InvoiceLine
@@ -16,7 +16,7 @@ class InvoiceLine
 
     #[ORM\ManyToOne(targetEntity: Product::class, inversedBy: 'invoiceLines')]
     #[ORM\JoinColumn(nullable: false)]
-    private $product;
+    private $item;
 
     #[ORM\Column(type: 'integer')]
     private $quantity;
@@ -25,26 +25,23 @@ class InvoiceLine
     #[ORM\JoinColumn(nullable: false)]
     private $invoice;
 
-    public function __construct()
-    {
-        $this->products = new ArrayCollection();
-       
-    }
-    
+    #[ORM\Column(type: 'string', length: 255)]
+    private $Product;
+
     public function getId(): ?int
     {
         return $this->id;
     }
     
-    public function getProduct(): ?Product
+    public function getItem(): ?Product
     {
-        return $this->product;
+        return $this->item;
     }
 
     
-    public function setProduct(?Product $product): self
+    public function setProduct(?Product $item): self
     {
-        $this->product = $product;
+        $this->item = $item;
 
         return $this;
     }
@@ -71,6 +68,13 @@ class InvoiceLine
 
         return $this;
     }
+
+    public function getProduct(): ?string
+    {
+        return $this->Product;
+    }
+
+   
 
    
 }

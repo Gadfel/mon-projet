@@ -22,8 +22,11 @@
         
         </table>
         <div class="text-center my-5 lien">
-            <a href="{{ path('profil_liste') }}" class="btn btn-warning p-5 m-5 "> gérer mes coordonée</a>
-            <a href="{{ path('profil_address_liste') }}" class="btn btn-success p-5 m-5">gérer mes addresses</a>
-             <a href="{{ path('order_index')}}" class="btn btn-warning p-5 m-5"> Voir mes commandes </a>  
+            <a href="{{ path('profil_liste') }}" class="btn-cordonnee p-5 m-5 "> gérer mes coordonée</a>
+            <a href="{{ path('profil_address_liste') }}" class="btn-address  p-5 m-5">gérer mes addresses</a>
+             <a href="{{ path('profil_order_liste')}}" class="btn-order p-5 m-5"> Voir mes commandes </a>  
         </div> 
+        <div class="text-center py-5">
+            <a href="{{ path('app_logout') }}" class="dropdown-item">Déconnexion</a>
+        </div>
 {% endblock %}

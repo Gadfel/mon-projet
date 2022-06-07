@@ -3,44 +3,44 @@
 {% block title %} Mes  commandes {% endblock %}
 
 {% block body %}
+<h1 class="text-center py-5">Vous Pouvez Voir Vos Commandes </h1> 
+    
 
-       <h1 class="text-center py-5">Mes Commandes</h1> 
-
-       <table class="table text-center table-hover table-sm">
-           <thead>
-               <tr>
-                   <th> Numero</th>
-                   <th> Adresse</th> </th>
-                   <th> date de commande</th>
-                   <th>Produits </th>
-                   <th>Quantité</th>
-                   <th>Montant</th>
-                   <th>total</th> 
-                </tr>
-           </thead>
-           <tbody>
-               {% for p in order %}
-                    <tr>
-                        <td>{{ loop.index }}</td>
-                        {# <td>{{ p.user.lastName }} , {{p.user.firstName}}</td>
-                        <td>{{ p.address}} <br>{{p.postalCode}}, {{p.city}}</td> #}
-                        <td>{{ p. order.date | date('d/m/y H:i') }}</td>
-                        <td>
-                            <ul>
-                                {% for line in p.orderLigne %}
-                                  <li>{{ line.orderLigne.quantity }}x</li>
-                                  {# <li>{{ line.product }}</li>
-                                  <li>{{ line.product.price }}</li> #}
-                        
-                                {% endfor %}
-                            </ul>
-                        </td>
-                        <td>{{ p.order.total_amount / 100 }}  € </td>
+    <div class="text-center">
+    
+    
+        <div class="col-12">
+            <table class="table aligne-middle">
+                <thead class="text-center table-secondary">
+                    <tr class="fw-bold">
+                        <th> Numero</th>
+                        <th> Nom Complet </th> 
+                        <th> Adresse Complete</th> </th>
+                        <th> date de commande</th>
+                        <th>total</th>
+                        <th>Action</th> 
                     </tr>
-               {% endfor %}
-           </tbody>
-       </table>
-        
+                </thead>
+                <tbody class="text-center">
+                    {% for p in orders %}
+                            <tr>
+                                <td>{{ p.id }}</td>
+                                <td>{{ p.user.lastName }} , {{p.user.firstName}}</td>
+                                <td>{{ p.address.fullAddress }}</td>
+                                <td>{{ p.date | date('d/m/y') }}</td>
+                                <td>{{ p.totalAmount }}  € </td>
+                                <td>
+                                    <a href="{{ path('order_detail', {id: p.id }) }}" class="btn btn-success">voir Détail</a>
+                                </td>
+                            </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-end my-5">
+                <a href="{{ path('user_index') }}" class="btn btn-primary">RETOUR</a>
+            </div>
+        </div>
+    </div>   
 {% endblock %}
    
 

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Mes  commandes {% endblock %}
+
+{% block body %}
+<h1 class="text-center py-5"> Détails des Commandes </h1>
+
+    <div class="text-center">
+        
+        <div class="col-12">
+            <table class="table aligne-middle">
+                <thead class="text-center table-secondary">
+                    <tr class="fw-bold">
+                        <th> Numero de la commande</th>
+                        <th> Nom du produit </th> 
+                        <th> quantité</th> </th>
+                        <th>prix</th> 
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    {% for line in orderLignes %}
+                            <tr>
+                                <td>{{ order.id }}</td>
+                                <td>{{line.product.name  }} </td>
+                                <td>{{ line.quantity }}</td>
+                                <td>{{ line.product.price }}  € </td>
+                                
+                            </tr>
+                    {% endfor %}
+
+                </tbody>
+                <tfoot class="table-secondary text-end">
+                    <tr class="fw-bold">
+                        <th colspan="3">TOTAL :</th>
+                        <th>{{ order.totalAmount }} €</th>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <div class="d-flex justify-content-end my-5">
+                <a href="{{ path ('profil_order_liste')}}" class="btn btn-primary">RETOUR</a>
+            </div>
+        </div>
+    </div>   
+
+
+{% endblock %}

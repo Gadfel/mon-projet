@@ -4,25 +4,28 @@
 
 {% block body %}
 
- <h1 class="text-center"> Détails des machines</h1>
+ <h1 class="text-center py-5"> Détails des machines</h1>
 
 
     <div class="row">
         {% for machines in machine %}
         <div class="col-6 p-2">
-            <div class="card4">
-                <img src="{{ asset('images/machine/'~ machines.img)}}" class="card-img-top4" alt="machine a café ">
+            <div class="card w-50">
+                <img src="{{ asset('images/machine/'~ machines.img) }}" class="img-top4" alt="machine a café ">
                     <div class="card-body text-center">
-                        <h5 class="card-title">{{machines.name}}  {{ machines.model}} </h5>
-                        
-                        <a href="{{ path('machine_index') }}" class="btn-machine">retour</a>
+
+                        <a href="{{ path('machine_index') }}" class="btn-form1">retour</a>
                         <a href="{{ path('contact_index') }}" class="btn-form1">reservez</a>
 
                     </div>
             </div>
         </div>
             <div class="col-4">
-                <p>{{ machines.description}}</p>
+                <h4 class="card-title py-5">{{machines.name}} </h4>
+                <h5>{{ machines.model}}</h5>
+                <div class="text-justify">
+                 <p>{{ machines.description}}</p>
+                </div>
             </div>
         {% endfor %}
     </div>

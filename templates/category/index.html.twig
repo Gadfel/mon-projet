@@ -7,13 +7,13 @@
 <h1 class="text-center p-5">Vous Trouvez Tout Nos Categories </h1>
         <div class="row ">
             {% for category  in categories %}
-            <div class="col-6">
-                <div class="card5">
-                    <img src="{{ asset('images/categorie/'~ category.img)}}" class="card-img-top" alt=" aprovisionnement">
-                        <div class="card-body text-center">
+            <div class="col-sm-4 center ">
+                <div class="card ">
+                    <img src="{{ asset('images/categorie/'~ category.img)}}" class="img-fluid" alt=" aprovisionnement">
+                        <div class="card-body2 text-center">
                             <h5 class="card-title">{{category.title}}   </h5>
                             <p class="card-text">{{ category.description}}</p>
-                            <a href="{{ path('product_index',{'id': category.id}) }}" class="btn btn-primary">voir plus</a>
+                            <a href="{{ path('product_index',{'id': category.id}) }}" class="btn-1 ">voir plus</a>
                         </div>
                 </div>
             </div>

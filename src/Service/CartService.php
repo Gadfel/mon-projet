@@ -63,7 +63,8 @@ class CartService
             $product = $this->productRepository->find($id);
             $element = [
                 'product' => $product,
-                'quantity' => $quantity
+                'quantity' => $quantity,
+                
             ];
             $cart[] = $element;
         }

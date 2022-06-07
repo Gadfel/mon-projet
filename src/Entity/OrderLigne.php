@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\OrderLigneRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Order;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\OrderLigneRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: OrderLigneRepository::class)]
 class OrderLigne
@@ -18,12 +19,15 @@ class OrderLigne
     #[ORM\Column(type: 'integer')]
     private $quantity;
 
-    #[ORM\OneToMany(mappedBy: 'OrderLigne', targetEntity: Order::class)]
-    private $orders;
+   
 
     #[ORM\ManyToOne(targetEntity: Product::class)]
     #[ORM\JoinColumn(nullable: false)]
     private $product;
+
+    #[ORM\ManyToOne(targetEntity: Order::class, inversedBy: 'orderLigne')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $orders;
 
     public function __construct()
     {
@@ -48,36 +52,6 @@ class OrderLigne
         return $this;
     }
 
-    /**
-     * @return Collection|Order[]
-     */
-    public function getOrders(): Collection
-    {
-        return $this->orders;
-    }
-
-    public function addOrder(Order $order): self
-    {
-        if (!$this->orders->contains($order)) {
-            $this->orders[] = $order;
-            $order->setOrderLigne($this);
-        }
-
-        return $this;
-    }
-
-    public function removeOrder(Order $order): self
-    {
-        if ($this->orders->removeElement($order)) {
-            // set the owning side to null (unless already changed)
-            if ($order->getOrderLigne() === $this) {
-                $order->setOrderLigne(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getProduct(): ?Product
     {
         return $this->product;
@@ -86,6 +60,18 @@ class OrderLigne
     public function setProduct(?Product $product): self
     {
         $this->product = $product;
+
+        return $this;
+    }
+
+    public function getOrders(): ?Order
+    {
+        return $this->orders;
+    }
+
+    public function setOrders(?Order $orders): self
+    {
+        $this->orders = $orders;
 
         return $this;
     }

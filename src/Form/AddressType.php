@@ -2,6 +2,7 @@
 
 namespace App\Form;
 use App\Entity\User;
+use App\Repository\AddressRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -14,20 +15,23 @@ class AddressType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('address',EntityType::class,[
+                'required' => true,
+                'class' => Address::class,
+                'query_builder' => function(AddressRepository $address) {
+                    return $address->getAddress($this->getUser());
+                },
+
+            'choiceLabel' => 'fullAddress',
+            ])
             ->add('name', TextType::class, [
                 'required' => true,
                 'attr' => [
                     'maxLenght' => 100
                 ]
             ])
-            ->add('address1',TextType::class, [
+            ->add('address',TextType::class, [
                 'required' => true,
-                'attr' => [
-                    'maxLenght' => 100
-                ]
-            ])
-            ->add('address2',TextType::class, [
-                'required' => false,
                 'attr' => [
                     'maxLenght' => 100
                 ]
@@ -55,11 +59,11 @@ class AddressType extends AbstractType
 
             ])
 
-            ->add('user',EntityType::class,[
-                       'required' => true,
-                         'class' => User::class,
-                         'choice_label' =>'firstName'
-            ])        
+        //     ->add('user',EntityType::class,[
+        //                'required' => true,
+        //                  'class' => User::class,
+        //                  'choice_label' =>'firstName'
+        //     ])        
         ;
     }
 

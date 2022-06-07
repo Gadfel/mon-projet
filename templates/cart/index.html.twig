@@ -47,30 +47,32 @@
                         </tr>
                     </tfoot>
                 </table>
-                <div class="text-end mt-5">
-                    <a href="{{ path('cart_clear') }}" class="btn btn-outline-danger me-3">Vider le panier</a>
-                    <a href="{{ path('payment') }}" class="btn btn-success">Valider le panier</a>
-                </div>
+                {% if app.user %}
+                 <hr>
+                <h2 class="text-center py-5 my-3">Confirmer Votre Adresse</h2>
+               
+                {{ form_start(formAddress) }}
+                    <div class="col-4 offset-3 mb-3">
+                        {{ form_row(formAddress.address) }} 
+                        <a href="{{ path('cart_address_create')}}" class="btn btn-primary">Ajouter une Adresse de livraison </a>
+                {{ form_widget(formAddress) }}
+            
+                    </div>
+                    <div class="text-end mt-5">
+                    <a href="{{ path('cart_clear') }}" class="btn btn-danger">Vider le panier</a>
+                    <button class="btn btn-primary"> Valider le panier</button>
+                    </div>
+                {{ form_end(formAddress) }}
+
+                {% else %} 
+                    <a href="{{ path('app_login')}}" class="btn btn-primary">connectez-Vous</a>
+                {% endif %}
+                
             {% else %}
                 <p class="text-center my-5">Votre panier est vide : <a href="{{ path('category_index') }}" class="text-primary">parcourir les produits</a></p>
             {% endif %}
         </div>       
     </div>
-    <hr>
-    <h2 class="text-center py-5 my-3">Confirmer Votre Commande en Remplissant Ce Formulaire</h2>
-
-    {{ form_start(confirmationForm) }}
-        <div class="col-4 offset-3 mb-3">
-
-    {{ form_widget(confirmationForm) }}
-
-        </div>
-
-        <div class="col-6 offset-3 text-center">
-            <input type="submit" class="btn btn-form" value="Je Confirme">
-        </div>
-
-    {{ form_end(confirmationForm) }}
     
     <div class="row my-5">
         <div class="col-8 offset-2">
@@ -79,7 +81,7 @@
                 {% for product in latestProducts %}
                     <div class="col-6 py-3">
                         <div class="card">
-                            <img src="{{ asset('images/produits/' ~ product.img) }}" alt="photo produit {{ product.name}}" class="card-img-top">
+                            <img src="{{ asset('images/produits/' ~ product.img) }}" alt="photo produit {{ product.name}}" class="card-img-top w-10">
                             <div class="card-body">
                                 <h5 class="card-title">{{ product.name }}</h5>
                                 <p class="card-text">{{ product.description|u.truncate(60, '...') }}</p>

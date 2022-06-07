@@ -2,30 +2,36 @@
 
 * {
     font-size: lighter;
+    font-family: roboto sans-serif;
     list-style-type: none;
 }
 
 /* **************************************** NAV **************************************** */
 
- nav { 
+nav { 
     min-height: calc(100vh - 78.4px - 50px);
    
 }
 
-    nav a { 
-        color: var(--color-white);
-    }
+nav a { 
+    color: var(--color-white);
+}
 
-        nav a:hover {
-            color: var(--color-light-grey);
+nav a:hover {
+    color: var(--color-light-grey);
            
-        }
- .header-bg { 
+}
+#aside{
+    background-color: rgb(80, 51, 4);
+}
+
+.header-bg { 
     background-color:rgb(53, 35, 6);
 }
-.navbar {
+/* .navbar {
     background:rgb(80, 51, 4);
-}
+   
+} */
 .card-img{
     margin-top: 10px;
     width: 100px;
@@ -35,7 +41,7 @@
 
 /* **************************************** TABLE **************************************** */
 
- table img { 
+table img { 
     width: 100px;
 }
 

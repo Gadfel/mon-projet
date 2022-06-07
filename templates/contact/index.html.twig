@@ -5,8 +5,8 @@
 {% block body %}
 
     <div class="text-center p-5 ">
-        <h1 > Contactez-Nous</h1>
-         <h2>Formlaire a Remplir </h2>
+        <h2 > Contactez-Nous</h2>
+         <p>Pour Nous Contacter Veuillez Remplire Ce Formulaire</p>
     </div>
         
     {% for label, messages in app.flashes %}
@@ -27,7 +27,7 @@
 
                 <div class="col-3 offset-3 mb-3">
                     {{ form_row(contactForm.firstName) }}
-                        <i class="fas fa-user"></i>
+                       
                 </div>
                 
                 <div class="col-3 mb-3">
@@ -35,17 +35,19 @@
                 </div>
 
                 <div class="col-6 offset-3 mb-3">
-                    {{ form_row(contactForm.emailAddress) }}
-                    <i class="fas fa-envelope"></i>
+                
+                    {{ form_row(contactForm.emailAddress) }} 
+                   
                 </div>
 
                 <div class="col-6 offset-3 mb-3">
+                
                     {{ form_row(contactForm.phone) }}
-                    <i class="fas fa-mobile-alt"></i>
+                    
                 </div>
                 <div class="col-6 offset-3 mb-3">
                     {{ form_row(contactForm.companyName) }}
-                    <i class="fas fa-building"></i>
+                   
                 </div>
 
                 <div class="col-6 offset-3 mb-3">
@@ -55,10 +57,22 @@
                 <div class="col-6 offset-3 text-center">
                     <input type="submit" class="btn btn-form" value="Envoyer">
                 </div>
-
             </div>
+            {{ form_end(contactForm) }}
+                
+            
 
-        {{ form_end(contactForm) }}
-
-
+        <div class="dropdown-divider"></div>
+        <div class="text-center ">
+            <h5> NOS  COORDONNÉES</h5>
+            <div class="dropdown-divider"></div>
+            <p> <strong>Nom de L'etreprise :</strong>
+                 {{ contact_companyName}}</p>
+            <p><strong>Adresse : </strong>{{ contact_address }}</p>
+            <p>{{ contact_zip }} {{ contact_city }}</p>
+            <p> <strong>Téléphone : </strong>{{ contact_phone }}</p>
+            <p> <strong>Email:</strong>{{ contact_email }}</p>
+        </div>
+    </div>
+    
 {% endblock %}

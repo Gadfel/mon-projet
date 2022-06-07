@@ -33,7 +33,7 @@ class OrderConfirmationController extends AbstractController
      * @IsGranted("ROLE_USER", message="Vous devez être connecté pour confirmer une commandes ");
      */
 
-  public function confirm(Request $request ,CartService $cartService, )
+  public function confirm(Request $request  )
   {
      $form = $this->createForm(CartConfirmationType::class);
      $form->handleRequest($request);
@@ -65,21 +65,22 @@ class OrderConfirmationController extends AbstractController
 
       $this->em->persist($order);
 
-      foreach($this->cartService->getElements() as $cart){
+      foreach($this->cartServic as $order =>$cart){
         $orderLigne = new OrderLigne;
-        $orderLigne->setOrder($order)
+        $orderLigne->setOrders($order)
          ->setProduct($cart->Product())
-         ->setProductName($cart->product->getPrice())
-         ->setQuantity($cart->quantity)
-         ->setTotalAmount($cart->getTotalAmount())
-         ->setProductPrice($cart->product->getPrice());
+         ->setProduct($cart->product->getPrice())
+         ->setQuantity($cart->quantity);
+        //  ->setTotalAmount($cartService->getTotal())
+        //  ->setProductPrice($cart->product->getPrice())
       }
+      
 
       $this->em->flush();
       $this->cartService->empty();
 
       $this->addFlash('success', 'La Commande a bien été enregistrée');
-      return $this->redirectToRoute('profil/order_index');
+      return $this->redirectToRoute('');
 
   }  
 }

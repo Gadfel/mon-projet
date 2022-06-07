@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use Dompdf\Dompdf;
+use App\Entity\Order;
 use App\Entity\Invoice;
 use Stripe\StripeClient;
-use Dompdf\Dompdf;
+use App\Entity\OrderLigne;
 use App\Entity\InvoiceLine;
 use App\Service\CartService;
 use App\Repository\InvoiceRepository;
@@ -28,6 +30,7 @@ class PaymentController extends AbstractController
         }
 
         $cart = $sessionInterface->get('cart'); // récupération du panier en session
+        
         $stripeCart = []; //intialiser le panier pour le stripe
 
         foreach ($cart as $id => $quantity) { // transformation du panier session en panier Stripe
@@ -55,13 +58,16 @@ class PaymentController extends AbstractController
         ]);
     }
 
+
     #[Route('/payment/success', name: 'payment_success')]
     public function success(Request $request, InvoiceRepository $invoiceRepository, CartService $cartService, ManagerRegistry $managerRegistry, ProductRepository $productRepository): Response
     {
         if ($request->headers->get('referer') !== 'https://checkout.stripe.com/') {
             return $this->redirectToRoute('cart_index');
         }
+        
 
+        
         // génère un numéro de facture
         $invoices = $invoiceRepository->findAll();
         $invoiceNumbers = [];
@@ -75,26 +81,26 @@ class PaymentController extends AbstractController
             $invoiceNumber = 'F' . date_format(new \DateTime(), 'Ymd') . '-' . str_pad($i, 4, '0', STR_PAD_LEFT);
         }
 
-        // crée une nouvelle facture en bdd
-        $invoice = new Invoice;
-        $invoice->setUser($this->getUser());
-        $invoice->setNumber($invoiceNumber);
-        $invoice->setPaymentDate(new \DateTime());
-        $invoice->setAmount($cartService->getTotal());
-        $manager = $managerRegistry->getManager();
-        $manager->persist($invoice);
+        //crée une nouvelle facture en bdd
+        // $invoice = new Invoice;
+        // $invoice->setUser($this->getUser());
+        // $invoice->setNumber($invoiceNumber);
+        // $invoice->setPaymentDate(new \DateTime());
+        // $invoice->setAmount($cartService->getTotal());
+        // $manager = $managerRegistry->getManager();
+        // $manager->persist($invoice);
 
         // crée une ligne de facture pour chaque élément du panier
-        $cart = $cartService->getCart();
-        foreach ($cart as $product) {
-            $invoiceLine = new InvoiceLine;
-            $invoiceLine->setProduct($product['product']);
-            $invoiceLine->setInvoice($invoice);
-            $invoiceLine->setQuantity($product['quantity']);
-            $manager->persist($invoiceLine);
-        }
+        // $cart = $cartService->getCart();
+        // foreach ($cart as $item) {
+        //     $invoiceLine = new InvoiceLine;
+        //     $invoiceLine->setProduct($item['product']);
+        //     $invoiceLine->setInvoice($invoice);
+        //     $invoiceLine->setQuantity($item['quantity']);
+        //     $manager->persist($invoiceLine);
+        // }
 
-        $manager->flush();
+        // $manager->flush();
 
         $cartService->clear();
         return $this->render('payment/success.html.twig', [

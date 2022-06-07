@@ -38,7 +38,7 @@ class MachineType extends AbstractType
                 ]
             ])
             ->add('img',FileType::class,[
-                'required'=> true,
+                'required'=> false,
                 'label'=> 'photo',
                 'mapped'=>false,
                 'help'=> 'png , jpg, jpeg, jp2 ou webpb - 1Mo maximum',

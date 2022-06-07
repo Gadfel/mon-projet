@@ -114,16 +114,18 @@ class UserController extends AbstractController
     }
 
     #[Route('/profil/user/delete/{id}', name: 'profil_user_delete')]
-    public function deleteUser(UserRepository $userRepository, ManagerRegistry $managerRegistry):Response  
+    public function deleteUser(User $user, ManagerRegistry $managerRegistry):Response  
      {
-        $user = $userRepository->find($this->getUser()); // récuperer le user à suprimer en bdd
-        
+      
         $manager = $managerRegistry->getManager();
+
+        $this->container->get('security.token_storage')->setToken(null);
         $manager->remove($user);
         $manager->flush();
         $this->addFlash('success', 'le profile à été bien suprimée');
         return $this->redirectToRoute('home');
     }
+
 
     #[Route('/admin/user', name: 'admin_user_index')]
     public function adminIndex(UserRepository $userRepository): Response
@@ -134,49 +136,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    // #[Route('/admin/users/create', name: 'user_create')]
-    // public function create(Request $request, ManagerRegistry $managerRegistry)
-    // {
-    //     $user = new User();
-    //     $form = $this->createForm(UserType::class, $user);
-    //     $form->handleRequest($request);
-
-    //     if ($form->isSubmitted() && $form->isValid()) {
-
-    //         $manager = $managerRegistry->getManager();
-    //         $manager->persist($user);
-    //         $manager->flush();
-
-    //         $this->addFlash('success', 'Le profile  a bien été ajoutée');
-    //         return $this->redirectToRoute('admin_user_index');
-    //     }
-    //     return $this->render('admin/userForm.html.twig', [
-    //         'userForm' => $form->createView()
-    //     ]);
-    // }
-
-    // #[Route('/admin/user/update/{id}', name: 'user_update')]
-    // public function update(UserRepository $userRepository, int $id, Request $request, ManagerRegistry $managerRegistry)
-    // {
-    //     $user = $userRepository->find($id); //récuperer l'id et du user 
-    //     $form = $this->createForm(UserType::class, $user);
-    //     $form->handleRequest($request);
-
-    //     if ($form->isSubmitted() && $form->isValid()) {
-
-    //         $manager = $managerRegistry->getManager();
-    //         $manager->persist($user);
-    //         $manager->flush();
-
-    //         $this->addFlash('success', 'Le profile a bien été modifiée');
-    //         return $this->redirectToRoute('admin_user_index');
-    //     }
-
-    //     return $this->render('admin/userForm.html.twig', [
-    //         'userForm' => $form->createView(),
-
-    //     ]);
-    // }
+  
     #[Route('/admin/user/delete/{id}', name: 'user_delete')]
     public function delete(
         UserRepository $userRepository,

@@ -43,21 +43,21 @@ class ProfilType extends AbstractType
                     'maxLength' => 180
                 ]
             ])
-            // ->add('plainPassword', PasswordType::class, [
-            //     'required' => false,
-            //     'label'=> 'mot de passe',
-            //     'mapped' => false,
-            //     'attr' => ['autocomplete' => 'new-password'],
-            //     'constraints' => [
+            ->add('plainPassword', PasswordType::class, [
+                'required' => false,
+                'label'=> 'mot de passe',
+                'mapped' => false,
+                'attr' => ['autocomplete' => 'new-password'],
+                'constraints' => [
                    
-            //         new PasswordStrength([
-            //             'minLength' => 8,
-            //             'tooShortMessage' => 'Le mot de passe doit contenir au moins {{length}} caractères.',
-            //             'minStrength' => 4,
-            //             'message' => 'Le mot de passe doit contenir au moins une lettre minuscule, une lettre majuscule, une chiffre et un caractère spécial'
-            //         ])
-            //     ],
-            // ])
+                    new PasswordStrength([
+                        'minLength' => 8,
+                        'tooShortMessage' => 'Le mot de passe doit contenir au moins {{length}} caractères.',
+                        'minStrength' => 4,
+                        'message' => 'Le mot de passe doit contenir au moins une lettre minuscule, une lettre majuscule, une chiffre et un caractère spécial'
+                    ])
+                ],
+            ])
             ->add('phone', TextType::class, [
                 'label'=> 'telephone',
                 'required' => true,

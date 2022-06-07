@@ -20,6 +20,15 @@ class OrderRepository extends ServiceEntityRepository
     }
 
      
+    /**
+     * @return Order[] retourn un tableau 
+     */
+        public function getOrder($value)
+        {
+            return $this->createQueryBuilder('a')
+            ->andWhere("a_id_user = :val")
+            ->setParameter('val',$value);
+        }
 
     // /**
     //  * @return Order[] Returns an array of Order objects

@@ -24,7 +24,7 @@ class Machine
     #[ORM\Column(type: 'string', length: 50)]
     private $img;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'text', length: 65535)]
     private $description;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'machines')]

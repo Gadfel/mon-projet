@@ -19,6 +19,19 @@ class AddressRepository extends ServiceEntityRepository
         parent::__construct($registry, Address::class);
     }
 
+    /**
+     * @return Address[] retourn un tableau 
+     */
+        public function getAddressClient($value)
+        {
+            return $this->createQueryBuilder('a')
+            ->andWhere("a.user = :val")
+            ->setParameter('val',$value)
+            ->orderBy('a.id', 'DESC');
+;
+
+        }
+
     // /**
     //  * @return Address[] Returns an array of Address objects
     //  */

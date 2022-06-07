@@ -20,6 +20,7 @@
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
             <link rel="stylesheet" href="{{ asset('css/base.css') }}">
             <link rel="stylesheet" href="{{ asset('css/form.css') }}"> 
+            <link rel="stylesheet" href="{{ asset('css/btn.css') }}"> 
             
             
             
@@ -46,30 +47,41 @@
                                     <a href="{{ path('category_index') }}" class="dropdown-item">Gourmant</a>
                                     <a href="{{ path('category_index') }}" class="dropdown-item">Café</a>
                                     <a href="{{ path('category_index') }}" class="dropdown-item">Accessoires</a>
+                                    <a href="{{ path('category_index') }}" class="dropdown-item">Potages</a>
                                 </div>
                             </div>
                             <a href="{{ path('contact_index') }}" class="m-link">Contact</a>
-                            <a href="{{ path('user_index') }}" class="m-link">{% if is_granted('IS_AUTHENTICATED_FULLY') %}Profil{% else %}Connexion{% endif %}</a>
+                            {% if is_granted ('IS_AUTHENTICATED_FULLY') %}  
+                                <div class="nav-iteam dropdown">
+                                    <a href="{{ path('user_index') }}" class="nav-link dropdown-toggle" data-toggle="dropdown">Profil</a>
+                                    <div class="dropdown-menu">
+                                        <a href="{{ path('app_logout') }}" class="dropdown-item">Déconnexion</a>
+                                    </div>
+                                </div>
+                            
+                            {% else %}
+                            <a href="{{ path('app_login') }}" class="m-link">Connexion</a>
+                            {% endif %}
+                            <a href="{{ path('cart_index') }}" class="m-link">panier</a>
                         </div>
+
                 </div> 
             </nav>
         </header>
 
         <main>
             {% block body %}{% endblock %}
-            <div class="col-11" id="content">
-                <div class="row p-5">
-                   {% for label, messages in app.flashes %}
-                        {% for message in messages %}
-                           <div class="flash-{{ label }} bg-{{ label}} text-light p-3 mb-5 rounded">
-                            {{ message }}
-                           </div>
-                       {% endfor %}
-                    {% endfor %}
+                <div class="row">
+                    <div class="col-8 offset-2">
+                        {% for label, messages in app.flashes %}
+                            {% for message in messages %}
+                                <div class="flash-{{ label }} bg-{{ label}} text-danger p-3 mb-5 rounded">
+                                {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
                 </div>
-                  
-            </div>
-            
         </main>
         
 
@@ -78,7 +90,7 @@
                 <div class="col-4" id="apropos">
                     <h5 class="h5">Apropos</h5>
                     <div class="dropdown-divider"></div>
-                    <p><a href="#">données personnelles</a></p>
+                    <p><a href="{{ path('contact_index') }}">données personnelles</a></p>
                     <p><a href="{{ path('app_mentions_legales')}}">Mentions Légales</a></p>
                     <p><a href="{{ path('app_cgu')}}">CGU</a> , 
                        <a href="{{ path('app_cgv')}}">CGV</a></p>

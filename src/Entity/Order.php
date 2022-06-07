@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\OrderRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
@@ -14,7 +16,7 @@ class Order
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 10)]
+    #[ORM\Column(type: 'datetime')]
     private $date;
 
     #[ORM\Column(type: 'integer')]
@@ -28,21 +30,28 @@ class Order
     #[ORM\JoinColumn(nullable: false)]
     private $address;
 
-    #[ORM\ManyToOne(targetEntity: OrderLigne::class, inversedBy: 'orders')]
-    #[ORM\JoinColumn(nullable: false)]
-    private $OrderLigne;
+    #[ORM\OneToMany(mappedBy: 'Orders', targetEntity: OrderLigne::class, orphanRemoval: true)]
+    private $orderLignes;
+
+    public function __construct()
+    {
+        $this->orderLignes = new ArrayCollection();
+    }
+
+
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getDate(): ?string
+    public function getDate(): ?\DateTimeInterface
     {
         return $this->date;
     }
 
-    public function setDate(string $date): self
+    public function setDate( \DateTimeInterface $date): self
+
     {
         $this->date = $date;
 
@@ -85,15 +94,35 @@ class Order
         return $this;
     }
 
-    public function getOrderLigne(): ?OrderLigne
+    /**
+     * @return Collection<int, OrderLigne>
+     */
+    public function getOrderLignes(): Collection
     {
-        return $this->OrderLigne;
+        return $this->orderLignes;
     }
 
-    public function setOrderLigne(?OrderLigne $OrderLigne): self
+    public function addOrderLigne(OrderLigne $orderLigne): self
     {
-        $this->OrderLigne = $OrderLigne;
+        if (!$this->orderLignes->contains($orderLigne)) {
+            $this->orderLignes[] = $orderLigne;
+            $orderLigne->setOrders($this);
+        }
 
         return $this;
     }
+
+    public function removeOrderLigne(OrderLigne $orderLigne): self
+    {
+        if ($this->orderLignes->removeElement($orderLigne)) {
+            // set the owning side to null (unless already changed)
+            if ($orderLigne->getOrders() === $this) {
+                $orderLigne->setOrders(null);
+            }
+        }
+
+        return $this;
+    }
+
+    
 }

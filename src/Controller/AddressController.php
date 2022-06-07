@@ -56,7 +56,7 @@ class AddressController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
            
             $address->setUser($this->getUser());
-
+            $address->setFullAddress($address->getAddress(). ' ' .$address->getPostalCode(). ' ' .$address->getCity(). ' ' .$address->getCountry());
             $manager = $managerRegistry->getManager();
             $manager->persist($address);
             $manager->flush();

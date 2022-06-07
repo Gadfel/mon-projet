@@ -19,10 +19,7 @@ class Address
     private $name;
 
     #[ORM\Column(type: 'string', length: 30)]
-    private $address1;
-
-    #[ORM\Column(type: 'string', length: 30, nullable: true)]
-    private $address2;
+    private $address;
 
     #[ORM\Column(type: 'integer')]
     private $postal_code;
@@ -40,8 +37,9 @@ class Address
     #[ORM\JoinColumn(nullable: false)]
     private $user;
 
-    #[ORM\Column(type: 'string', length: 35)]
-    private $Address;
+    #[ORM\Column(type: 'string', length: 255)]
+    private $fullAddress;
+
 
     public function __construct()
     {
@@ -66,26 +64,14 @@ class Address
         return $this;
     }
 
-    public function getAddress1(): ?string
+    public function getAddress(): ?string
     {
-        return $this->address1;
+        return $this->address;
     }
 
-    public function setAddress1(string $address1): self
+    public function setAddress(?string $address): self
     {
-        $this->address1 = $address1;
-
-        return $this;
-    }
-
-    public function getAddress2(): ?string
-    {
-        return $this->address2;
-    }
-
-    public function setAddress2(?string $address2): self
-    {
-        $this->address2 = $address2;
+        $this->address = $address;
 
         return $this;
     }
@@ -168,15 +154,16 @@ class Address
         return $this;
     }
 
-    public function getAddress(): ?string
+    public function getFullAddress(): ?string
     {
-        return $this->Address;
+        return $this->fullAddress;
     }
 
-    public function setAddress(string $Address): self
+    public function setFullAddress(string $fullAddress): self
     {
-        $this->Address = $Address;
+        $this->fullAddress = $fullAddress;
 
         return $this;
     }
+
 }

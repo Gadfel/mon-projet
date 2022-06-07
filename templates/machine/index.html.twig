@@ -4,17 +4,17 @@
 
 {% block body %}
 
- <h1 class=" my-5 text-center"> Vous trouvez tout nos machines</h1>
+ <h1 class=" my-5 text-center"> ICI VOUS TROUVEZ TOUT NOS MACHINES</h1>
 
 
     <div class="row ">
         {% for machine in machines %}
         <div class="col-6 p-5">
-            <div class="card2">
-                <img src="{{ asset('images/machine/'~ machine.img)}}" class="card-img-top2" alt="machine a café ">
-                    <div class="card-body text-center">
+            <div class="card2 w-60">
+                <img src="{{ asset('images/machine/'~ machine.img)}}" class="img-top2" alt="machine a café ">
+                    <div class="card-body2 text-center">
                         <h5 class="card-title">{{machine.name}}  {{ machine.model}} </h5>
-                        <p class="card-text">{{ machine.description}}</p>
+                        <p class="card-text mb-5">{{ machine.description |u.truncate(90, '...')}}</p>
                         <a href="{{ path('machine_show', {'id': machine.id}) }}" class=" btn-mache">voir plus</a>
                     </div>
             </div>

@@ -11,7 +11,6 @@
                     <th>N°</th>
                     <th>Nom</th>
                     <th>address1</th>
-                    <th>address2</th>
                     <th>code postal</th>
                     <th>ville</th>
                     <th>pays</th>
@@ -24,14 +23,13 @@
                     <tr class="">
                         <td class="align-middle">{{ loop.index }}</td>
                         <td class="align-middle">{{ addresse.Name }}</td>
-                        <td class="align-middle">{{ addresse.address1 }}</td>
-                        <td class="align-middle">{{ addresse.address2 }}</td>
+                        <td class="align-middle">{{ addresse.address }}</td>
                         <td class="align-middle">{{ addresse.postalCode }}</td>
                         <td class="align-middle">{{ addresse.city }}</td>
                         <td class="align-middle">{{ addresse.country }}</td>
                         <td class="align-middle">
                             <a href="{{ path('profil_address_update',{'id':addresse.id}) }}" class="btn btn-success"> Modifier l'addresse </a> 
-                            <a href="{{ path('profil_address_delete', {'id': addresse.id}) }}" class="btn btn-danger"> suprimer l'addresse </a>
+                            <a href="{{ path('profil_address_delete', {'id': addresse.id}) }}" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer')"> suprimer l'addresse </a>
                         </td>
                     </tr>
                 {% endfor %}
