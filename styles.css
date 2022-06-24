@@ -1,0 +1,282 @@
+  
+/*etsgadbagcafe1db	etsgadbagcafe1db	etsgadbagcafe1db.mysql.db	
+0 o / 4 Go
+MYSQL v.5.6
+
+
+
+Ajouter un domaine ou un sous-domaine
+Nom du domaine
+agditribution.fr.etsgadfel.fr
+Nom du domaine
+www.agditribution.fr.etsgadfel.fr
+Dossier racine
+./
+CDN
+Désactivé
+SSL
+Activé
+Firewall
+Désactivé
+Logs séparés
+Désactivé
+/********************************* j'ai pas besoin  ******************************/
+
+ /* .card-body {
+    top: 30px;
+    width: 100%; 
+    display:flex;
+    justify-content: center;
+    align-items: stretch;  
+ } 
+ 
+   .card-body2 {
+   width: 100px; 
+   height: 30vh;
+   margin: 20px;
+   padding: 30px;
+ }  */
+
+ 
+
+/***************************** MAIN ***************************************/
+ /* .video {
+    
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      color: white;
+      position: relative;
+      z-index:2;
+      opacity: 0.9;  
+  }
+ 
+   .title {
+      margin-top: -21em;
+      display: flex;
+      font-family: roboto sans-serif;
+      justify-content: center;
+      color: rgb(37, 22, 1); */
+       /* z-index: 30;  */
+  }  */
+  /*#citation {
+    color: rgb(3, 2, 0);
+    margin-top: -17em;
+    / /* z-index: 53; */
+} *
+
+/* #image{
+     z-index: 3; 
+     position: absolute;
+} */
+/* #menu {
+  background: #f5e1c1;
+  width: 100%;
+  height: 115px;
+}
+.logo {
+  width: 200px;
+}
+.m-left {
+  float: left;
+}
+#m-right {
+  float: right;
+  font-weight: bold;
+  font-size: 30px;
+  display: flex;  
+}
+.m-link {
+  color:rgb(37, 22, 1);
+  font-weight: 400;
+  padding: 25px;
+  list-style: none;
+}
+.m-link:hover {
+  border-radius: 50%;
+  background-color: #032A2D;
+  color:rgb(247, 242, 236)
+  
+}
+
+.nav-link .dropdown-toggle {
+  color:rgb(37, 22, 1);
+  font-weight: 400;
+  padding: 25px;
+  list-style: none;
+}
+.nav-link .dropdown-toggle {
+  border-radius: 50%;
+  background-color: rgb(56, 25, 2);
+  color:rgb(247, 242, 236)
+}
+.nav-link {
+  color: rgb(37, 22, 1);
+  font-weight: 400;
+  padding: 25px;
+  list-style: none;
+}
+.nav-link:hover {
+  border-radius: 50%;
+  background-color: rgb(56, 25, 2);
+  color:rgb(247, 242, 236)
+}*/
+
+
+
+
+ /**************************************************** RESPONSIVE  PAGE D'accueil ******************************/
+ @media screen and (min-width:992px){
+
+    .navbar input, .dropdown, .icon{
+        display: none;
+    }
+}
+ 
+@media screen and (max-width: 991.9px){
+   
+    .icon{
+        fill: rgb(37, 22, 1);
+        cursor: pointer;
+        margin-right: -44em;
+        z-index: 10;
+        margin-top: -3em;
+    }
+    .texte h1{
+        margin-top: -18em;
+        
+    }
+    
+    /* [id^=burger]:checked + ul{
+        display: block;
+    }
+
+    .nav-menu{
+        display:none;
+
+    }
+    .nav-item{
+        display: inline-block;
+        margin-left: 20px;
+        position: relative;
+    }
+    .dropdown{
+        position: absolute;
+        background-color: #075b66; 
+        top: 70px;
+        right: 0;
+        padding-right: 40px;
+        width: max-content;
+        list-style: none;
+    }
+    .title{
+        font-size:2.7vw;
+        margin-top: -44em;
+
+    }
+    h1.text {
+        margin-top: -34em;
+        font-size: 4.7vw;
+    }
+    blockquote .cita{
+        margin: 12px;
+        margin-top: -7em;
+       
+    }
+     .logo{
+        padding-top: 1em;
+        padding-left: 10px;
+    }
+    /* #burger{
+        display:none;
+    }
+    
+
+}  */
+
+@media screen and  (max-width:767.9px){
+
+  /*  .icon{
+    margin-right: -19em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    display: inline;
+    }
+
+   /* #burger{
+        display: none;
+    }
+    #burger2{
+        display: none;
+    }
+    #burger3{
+        display: none;
+    }*/
+  /*
+    .title{
+        margin-bottom: -6em;
+        font-size:1em;
+    }
+    #citation{
+         position: absolute; 
+        margin-top: -3em;
+        color: rgb(56, 29, 3);
+    }
+     .logo{
+    margin-left: 1em;
+    margin-top: -1em;
+    width: 3em;
+    padding-top: 1em;
+    }  
+    
+    .nav-menu{
+         color: white; 
+         background-color: #094b3b;  
+        z-index: 31; 
+        flex-direction: column;  
+    }
+    .nav-item a{
+
+        color: white; 
+    }
+    .show a{
+        color: white;
+    }
+    #show{
+        color: white;
+    }
+    .titre{
+        padding: 0px;
+        margin: -80px;
+    }
+    .introduction{
+        margin-top: 110px;
+        line-height: 1.2;
+        letter-spacing:0.15em;
+        font-size:2.7vw;
+        font-weight: bold;
+    }
+    p{
+        font-size: 2.9vw;
+    }
+    .img{
+        width: 305px;
+        margin-left: -101px;
+    }
+    .card6{
+        width: 295px;
+         margin-left:-85px; 
+    }
+    .img-top1{
+        width: 81%;
+        height: 29vh;
+    }
+    
+    
+    #apropos{
+        margin: -17px;
+    }
+    #icone{
+        margin: -15px;
+    } */
+}  

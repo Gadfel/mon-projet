@@ -27,7 +27,7 @@ class ProductController extends AbstractController
     #[Route('/admin/products', name: 'admin_product_index')]
     public function adminIndex(ProductRepository $productRepository): Response
     {
-        $products = $productRepository->findAll();
+        $products = $productRepository->findAll(); // recuperer tout les produits 
         return $this->render('admin/products.html.twig', [
             'products' => $products
         ]);
@@ -36,11 +36,11 @@ class ProductController extends AbstractController
     #[Route('/admin/product/create', name: 'product_create')]
     public function create(Request $request, ManagerRegistry $managerRegistry)
     {
-        $product = new Product();
-        $form = $this->createForm(ProductType::class, $product);
-        $form->handleRequest($request);
+        $product = new Product(); //instancier la class 
+        $form = $this->createForm(ProductType::class, $product); //creer le form
+        $form->handleRequest($request); //demende le traitement et la saisie du form 
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) { // si le form est  soumit et valide 
 
             $infoImg = $form['img']->getData(); //récuperer les info de l'image
             $extentionImg = $infoImg->guessExtension(); //récuperer l'extention e l'image
@@ -53,7 +53,7 @@ class ProductController extends AbstractController
             $manager->flush();
 
             $this->addFlash('success', 'le produit a bien été ajouter'); // message de succes
-            return $this->redirectToRoute('admin_product_index');
+            return $this->redirectToRoute('admin_product_index'); //redirection vers la page 
         }
 
         return $this->render(

@@ -1,419 +1,74 @@
-/******************************** GLOBAL  *****************************************************************************/
 
-@import url("https://fonts.googleapis.com/css2? family= Oswald & family= Roboto+Condensed:wght@400;700 & family= Roboto:wght@400;900 & display=swap");
 
-*,
-::before,::after {
-padding: 0;
-margin: 0;
-box-sizing: border-box;
-
-}
-html,
-body {
-  color: #0f0f0f; 
-  background-color: #f3ece1;
-}
-/********************************************************** HEADER  ****************************************************************/
-.menu {
-  background: #f5e1c1;
-  width: 100%;
-  height: 115px;
-}
-.logo {
-  width: 200px;
-}
-.m-left {
-  float: left;
-}
-.m-right {
-  float: right;
-  font-weight: bold;
-  font-size: 35px;
-  display: flex;  
-}
-.m-link {
-  color:rgb(37, 22, 1);
-  font-weight: 400;
-  padding: 25px;
-  list-style: none;
-}
-.m-link:hover {
-  border-radius: 50%;
-  background-color: #032A2D;
-  color:rgb(247, 242, 236)
-  
-}
-
-.nav-link .dropdown-toggle {
-  color:rgb(37, 22, 1);
-  font-weight: 400;
-  padding: 25px;
-  list-style: none;
-}
-.nav-link .dropdown-toggle {
-  border-radius: 50%;
-  background-color: rgb(56, 25, 2);
-  color:rgb(247, 242, 236)
-}
-.nav-link {
-  color: rgb(37, 22, 1);
-  font-weight: 400;
-  padding: 25px;
-  list-style: none;
-}
-.nav-link:hover {
-  border-radius: 50%;
-  background-color: rgb(56, 25, 2);
-  color:rgb(247, 242, 236)
-}
-.dropdown .dropdown-menu{ 
-  display: none;
-  font-weight: 400;
-  padding: 25px;
-  position: absolute;
-  list-style: none;
-  vertical-align:top;
-}
-.dropdown:hover .dropdown-menu{
-  display: block;
-  list-style: none;
-}
-.dropdown-item {
-  color:white;
-  background-color:#032A2D;
-  font-weight: 400;
-  padding: 25px;
-  margin-top:10px;
-  font-size:35px; 
-}
 /************************************************************** Main ********************************************/
-.video {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    color: white;
-    position: relative;
-    z-index:5;
-    opacity: 0.9;  
-}
-.texte h1 {
-    margin-top: -30em;
+
+
+ /* .texte h1 {
+    margin-top: -15em;
     display: flex;
     font-family: roboto sans-serif;
     justify-content: center;
     color: rgb(37, 22, 1);
     z-index: 30;
-}
+}  */
   
-.texte { 
+/* .texte { 
     color: rgb(37, 22, 1);
     font-family: "Roboto", sans-serif; 
     text-transform: capitalize;
     text-align: center;
-    font-size: 35px;
+    font-size: 5vw;
     text-shadow: 1px 1px 1px rgb(160, 161, 156);
     line-height: 1.20;
     letter-spacing: 0.15em;
-    z-index: 10;
-    display:flex;
+    /* z-index: 10; */
+    /* display:flex;
     justify-content: center;
-    flex-direction:column;
-}
+    flex-direction:column; 
+} */
 
-.citation {
-    color: rgb(37, 22, 1);
-    z-index: 30;
-}
 
-.section {
+
+/* .section {
     z-index: 20;
 }
-  
-.section1 { 
-   color: rgb(37, 22, 1);
-     margin:100px;
-     text-align: center;         
-}
-.titre {
-     padding:50px;
-     margin:0px;  
-}
-.img {
-  width: 50%;
-  border-radius: 50%;
-} 
-  
-.h5 {
-  font-weight: bold;
-}
-.container-fluid  footer {
-  color: rgb(37, 22, 1);
-  background-color: rgb(216, 214, 200);
-  font-size:small;
-  margin-top: 10px;
-} 
-#icone a { 
-  color:#CC9544;; 
-}
-#icone a:hover {
-  color:  rgb(37, 22, 1);
-}
-#apropos a {
-  color:#CC9544;;
-}
-#apropos a:hover {
-  color:  rgb(37, 22, 1);
-}
-.btn-register {
-  background-color: #CC9544;
-  border-radius: 50%;
-  color:rgb(37, 22, 1);
-  box-shadow: 0 4px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
-  padding: 20px 20px;
-  margin: 20px;
+   */
+
+
+
  
-}
-.btn-login {
-  background-color: #CC9544;
-  border-radius: 50%;
-  color:rgb(37, 22, 1);
-  box-shadow: 0 4px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
-  padding: 20px 20px;
-  margin: 20px;
 
-}
-
-.btn-cordonnee {
-  padding: 10px 20px;
-  background-color:#CC9544;
-  border-radius:40%;
-  color:rgb(37, 22, 1);
-  box-shadow: 4px 8px rgb(37, 22, 1);
-}
-.btn-address{
-  padding: 10px 20px;
-  background-color:#CC9544;
-  border-radius:40%;
-  color:rgb(37, 22, 1);
-  box-shadow: 4px 8px rgb(37, 22, 1);
-}
-.btn-order{
-  padding: 10px 20px;
-  background-color:#CC9544;
-  border-radius:40%;
-  color:rgb(37, 22, 1);
-  box-shadow: 4px 8px rgb(37, 22, 1);
-}
-.btn-mache {
-  background-color: #CC9544;
-  border-radius: 50%;
-  color:rgb(37, 22, 1);
-  box-shadow: 0 4px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
-  padding: 10px 20px;
-  margin: 10px;
-  
-}
-.card {
-  margin-left: auto;
-  margin-right: auto;
-  width:192px; 
-  padding: 10px;
-  color: rgb(37, 22, 1);
-  background-color: #f3ece1;
-  border: none;
-  /* border-radius: 10%;
-  box-shadow: 0 4px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1); */
-}  
-
-.img-top1 { 
- width: 100%;
- height:50vh;
- font-weight: bold;
- font-family: "roboto" sans-serif;
- font-size: 25px;
-}
-.img-fluid{ 
-  width: 100%;
-  height:20vh;
-  font-weight: bold;
-  font-family: "roboto" sans-serif;
-  font-size: 25px;
- }
-.btn-1{
-  background-color:#1ae7b7;
-  border-radius: 50%;
-  color:rgb(37, 22, 1);
-  box-shadow: 0 px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
-  padding: 10px;
-  
-}
-.btn-1:hover { 
-  background-color: rgb(56, 25, 2);
-  color:rgb(247, 242, 236)
- 
-}
-.card-title{
-  color:#094b3b
-}
-.btn-2{
-   padding-top:10px;
-   margin: 15px;
-  background-color: #CC9544;
-  border-radius: 50%;
-  color:rgb(37, 22, 1);
-  box-shadow: 0 4px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
-}
-
-.btn-2:hover { 
-  background-color: rgb(37, 22, 1);;
-  color:rgb(247, 242, 236)
-}
-.btn-machine {
-    padding: 10px 20px; 
-    background-color: #CC9544;
-    border-radius: 40%;
-    color:rgb(37, 22, 1);
-    box-shadow: 0 4px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
-}
-.btn-machine:hover{
-  background-color: rgb(37, 22, 1);;
-  color:rgb(247, 242, 236)
- 
-}
-
-.btn-form1 {
-  background-color: #CC9544;
-  border-radius: 50%;
-  color:rgb(37, 22, 1);
-  box-shadow: 0 4px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
-  padding: 10px 20px;
-  margin: 10px;
-}
-.btn-form1:hover { 
-  background-color: rgb(37, 22, 1);;
-  color:rgb(247, 242, 236)
-}
-.card-body {
-   top: 30px;
-   width: 100%; 
-   display:flex;
-   justify-content: center;
-   align-items: stretch;
- 
-  
-} 
-
-.btn-form1 {
-  background-color: #CC9544;
-  border-radius: 50%;
-  color:rgb(37, 22, 1);
-  box-shadow: 0 4px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
-  padding: 10px 20px;
-  margin: 10px;
-}
-.btn-form1:hover { 
-  background-color: rgb(37, 22, 1);;
-  color:rgb(247, 242, 236)
-}
-.card2 {
-  margin: auto;
-  width: 500px; 
-  padding: 30px;
-  color: rgb(37, 22, 1);
-  background-color: rgb(243, 211, 169);
-  border-radius: 10%;
-  box-shadow: 0 4px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
- 
-} 
-.img-top2{ 
-  width:100%;
-  height:50vh;
-  font-weight: bold;
-  font-family: "roboto" sans-serif;
-  font-size: 25px;
-
-} 
-.card3 { 
-  margin: auto;
-  width: 500px; 
-  padding: 30px;
-  color: rgb(37, 22, 1);
-  background-color: rgb(243, 211, 169);
-  border-radius: 10%;
-  box-shadow: 0 4px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
-} 
-.card5 { 
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 40px;
-  width: 300px; 
-  padding: 10px;
-  color: rgb(37, 22, 1);
-  background-color: rgb(243, 211, 169);
-  border-radius: 10%;
-  box-shadow: 0 4px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
-}
-.card-img-top {
-  margin: auto;
-  display: block;
-} 
-.img-top4{ 
-  padding:45px;
-  width:100%;
-  height:65vh;
-  font-weight: bold;
-  font-family: "roboto" sans-serif;
-  font-size: 25px;
-
-} 
-.card-body4 {
-  width: 100px; 
-  height: 30vh;
-  margin: 20px;
-  padding: 30px;
-}  
- 
-.card6 { 
-  /* margin-left: auto;
-  margin-right: auto; */
-  margin: auto;
-  width: 500px; 
-  padding: 30px;
-  color: rgb(37, 22, 1);
-  background-color: rgb(243, 211, 169);
-  border-radius: 10%;
-  box-shadow: 0 4px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
- 
-} 
 /* .container-fluid{
   font-size: 20px;
   font-family: Roboto;
   color: rgb(37, 22, 1);
 } */
-.commande{
+/* .commande{
   display:border;
   padding-bottom: 10px;
-}
+} */
 
-.me-3 {
-  width:5rem;
-}
 
-  
-  
-    
-  
+
 
   /************************************************************ FOOTER ***********************************************************/
   
-  .footer {
-    background-color: #f5e1c1 ;
-  }
-  /* @media screen and (min-width:576px) {
-    .citation {
-      margin-top: auto;
-    }
-  } */
+ 
+
+
+
+  /***************************************** Responsive***************************************/
+
+
+   
+
+
+
+
+
+  
+      
+    
+   
  
 

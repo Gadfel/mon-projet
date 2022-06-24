@@ -21,7 +21,7 @@ class ResetPasswordRequestFormType extends AbstractType
                         'message' => 'Veuillez saisir votre e-mail',
                     ]),
                     new Email ([
-                        'message'=>'Veuillez entrer une adresse e-mail valid',
+                        'message'=>'Veuillez entrer une adresse e-mail valide',
                     ]),
                 ],
             ])

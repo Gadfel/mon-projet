@@ -25,7 +25,7 @@ class PaymentController extends AbstractController
     public function index(Request $request, SessionInterface $sessionInterface, ProductRepository $productRepository): Response
     {
 
-        if ($request->headers->get('referer') !== 'https://127.0.0.1:8000/cart') {
+        if ($request->headers->get('referer') !== 'https://gadfeldistrib.fr/cart') {
             return $this->redirectToRoute('cart_index');
         }
 
@@ -49,8 +49,8 @@ class PaymentController extends AbstractController
         $stripeSession = $stripe->checkout->sessions->create([
             'line_items' => $stripeCart,
             'mode' => 'payment',
-            'success_url' => 'https://127.0.0.1:8000/payment/success',
-            'cancel_url' => 'https://127.0.0.1:8000/payment/cancel',
+            'success_url' => 'https://gadfeldistrib.fr/payment/success',
+            'cancel_url' => 'https://gadfeldistrib.fr/payment/cancel',
             'payment_method_types' => ['card']
         ]);
         return $this->render('payment/index.html.twig', [
@@ -81,7 +81,7 @@ class PaymentController extends AbstractController
             $invoiceNumber = 'F' . date_format(new \DateTime(), 'Ymd') . '-' . str_pad($i, 4, '0', STR_PAD_LEFT);
         }
 
-        //crée une nouvelle facture en bdd
+        // //crée une nouvelle facture en bdd
         // $invoice = new Invoice;
         // $invoice->setUser($this->getUser());
         // $invoice->setNumber($invoiceNumber);
@@ -90,7 +90,7 @@ class PaymentController extends AbstractController
         // $manager = $managerRegistry->getManager();
         // $manager->persist($invoice);
 
-        // crée une ligne de facture pour chaque élément du panier
+        // // crée une ligne de facture pour chaque élément du panier
         // $cart = $cartService->getCart();
         // foreach ($cart as $item) {
         //     $invoiceLine = new InvoiceLine;

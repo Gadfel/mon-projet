@@ -12,7 +12,7 @@ class MentionsLegalesController extends AbstractController
     #[Route('/mentions/legales', name: 'app_mentions_legales')]
     public function index(GithubMarkdown $parser): Response
     {
-        $content = file_get_contents('./../mentions_legales.md'); // récupère le contenu du README
+        $content = file_get_contents('./../mentions_legales.md'); // récupère le contenu du Metion legale
         // dd($content);
 
         $parsedContent = $parser->parse($content);

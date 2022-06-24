@@ -19,7 +19,7 @@ class Order
     #[ORM\Column(type: 'datetime')]
     private $date;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'float')]
     private $total_amount;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'orders')]

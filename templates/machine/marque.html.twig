@@ -1,6 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends 'base1.html.twig' %}
 
-{% block title %}Machine!{% endblock %}
+{% block title %} Marque des Machine!{% endblock %}
 
 {% block body %}
 
@@ -9,13 +9,13 @@
 
     <div class="row">
         {% for machines in machine %}
-        <div class="col-6 p-3">
+        <div class="col-12 col-md-12 col-xl-6 p-5">
             <div class="card3">
-                <img src="{{ asset('images/machine/'~ machines.img)}}" class="card-img-top" alt="machine a café ">
+                <img src="{{ asset('images/machine/'~ machines.img)}}" class=" col-12 col-md-6 col-xl-12 card-img-top p-5" alt="machine a café ">
                     <div class="card-body text-center">
                         <h5 class="card-title">{{machines.name}}  {{ machines.model}} </h5>
                         <p class="card-text">{{ machines.description|u.truncate(90, '...')}}</p>
-                        <a href="{{ path('machine_show', {'id': machines.id}) }}" class="btn btn-warning">details</a>
+                        <a href="{{ path('machine_show', {'id': machines.id}) }}" class="btn-form1">details</a>
                     </div>
             </div>
         </div>

@@ -1,70 +1,68 @@
-{% extends 'base.html.twig' %}
+{% extends 'base1.html.twig' %}
 
 {% block title %} accueil{% endblock %}
 
 {% block body %}
 
-    <div class="row">
-        <div class="col-8 offset-2">
-            {% for label, messages in app.flashes %}
-                {% for message in messages %}
-                    <div class="flash-{{ label }} bg-{{ label}} text-danger p-3 mb-5 rounded">
-                    {{ message }}
-                    </div>
-                {% endfor %}
-            {% endfor %}
+    <section class="section container-fluid">
+        <div class="row">
+                {% include "partage/addflash.html.twig"%}
+                <video class="video" autoplay muted loop>
+                    <source src="{{ asset('images/video.mp4')}}" type="video/mp4" />
+                </video>
+        
+                <div class="col-12 text-center">
+                    <h1 class="title">MISE A DISPOSITIONS DES MACHINES A CAFE</h1>
+                    <blockquote class= "cita"> " Un café sensationnel à chaque tasse "</blockquote>
+                </div>
         </div>
-    </div>
-
-    <section class="section">
-        <div class="div">
-            <video class="video" autoplay muted loop>
-            <source src="{{ asset('images/video.mp4')}}" type="video/mp4" />
-            </video>
-            <div class="texte">
-                <h1 class="title">MISE A DISPOSITIONS DES MACHINES A CAFFE</h1>
-                <blockquote class="citation"> " Un café sensationnel à chaque tasse "</blockquote>
-            </div>
-        </div> 
     </section>
 
-    <section class="section1">
-            <h2 class= "titre">Créer une convivialité au sein de vôtre entreprise </h2>
-            <p class="introduction">Installer des machines à café est une excellente manière
-                    pour satisfaire ses collaborateurs et
-                    ses clients en ayant des boissons à proximité,
-                    tout en étant rentable pour vous !</p>
-                    <p><strong>A.G Distribution</strong> vous offre de la saveur et de gourmandise : offrir
-                        à ses clients des moments de convivialité à partager. Pour
-                        relever ce défi, <strong> A.G Distribution</strong>  a développé des solutions
-                        innovantes qui s’adaptent aux envies de tous et aux goûts de
-                        chacun. À travers ses gobelets prêts à la dégustation et ses
-                        nombreux partenariats avec de grandes marques, <strong>A.G Distribution</strong> 
-                        démontre son goût de la nouveauté et ses
-                        découvertes permanentes.<br>
-                        <strong>  A.G Distribution s’engage.........<br></strong> 
-                        <strong> A.G Distribution </strong>met en avant un service de proximité et
-                        de réactivité. Nous sommes à l’écoute de nos clients, ce qui
-                        nous permet de répondre à chacun de leurs besoins.</p><br>
-            <img class="img" src="{{ asset('images/group.jpg')}}" alt="image"  />
-        
+    <section class="section1 container-fluid ">
         <div class="row">
-            {% for machine in machines %}
-                <div class="col-6 p-5">
-                    <div class="card6">
-                        <img src="{{ asset('images/machine/'~ machine.img)}}" class="img-top1" alt="machine a café LAVAZZA">
-                            <div class="card2-body text-center">
-                                <h5 class="card-title">{{machine.name}}  {{ machine.model}} </h5>
-                                <p class="card-text">{{ machine.description|u.truncate(90, '...')}}</p>
-                                <a href="{{ path('machine_show', {'id': machine.id}) }}" class="btn btn-1">Détail</a>
-                                <a href="{{ path('machine_index_marque', {'marque': machine.name}) }}" class="btn btn-2">Voir la marque</a>
-                            </div>
+                <h2 class= "titre">Créer une convivialité au sein de vôtre entreprise </h2>
+
+                <p class=" introduction col-12 col-md-12 col-xl-12">Installer des machines à café est une excellente manière
+                        pour satisfaire ses collaborateurs et
+                        ses clients en ayant des boissons à proximité,
+                        tout en étant rentable pour vous !
+                </p>
+                        <p><strong>A.G Distribution</strong> vous offre de la saveur et de gourmandise : offrir
+                            à ses clients des moments de convivialité à partager. Pour
+                            relever ce défi, <strong> A.G Distribution</strong>  a développé des solutions
+                            innovantes qui s’adaptent aux envies de tous et aux goûts de
+                            chacun. À travers ses gobelets prêts à la dégustation et ses
+                            nombreux partenariats avec de grandes marques, <strong>A.G Distribution</strong> 
+                            démontre son goût de la nouveauté et ses
+                            découvertes permanentes.<br>
+                            <strong>  A.G Distribution s’engage.........<br></strong> 
+                            <strong> A.G Distribution </strong>met en avant un service de proximité et
+                            de réactivité. Nous sommes à l’écoute de nos clients, ce qui
+                            nous permet de répondre à chacun de leurs besoins.
+                        </p><br>
+                    <img class="img col-12 col-md-12 col-xl-12" src="{{ asset('images/group.jpg')}}" alt="image"/>
+            
+            <div class="row text-center">
+                {% for machine in machines %}
+                    <div class="col-12 col-md-12 col-xl-6 py-5">
+                        <div class="card6">
+                            <img src="{{ asset('images/machine/'~ machine.img)}}" class="img-top1" alt="machine a café LAVAZZA">
+                                <div class="card2-body text-center">
+                                    <h5 class="card-title">{{machine.name}}  {{ machine.model}} </h5>
+                                    <p class="card-text">{{ machine.description|u.truncate(90, '...')}}</p>
+                                    <a href="{{ path('machine_show', {'id': machine.id}) }}" class="btn-1">Détail</a>
+                                    <a href="{{ path('machine_index_marque', {'marque': machine.name}) }}" class=" btn-2">Voir la marque</a>
+                                </div>
+                        </div>
                     </div>
+                {% endfor %}
+                
+            </div>
+            <div class="row">
+                <div class="col-12 p-3 text-center">
+                    <a href="{{ path('machine_index') }}" class="btn-machine p-3 ">Voir toutes les machines</a>
                 </div>
-            {% endfor %}
-            <div class="col-12 text-center">
-                <a href="{{ path('machine_index') }}" class="btn-machine">Voir toutes les machines</a>
             </div>
         </div>
-    </section1>
+    </section>
 {% endblock %}

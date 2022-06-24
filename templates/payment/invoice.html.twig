@@ -50,8 +50,9 @@
                 </head>
                 <tbody>
                     {% for line in cart %}
+                    
                         <tr>
-                            <td> <img src="{{ asset('images/produits/' ~ line.product.img) }}" alt="image {{ line.product.name}}"> {{ line.product.name }}</td> 
+                             <td>{# <img src="{{ asset('images/produits/' ~ line.product.img) }}" alt="image  #}{{ line.product.name}}"> {{ line.product.name }}</td> 
                             <td class="text-right">{{ line.product.price|number_format(2, ',', ' ') }} €</td>
                             <td class="text-center">{{ line.quantity }}</td>
                             <td class="text-right">{{ (line.product.price * line.quantity)|number_format(2, ',', ' ') }} €</td>

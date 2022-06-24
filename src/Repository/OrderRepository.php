@@ -26,7 +26,7 @@ class OrderRepository extends ServiceEntityRepository
         public function getOrder($value)
         {
             return $this->createQueryBuilder('a')
-            ->andWhere("a_id_user = :val")
+            ->andWhere("a.user = :val")
             ->setParameter('val',$value);
         }
 

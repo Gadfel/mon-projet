@@ -1,9 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'base1.html.twig' %}
 
 {% block title %} Utilisateurs {% endblock %}
 
 {% block body %}   
-
+{% include "partage/addflash.html.twig" %}  
     <h1 class=" col-4 offset-3  py-5"> Fiche Utilisateur </h1>
     {{ form_start(userForm) }}
 
@@ -31,9 +31,6 @@
                 {{ form_row(userForm.companyName, {'label':'Nom de l\'entreprise'}) }}
             </div>
 
-            {# <div class="col-4 offset-3">
-                {{form_row(userForm.roles, {'label': 'Role'}) }}
-            </div> #}
         </div>
 
         <div class=" col-4 offset-3 text-center py-5">

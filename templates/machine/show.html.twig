@@ -1,6 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends 'base1.html.twig' %}
 
-{% block title %}Machine!{% endblock %}
+{% block title %} Descriptif des Machine!{% endblock %}
 
 {% block body %}
 
@@ -9,8 +9,8 @@
 
     <div class="row">
         {% for machines in machine %}
-        <div class="col-6 p-2">
-            <div class="card w-50">
+        <div class="col-12 col-md-12 col-xl-6">
+            <div class="card5 w-50">
                 <img src="{{ asset('images/machine/'~ machines.img) }}" class="img-top4" alt="machine a café ">
                     <div class="card-body text-center">
 
@@ -20,8 +20,8 @@
                     </div>
             </div>
         </div>
-            <div class="col-4">
-                <h4 class="card-title py-5">{{machines.name}} </h4>
+            <div class="col-12 col-md-12 col-xl-6 p-5">
+                <h4 class="card-title py-3">{{machines.name}} </h4>
                 <h5>{{ machines.model}}</h5>
                 <div class="text-justify">
                  <p>{{ machines.description}}</p>

@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base1.html.twig' %}
 
 {% block title %}Address{% endblock %}
 
@@ -10,7 +10,7 @@
                 <tr>
                     <th>N°</th>
                     <th>Nom</th>
-                    <th>address1</th>
+                    <th>address</th>
                     <th>code postal</th>
                     <th>ville</th>
                     <th>pays</th>
@@ -20,7 +20,7 @@
             <tbody>
                 
                 {% for addresse in  address %}
-                    <tr class="">
+                    <tr class="text-center">
                         <td class="align-middle">{{ loop.index }}</td>
                         <td class="align-middle">{{ addresse.Name }}</td>
                         <td class="align-middle">{{ addresse.address }}</td>
@@ -28,8 +28,8 @@
                         <td class="align-middle">{{ addresse.city }}</td>
                         <td class="align-middle">{{ addresse.country }}</td>
                         <td class="align-middle">
-                            <a href="{{ path('profil_address_update',{'id':addresse.id}) }}" class="btn btn-success"> Modifier l'addresse </a> 
-                            <a href="{{ path('profil_address_delete', {'id': addresse.id}) }}" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer')"> suprimer l'addresse </a>
+                            <a href="{{ path('profil_address_update',{'id':addresse.id}) }}" class="btn4 btn-success m-3 text-center"> Modifier L'addresse </a> 
+                            <a href="{{ path('profil_address_delete', {'id': addresse.id}) }}" class="btn4 btn-danger m-3" onclick="return confirm('Êtes-vous sûr de vouloir supprimer')"> suprimer L'addresse </a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -37,8 +37,8 @@
             </tbody>
         </table>
         <div class="d-flex justify-content-end my-5">
-            <a href="{{ path('profil_address_create') }}" class="btn btn-success"> Ajouter une  l'addresse </a> 
-            <a href="{{ path('user_index') }}" class="btn btn-primary">Retour</a>
+            <a href="{{ path('profil_address_create') }}" class="btn2 btn-success m-3"> Ajouter une  l'addresse </a> 
+            <a href="{{ path('user_index') }}" class="btn2 btn-primary m-3">Retour</a>
         </div>
             {# <div class="d-flex justify-content-end my-5">
             <a href="{{ path('cart_service') }}" class="btn btn-success"> passer à l'etape suivante </a>

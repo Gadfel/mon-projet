@@ -1,9 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'base1.html.twig' %}
 
 {% block title %}address {% endblock %}
 
 {% block body %}
-
+{% include "partage/addflash.html.twig" %}  
 {{ form_start(addressForm) }}
 
         <div class="row">

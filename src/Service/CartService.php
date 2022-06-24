@@ -71,7 +71,7 @@ class CartService
         return $cart;
     }
 
-    public function getTotal(): int
+    public function getTotal(): float
     {
         $sessionCart = $this->sessionInterface->get('cart', []);
         $total = 0;

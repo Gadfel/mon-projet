@@ -78,6 +78,12 @@ class AddressController extends AbstractController
         $form->handleRequest($request); 
         
 
+        
+        if ($address->getUser() !== $this->getUser()) {
+            throw $this->createAccessDeniedException();
+        }
+
+
         if ($form->isSubmitted() && $form->isValid()) {
                 
            

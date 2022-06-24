@@ -2,6 +2,15 @@
     "cebe/markdown": {
         "version": "1.2.1"
     },
+    "connectholland/cookie-consent-bundle": {
+        "version": "0.10",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "0.4",
+            "ref": "9725d24dc996a1041f25b9e29fc1567a861f98e4"
+        }
+    },
     "doctrine/annotations": {
         "version": "1.13",
         "recipe": {
@@ -429,6 +438,9 @@
     },
     "symfony/string": {
         "version": "v6.0.3"
+    },
+    "symfony/templating": {
+        "version": "v5.4.3"
     },
     "symfony/translation": {
         "version": "6.0",

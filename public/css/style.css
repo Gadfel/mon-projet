@@ -1,0 +1,494 @@
+
+@import url("https://fonts.googleapis.com/css2? family= Oswald & family= Roboto+Condensed:wght@400;700 & family= Roboto:wght@400;900 & display=swap");
+
+*,
+::before,::after {
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+
+}
+html,
+body {
+  color: #0f0f0f; 
+  background-color: #f3ce8e;
+}
+/********************************************************** HEADER *********************************/
+.logo{
+    width: 200px;
+}
+.navbar{
+    background-color: #f5e1c1; 
+    padding: 0px;
+}
+.navbar-nav{
+  font-weight: bold;
+  font-size: 30px;
+  list-style: none;
+  vertical-align:top;
+  display:flex;
+  justify-content: space-evenly;
+  align-items:center;
+}
+.navbar-nav:hover{
+    border-radius: 50%;
+    background-color: #a87625;
+    
+    padding: 15px;
+}
+.nav-link:hover{
+    color:white;
+}
+.dropdown .dropdown-menu{ 
+  display: none;
+  font-weight: 400;
+  padding: 25px;
+  position: absolute;
+  list-style: none;
+  vertical-align:top;
+}
+.dropdown:hover .dropdown-menu{
+  display: block;
+  list-style: none;
+}
+.dropdown-item {
+  color:white;
+  background-color:#032A2D;
+  font-weight: 400;
+  padding: 25px;
+  margin-top:10px;
+  font-size:35px; 
+} 
+
+
+/************************************************* MAIN *************************************************************/
+
+.video{ 
+  z-index: 0;
+  padding: 0;
+  height: 55vw;
+  width: 98vw; 
+  opacity: 0.9;
+ top: -120 !important;  
+  overflow: hidden;
+  color: white;
+  position: relative; 
+  background-size: cover;
+    margin-top: -6em;
+    
+    
+}
+.title{
+    position:relative;
+    font-family: roboto sans-serif;
+    z-index:1;
+    color: rgb(37, 22, 1);
+    margin-top: -11em;
+}
+.cita{
+    position:relative;
+    font-family: roboto sans-serif;
+    font-size:2em;
+    z-index:2;
+    color: rgb(37, 22, 1);
+}
+.section1 { 
+    color: rgb(37, 22, 1);
+    text-align: center; 
+    margin-top:-20em;        
+}
+.titre {
+    margin-top: 12em;
+    font-family: roboto sans-serif;
+    margin-top: 22em;
+}
+.img {
+   width: 50%;
+   border-radius: 50%;
+   margin-left: 23em;
+} 
+   
+.h5 {
+   font-weight: bold;
+}
+ 
+.card6 { 
+    margin: auto;
+    padding: auto;
+    width: 500px; 
+    padding: 30px;
+    color: rgb(37, 22, 1);
+    background-color:#f5e1c1;
+    border-radius: 10%;
+    box-shadow: 0 4px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
+   
+} 
+.img-top1 { 
+    width: 100%;
+    height:50vh;
+    font-weight: bold;
+    font-family: "roboto" sans-serif;
+    font-size: 25px;
+}
+.card-title{
+  margin-top: -1em;
+}
+.card2-body{
+ margin-top:4em ;
+}
+.btn-1{
+    background-color:#1ae7b7;
+    border-radius: 50%;
+    color:rgb(37, 22, 1);
+    box-shadow: 0 px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
+    padding: 10px;
+    
+}
+.btn-1:hover { 
+    background-color: rgb(56, 25, 2);
+    color:rgb(247, 242, 236)
+   
+}
+
+.btn-2{
+  /* font-size: 14px;
+  padding-top:10px;
+  margin: 15px; */
+  background-color: #CC9544;
+  border-radius: 50%;
+  color:rgb(37, 22, 1);
+  box-shadow: 0 4px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
+  padding: 10px;
+}
+ 
+ .btn-2:hover { 
+   background-color: rgb(37, 22, 1);;
+   color:rgb(247, 242, 236)
+}
+.btn-machine {
+    padding: 10px 20px; 
+    background-color: #CC9544;
+    border-radius: 40%;
+    color:rgb(37, 22, 1);
+    box-shadow: 0 4px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
+}
+.btn-machine:hover{
+  background-color: rgb(37, 22, 1);;
+  color:rgb(247, 242, 236)
+ 
+}
+
+/*********************************************** INSCREPTION ET CONNEXION ******************************************/
+.btn-register {
+    background-color: #CC9544;
+    border-radius: 50%;
+    color:rgb(37, 22, 1);
+    box-shadow: 0 4px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
+    padding: 20px 20px;
+    margin: 20px;
+   
+  }
+  .btn-login {
+    background-color: #CC9544;
+    border-radius: 50%;
+    color:rgb(37, 22, 1);
+    box-shadow: 0 4px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
+    padding: 20px 20px;
+    margin: 20px;
+  
+  }
+
+  /*************************************************PROFIL *******************************/
+
+  .btn-cordonnee {
+    padding: 10px 20px;
+    background-color:#CC9544;
+    border-radius:40%;
+    color:rgb(37, 22, 1);
+    box-shadow: 4px 8px rgb(37, 22, 1);
+  }
+  .btn-address{
+    padding: 10px 20px;
+    background-color:#CC9544;
+    border-radius:40%;
+    color:rgb(37, 22, 1);
+    box-shadow: 4px 8px rgb(37, 22, 1);
+  }
+  .btn-order{
+    padding: 10px 20px;
+    background-color:#CC9544;
+    border-radius:40%;
+    color:rgb(37, 22, 1);
+    box-shadow: 4px 8px rgb(37, 22, 1);
+  }
+
+  /*****************************************MACHINE *********************************************/
+
+  .btn-mache {
+    background-color: #CC9544;
+    border-radius: 50%;
+    color:rgb(37, 22, 1);
+    box-shadow: 0 4px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
+    padding: 10px 20px;
+    margin: 10px;
+  
+  }
+  .btn-form1 {
+    background-color: #CC9544;
+    border-radius: 50%;
+    color:rgb(37, 22, 1);
+    box-shadow: 0 4px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
+    padding: 10px 20px;
+    margin: 10px;
+  }
+  .btn-form1:hover { 
+    background-color: rgb(37, 22, 1);;
+    color:rgb(247, 242, 236)
+  }
+
+  /*********************** TOUTES LES MACHINES ***************************/
+
+  .card2 {
+
+    padding: auto;
+    margin: auto;
+    width: 500px; 
+    padding: 2em;
+    color: rgb(37, 22, 1);
+    background-color: #f5e1c1;
+    border-radius: 10%;
+    box-shadow: 0 4px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
+  } 
+  .img-top2{ 
+    width:100%;
+    height:47vh;
+    font-weight: bold;
+    font-family: "roboto" sans-serif;
+    font-size: 25px;
+  } 
+  .card-body2{
+    margin-top: 4em;
+  }
+  /************************* MARQUE  DETAIL MACHINE *********************************/
+
+  .card3 { 
+    margin: auto;
+    width: 500px; 
+    padding: 30px;
+    color: rgb(37, 22, 1);
+    background-color: #f5e1c1;
+    border-radius: 10%;
+    box-shadow: 0 4px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
+  } 
+  .card-img-top {
+    margin: auto;
+    display: block;
+  } 
+  .img-top4{ 
+    padding:10px;
+    width:100%;
+    height:35vh;
+    font-weight: bold;
+    font-family: "roboto" sans-serif;
+    font-size: 25px;
+  }
+  .card-title{
+    margin-top: -3em;
+    
+  } 
+   .card5 { 
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    margin-bottom: 40px;
+   
+  } 
+
+  /************************************CATEGORIES ********************************************************/
+  .card {
+    margin-left: auto;
+    margin-right: auto;
+    width:192px; 
+    padding: 10px;
+    color: rgb(37, 22, 1);
+    background-color: #FAD3A1;
+    border: none;
+  }  
+  .card-title1{
+    margin-top: 0em;
+  }
+  .btn-1{
+    background-color:#1ae7b7;
+    border-radius: 50%;
+    color:rgb(37, 22, 1);
+    box-shadow: 0 px 8px 0 rgb(37, 22, 1), 0 6px 20px 0 rgb(37, 22, 1);
+    padding: 15px;
+    
+  }
+  .btn-1:hover { 
+    background-color: rgb(56, 25, 2);
+    color:rgb(247, 242, 236)
+   
+  }
+  .imge-fluid{ 
+    width: 100%;
+    height:25vh;
+    font-weight: bold;
+    font-family: "roboto" sans-serif;
+    font-size: 25px;
+   } 
+
+  /******************************** PRODUITS ******************************/
+
+  .me-3 {
+    width:5rem;
+  }
+
+ 
+
+
+  /************************************************ PANIER ***************************************/
+
+  .card-body1{
+    display:flex;
+  }
+  .btn{
+    /* background-color:#e0a73b; */
+    color:rgb(37, 22, 1);
+    margin: 1em;
+  }
+  .btn:hover{
+    background: rgb(104, 31, 9);
+    color:white;
+  }
+
+ /**************************************** FOOTER **********************************************/
+
+ .footer {
+  background-color: #f5e1c1 ;
+  margin-top: 3em;
+}
+ .container-fluid footer {
+    margin-bottom: 2em;
+    color: rgb(37, 22, 1);
+    font-size:small;
+    margin-top: 5px;
+  } 
+  #icone a { 
+    color:#CC9544;; 
+  }
+  #icone a:hover {
+    color:  rgb(37, 22, 1);
+  }
+  #apropos a {
+    color:#CC9544;;
+  }
+  #apropos a:hover {
+    color:  rgb(37, 22, 1);
+  }
+
+
+
+
+  /********************************************************COOKIES *********************************************************/
+      
+  .cookie-consent-modal {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(247, 229, 203, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    display: none;
+    align-items: flex-end;
+  }
+  .cookie-consent-modal.active{
+    display: flex;
+  }
+  .content{
+    background-color: rgb(245, 196, 150);
+    padding: 5vw 3vw;
+    border-radius: 25%;
+    margin-bottom: 13em;
+    margin-left: 25em;
+  }
+.btns{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2em;
+}
+.btn{
+    border: none;
+    /* outline: none; */
+    padding: .8em 1.5em;
+    width: 100px;
+    margin-right: 1em;
+    border-radius: 3px;
+    /* text-transform: uppercase; */
+}
+.btn.accept{
+    background-color: rgb(0, 185, 124);
+    color: #fff;
+} 
+
+
+/*****************************************RESPONSIVE ************************************************/
+
+@media screen and (min-width:992px){
+
+
+}
+
+@media screen and (max-width: 991.9px){
+  .img{
+    margin-left: 12em;
+  }
+  .title{
+    margin-top: -7em;
+  }
+
+
+}
+
+@media screen and  (max-width:767.9px){
+
+  .navbar-nav{
+    font-size:12px;
+  }
+
+  .logo{
+    margin-left:-3em;
+  }
+
+  .title{
+    margin-top: -7em;
+    font-size:17px;
+  }
+  .cita{
+    margin-top: 0em;
+    font-size:16px;
+  }
+  .titre{
+    margin-top: 14em;
+  }
+  .card6{
+    width:17em ;
+  }
+  .img{
+    margin-left:5em ;
+  }
+  .video{
+    margin-left: -1em;
+  }
+.btn-machine{
+  margin: 0px;
+}
+.card2{
+  width: 322px;
+}
+
+
+}
+
+

@@ -1,9 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'base1.html.twig' %}
 
 {% block title %} Users{% endblock %}
 
 {% block body %}
-
+{% include "partage/addflash.html.twig" %}  
 <h1 class="text-center py-5">Gérer vos Coordonnées </h1>
 <table class="table text-center table-hover table-sm">
     <thead>
@@ -38,8 +38,8 @@
         
     </tbody>
 </table>
- <div class="d-flex justify-content-end my-5 btn">
-    <a href="{{ path('user_index') }}" class="btn btn-primary">Retour</a>
+ <div class="d-flex justify-content-center my-5 btn2">
+    <a href="{{ path('user_index') }}" class="btn2 btn-primary ">Retour</a>
      
 </div>
 {% endblock %}

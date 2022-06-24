@@ -26,4 +26,10 @@ class HomeController extends AbstractController
             'category' => $categories
         ]);
     }
+
+    #[Route('politique_confidentialité',name:'politique')]
+    public function pc():Response 
+    {
+        return  $this->render('politiconfid.html.twig');
+    }
 }

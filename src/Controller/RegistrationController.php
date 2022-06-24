@@ -3,17 +3,18 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\RegistrationFormType;
+
 use App\Security\EmailVerifier;
+use App\Form\RegistrationFormType;
+use Symfony\Component\Mime\Address;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mime\Address;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
 class RegistrationController extends AbstractController
@@ -66,11 +67,12 @@ class RegistrationController extends AbstractController
             );
             // do anything else you need here, like send an email
             if ($user->getRoles() =='ROLE_ADMIN'){
-                return $this->redirectToRoute('admin');
+                return $this->redirectToRoute('home');
             }else{
-                return $this->redirectToRoute('user_index');
+                $this->addFlash( 'success','VEUIILEZ VERIFIER BOITE MAIL AFIN DE CONFIRMER VOTRE COMPTE');
+                return $this->redirectToRoute('home');
             }
-            return $this->redirectToRoute('home');
+           
         }
 
         return $this->render('registration/register.html.twig', [

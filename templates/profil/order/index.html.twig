@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base1.html.twig' %}
 
 {% block title %} Mes  commandes {% endblock %}
 
@@ -28,7 +28,7 @@
                                 <td>{{ p.user.lastName }} , {{p.user.firstName}}</td>
                                 <td>{{ p.address.fullAddress }}</td>
                                 <td>{{ p.date | date('d/m/y') }}</td>
-                                <td>{{ p.totalAmount }}  € </td>
+                                <td>{{ p.totalAmount|number_format(2,',', '') }}  € </td>
                                 <td>
                                     <a href="{{ path('order_detail', {id: p.id }) }}" class="btn btn-success">voir Détail</a>
                                 </td>
